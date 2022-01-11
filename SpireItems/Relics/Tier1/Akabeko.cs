@@ -24,7 +24,7 @@ namespace SylmarDev.SpireItems
             // tier
             item.tier = ItemTier.Tier1;
 
-            // display info (need assetbundle to create unique texture
+            // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
             item.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
 
@@ -46,50 +46,24 @@ namespace SylmarDev.SpireItems
             Log.LogInfo("Akabeko done.");
         }
 
-        private void GlobalEventManager_onServerDamageDealt(DamageReport report)
-        {
-            if (!report.attacker || !report.attackerBody)
-            {
-                return;
-            }
-
-            Log.LogMessage("in Akabeko specific onhit");
-
-            var inv = report.attackerBody.inventory;
-            var victimMaxHP = report.victimBody.levelMaxHealth;
-            var victimHP = report.victim.health;
-
-            if (inv)
-            {
-                int akabekoCount = inv.GetItemCount(item.itemIndex);
-                if (akabekoCount > 0 && victimHP > (victimMaxHP * 0.95f))
-                {
-                    Log.LogMessage("Akabeko proc'd!");
-                    report.damageInfo.damage *= 1000.16f; // please work
-
-                }
-            }
-        }
-
        
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            Log.LogMessage("in Akabeko specific onhit");
-
             if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
 
             var inv = di.attacker.GetComponent<HealthComponent>().body.inventory;
             
-            Log.LogMessage(inv.ToString());
-            Log.LogMessage(self.health.ToString());
-            Log.LogMessage(self.fullHealth.ToString());
-            if (inv && (self.health > (self.fullHealth * 0.95)))
+            if (inv && (self.health > (self.fullHealth * 0.99)))
             {
                 int akabekoCount = inv.GetItemCount(item.itemIndex);
-                if (akabekoCount > 0)
+                if (akabekoCount == 1)
                 {
-                    Log.LogMessage("Akabeko proc'd!");
-                    di.damage *= 1.16f; // temp 100
+                    //Log.LogMessage("Akabeko proc'd!");
+                    di.damage *= 1.85f;
+                } else if (akabekoCount >= 2)
+                {
+                    //Log.LogMessage("Akabeko proc'd! (2 or more!)");
+                    di.damage *= 1.85f + (0.4f * akabekoCount);
                 }
             }
             orig(self, di);
@@ -106,7 +80,7 @@ namespace SylmarDev.SpireItems
 
             //The Description is where you put the actual numbers and give an advanced description.
             // LanguageAPI.Add("AKABEKO_DESC", "Whenever you <style=cIsDamage>kill an enemy</style>, you have a <style=cIsUtility>5%</style> chance to cloak for <style=cIsUtility>4s</style> <style=cStack>(+1s per stack)</style>.");
-            LanguageAPI.Add("AKABEKO_DESC", "Whenever you <style=cIsDamage>kill an enemy</style>, you have a <style=cIsUtility>5%</style> chance to cloak for <style=cIsUtility>4s</style> <style=cStack>(+1s per stack)</style>.");
+            LanguageAPI.Add("AKABEKO_DESC", "Deal +85% <style=cStack>(+40% per stack)</style> damage to enemies if you're the first to hit them");
 
             //The Lore is, well, flavor. You can write pretty much whatever you want here.
             LanguageAPI.Add("AKABEKO_LORE", "Muuu~");

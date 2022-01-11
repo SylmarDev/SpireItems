@@ -33,13 +33,12 @@ namespace SylmarDev.SpireItems
         public const string PluginName = "Slay The Spire Relics";
         public const string PluginVersion = "0.0.1";
 
-		//We need our item definition to persist through our functions, and therefore make it a class field.
-        private static ItemDef myItemDef;
-
         // config file
         private static ConfigFile cfgFile;
 
+        // declare items
         private static Akabeko akabeko = new Akabeko();
+        private static Anchor anchor = new Anchor();
         // any empty methods for BuffDefs need to go here to be edited later
         /*public static BuffDef freezeBuff { get; private set; }
         public static BuffDef fearBuff { get; private set; }
@@ -52,6 +51,7 @@ namespace SylmarDev.SpireItems
             Log.Init(Logger);
 
             akabeko.Init();
+            anchor.Init();
 
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
@@ -69,7 +69,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Akabeko.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Anchor.item.itemIndex), transform.position, transform.forward * 20f);
             }   
         }
     }

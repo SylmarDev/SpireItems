@@ -73,4 +73,11 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Relics\Tier2\" />
+    <Folder Include="Relics\Lunar\" />
+    <Folder Include="Relics\Boss\" />
+    <Folder Include="Relics\Tier3\" />
+  </ItemGroup>
+
 </Project>
