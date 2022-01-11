@@ -1,9 +1,9 @@
-# My first mod
+# SpireItems
 
-Description.
+quirky and interesting description
 
 ## Changelog
 
-**1.0.0**
+**0.0.1**
 
-* Release of my first mod.
+* Indev
