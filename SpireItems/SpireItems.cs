@@ -4,6 +4,8 @@ using R2API.Utils;
 using RoR2;
 using UnityEngine;
 using BepInEx.Configuration;
+using System;
+using System.Reflection;
 
 using Path = System.IO.Path;
 
@@ -35,6 +37,9 @@ namespace SylmarDev.SpireItems
         public const string PluginName = "Slay The Spire Relics";
         public const string PluginVersion = "0.0.1";
 
+        // assets
+        public static AssetBundle resources;
+
         // config file
         private static ConfigFile cfgFile;
 
@@ -57,6 +62,12 @@ namespace SylmarDev.SpireItems
         {
             //Init our logging class so that we can properly log for debugging
             Log.Init(Logger);
+
+            // load assets (fingers crossed)
+            using(var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SpireItems.spireitems_assets"))
+            {
+                resources = AssetBundle.LoadFromStream(stream);
+            }
 
             akabeko.Init();
             anchor.Init();
@@ -83,7 +94,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Boot.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Akabeko.item.itemIndex), transform.position, transform.forward * 20f);
             }   
         }
     }

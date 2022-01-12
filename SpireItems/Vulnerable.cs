@@ -19,7 +19,7 @@ namespace SylmarDev.SpireItems
             buff.isDebuff = true;
             buff.name = "STSVulnerable";
 
-            // buff.iconSprite = Resources.LoadAsset<Sprite>("Assets/SpireItems/icons/vulnerable_icon.png");
+            buff.iconSprite = Resources.Load<Sprite>("Textures/icon_vulnerable.png");
 
             completeBuff = new CustomBuff(buff);
             BuffAPI.Add(completeBuff);

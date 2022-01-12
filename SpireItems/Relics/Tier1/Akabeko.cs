@@ -25,7 +25,7 @@ namespace SylmarDev.SpireItems
             item.tier = ItemTier.Tier1;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
+            item.pickupIconSprite = Resources.Load<Sprite>("Textures/akabeko.png");
             item.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
 
             // standard

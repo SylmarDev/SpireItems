@@ -46,6 +46,8 @@ namespace SylmarDev.SpireItems
             Log.LogInfo("Boot done");
         }
 
+        // THE BOOT STILL DOESN'T WORK!
+
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
             if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
@@ -59,14 +61,10 @@ namespace SylmarDev.SpireItems
                 if (bootCount >= 1)
                 {
                     Log.LogMessage("stripping armor");
-                    self.body.armor -= 10 * bootCount;
+                    self.body.SetPropertyValue<float>("armor", self.body.GetPropertyValue<float>("armor") - (1000 * bootCount)); // 10k for demo, put back at 10
                 }
             }
             orig(self, di);
-            if (bootCount >= 1)
-            {
-                self.body.armor = self.body.baseArmor;
-            }
         }
 
         private void AddTokens()
