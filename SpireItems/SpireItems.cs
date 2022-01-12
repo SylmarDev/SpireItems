@@ -20,10 +20,12 @@ namespace SylmarDev.SpireItems
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
 	
 	//We will be using 3 modules from R2API: ItemAPI to add our item, ItemDropAPI to have our item drop ingame, and LanguageAPI to add our language tokens.
-    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(ItemDropAPI), nameof(LanguageAPI))]
-	
-	//This is the main declaration of our plugin class. BepInEx searches for all classes inheriting from BaseUnityPlugin to initialize on startup.
+    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(ItemDropAPI), nameof(LanguageAPI), nameof(BuffAPI))]
+    //[R2APISubmoduleDependency(nameof(BuffAPI)]
+
+    //This is the main declaration of our plugin class. BepInEx searches for all classes inheriting from BaseUnityPlugin to initialize on startup.
     //BaseUnityPlugin itself inherits from MonoBehaviour, so you can use this as a reference for what you can declare and use in your plugin class: https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
+
     public class SpireItems : BaseUnityPlugin
 	{
         //The Plugin GUID should be a unique ID for this plugin, which is human readable (as it is used in places like the config).
@@ -39,10 +41,16 @@ namespace SylmarDev.SpireItems
         // declare items
         private static Akabeko akabeko = new Akabeko();
         private static Anchor anchor = new Anchor();
+        private static BagOfMarbles marbles = new BagOfMarbles();
+        private static BloodVial vial = new BloodVial();
+        private static Boot boot = new Boot();
+
+
         // any empty methods for BuffDefs need to go here to be edited later
         /*public static BuffDef freezeBuff { get; private set; }
         public static BuffDef fearBuff { get; private set; }
         */
+        public static Vulnerable vulnerableBuff = new Vulnerable();
 
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
@@ -52,7 +60,13 @@ namespace SylmarDev.SpireItems
 
             akabeko.Init();
             anchor.Init();
+            marbles.Init();
+            vial.Init();
+            boot.Init();
 
+            Logger.LogDebug("Registering shared buffs. . .");
+            vulnerableBuff.Init();
+            
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
         }
@@ -69,7 +83,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Anchor.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Boot.item.itemIndex), transform.position, transform.forward * 20f);
             }   
         }
     }

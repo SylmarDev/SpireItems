@@ -50,7 +50,7 @@ namespace SylmarDev.SpireItems
             LanguageAPI.Add("TOYORNITHOPTER_NAME", "Toy Ornithopter");
 			LanguageAPI.Add("TOYORNITHOPTER_PICKUP", "Heal after using your equipment");
 			LanguageAPI.Add("TOYORNITHOPTER_DESC", "");
-			LanguageAPI.Add("TOYORNITHOPTER_LORE", ""This little toy is the perfect companion for the lone adventurer!"");
+			LanguageAPI.Add("TOYORNITHOPTER_LORE", "This little toy is the perfect companion for the lone adventurer!");
         }
     }
 }

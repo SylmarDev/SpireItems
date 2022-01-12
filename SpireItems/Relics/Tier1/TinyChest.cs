@@ -50,7 +50,7 @@ namespace SylmarDev.SpireItems
             LanguageAPI.Add("STSTINYCHEST_NAME", "Tiny Chest");
 			LanguageAPI.Add("STSTINYCHEST_PICKUP", "not sure yet");
 			LanguageAPI.Add("STSTINYCHEST_DESC", "");
-			LanguageAPI.Add("STSTINYCHEST_LORE", ""A fine prototype." - The Architect");
+			LanguageAPI.Add("STSTINYCHEST_LORE", "A fine prototype. - The Architect");
         }
     }
 }

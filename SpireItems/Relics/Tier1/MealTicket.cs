@@ -50,7 +50,7 @@ namespace SylmarDev.SpireItems
             LanguageAPI.Add("MEALTICKET_NAME", "Meal Ticket");
 			LanguageAPI.Add("MEALTICKET_PICKUP", "");
 			LanguageAPI.Add("MEALTICKET_DESC", "");
-			LanguageAPI.Add("MEALTICKET_LORE", ""Complimentary meatballs with every visit!"");
+			LanguageAPI.Add("MEALTICKET_LORE", "Complimentary meatballs with every visit!");
         }
     }
 }

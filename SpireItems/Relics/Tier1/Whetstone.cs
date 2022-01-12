@@ -50,7 +50,7 @@ namespace SylmarDev.SpireItems
             LanguageAPI.Add("STSWHETSTONE_NAME", "Whetstone");
 			LanguageAPI.Add("STSWHETSTONE_PICKUP", "Upon pickup, Upgrade 2 random Attacks");
 			LanguageAPI.Add("STSWHETSTONE_DESC", "");
-			LanguageAPI.Add("STSWHETSTONE_LORE", ""Flesh never beats steel." - Kublai the Great");
+			LanguageAPI.Add("STSWHETSTONE_LORE", "Flesh never beats steel. - Kublai the Great");
         }
     }
 }

@@ -50,7 +50,7 @@ namespace SylmarDev.SpireItems
             LanguageAPI.Add("STSSTRAWBERRY_NAME", "Strawberry");
 			LanguageAPI.Add("STSSTRAWBERRY_PICKUP", "Upon pickup, raise your Max HP by 5%");
 			LanguageAPI.Add("STSSTRAWBERRY_DESC", "");
-			LanguageAPI.Add("STSSTRAWBERRY_LORE", ""Delicious! Haven't seen any of these since the blight." - Ranwid");
+			LanguageAPI.Add("STSSTRAWBERRY_LORE", "Delicious! Haven't seen any of these since the blight. - Ranwind");
         }
     }
 }
