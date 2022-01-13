@@ -9,7 +9,7 @@ namespace SylmarDev.SpireItems
     public class BagOfMarbles
     {
         public static ItemDef item;
-        public float procChance = 30f;
+        public float procChance = 10f;
         public void Init()
         {
             // init
@@ -26,7 +26,7 @@ namespace SylmarDev.SpireItems
             item.tier = ItemTier.Tier1;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/BagOfMarbles.png");
             item.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
 
             // standard
@@ -74,7 +74,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("BAGOFMARBLES_NAME", "Bag of Marbles");
 			LanguageAPI.Add("BAGOFMARBLES_PICKUP", "Chance to make enemies vulnerable");
-			LanguageAPI.Add("BAGOFMARBLES_DESC", "30% to make enemies Vulnerable for 5 seconds<style=cStack>(+5 seconds per stack)</style> on hit. Vulnernbility deals +50% damage from all sources.");
+			LanguageAPI.Add("BAGOFMARBLES_DESC", "10% to make enemies Vulnerable for 5 seconds<style=cStack>(+5 seconds per stack)</style> on hit. Vulnernbility deals +50% damage from all sources.");
 			LanguageAPI.Add("BAGOFMARBLES_LORE", "A once popular toy in the City. Useful for throwing enemies off balance.");
         }
     }

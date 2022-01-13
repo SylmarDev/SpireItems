@@ -25,7 +25,7 @@ namespace SylmarDev.SpireItems
             item.tier = ItemTier.Tier1;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = Resources.Load<Sprite>("Textures/MiscIcons/texMysteryIcon");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/BronzeScales.png");
             item.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
 
             // standard
@@ -40,9 +40,22 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-			// deal damage back to enemies hitting you
-
+            // deal damage back to enemies hitting you
+            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
             Log.LogInfo("BronzeScales done");
+        }
+
+        private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
+        {
+            orig(self, di);
+
+            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
+
+            var thornCount = self.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex); // checks victims inventory since, you know
+            if (thornCount >= 1)
+            {
+                // damage the attacker (di.attacker)
+            }
         }
 
         private void AddTokens()
