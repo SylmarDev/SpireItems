@@ -41,7 +41,7 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // do bonus damage to armored enemies
-            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
+            //On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
 
             Log.LogInfo("Boot done");
         }
@@ -51,9 +51,10 @@ namespace SylmarDev.SpireItems
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
             if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
-
-            var inv = di.attacker.GetComponent<HealthComponent>().body.inventory;
-            int bootCount = inv.GetItemCount(item.itemIndex);
+            // all temp, boot doesn't work rn
+            // one of these doesn't reference anything
+            var inv = false; // di.attacker.GetComponent<HealthComponent>().body.inventory;
+            int bootCount = 0; // inv.GetItemCount(item.itemIndex);
 
 
             if (inv && self.body.armor > 0)
@@ -61,6 +62,7 @@ namespace SylmarDev.SpireItems
                 if (bootCount >= 1)
                 {
                     Log.LogMessage("stripping armor");
+                    
                     self.body.SetPropertyValue<float>("armor", self.body.GetPropertyValue<float>("armor") - (1000 * bootCount)); // 10k for demo, put back at 10
                 }
             }

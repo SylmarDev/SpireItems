@@ -64,11 +64,13 @@ namespace SylmarDev.SpireItems
             Log.Init(Logger);
 
             // load assets (fingers crossed)
+            Log.LogInfo("Loading Resources. . .");
             using(var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SpireItems.spireitems_assets"))
             {
                 resources = AssetBundle.LoadFromStream(stream);
             }
 
+            Log.LogInfo("Loading Items. . .");
             akabeko.Init();
             anchor.Init();
             marbles.Init();
@@ -95,7 +97,19 @@ namespace SylmarDev.SpireItems
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Akabeko.item.itemIndex), transform.position, transform.forward * 20f);
-            }   
+            }
+
+            //This if statement checks if the player has currently pressed F2.
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                //Get the player body to use a position:	
+                var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+
+                //And then drop our defined item in front of the player.
+
+                Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BagOfMarbles.item.itemIndex), transform.position, transform.forward * 20f);
+            }
         }
     }
 }

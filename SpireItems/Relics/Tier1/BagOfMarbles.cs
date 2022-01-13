@@ -53,7 +53,7 @@ namespace SylmarDev.SpireItems
 
             if (marblesCount < 1)
             {
-                orig(self, damageInfo, victim);
+                //orig(self, damageInfo, victim);
                 return;
             }
 
