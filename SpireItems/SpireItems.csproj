@@ -13,6 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="spireitems_assets" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="spireitems_assets" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -71,6 +79,13 @@
       <HintPath>libs\Zio.dll</HintPath>
       <Private>false</Private>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Relics\Tier2\" />
+    <Folder Include="Relics\Lunar\" />
+    <Folder Include="Relics\Boss\" />
+    <Folder Include="Relics\Tier3\" />
   </ItemGroup>
 
 </Project>

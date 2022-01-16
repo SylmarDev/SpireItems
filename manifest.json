@@ -1,8 +1,8 @@
 ﻿{
-	"name": "AdrianInfo",
+	"name": "MyFirstMod",
 	"version_number": "1.0.0",
 	"website_url": "",
-	"description": "Client Side mod that replaces things with Adrian dialect",
+	"description": "My first Mod",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.9",
 		"RiskofThunder-HookGenPatcher-1.2.1"
