@@ -1,6 +1,6 @@
 ﻿using BepInEx.Logging;
 
-namespace SylmarDev.SpireItems
+namespace SylmarDev.AdrianInfo
 {
     internal static class Log
     {
