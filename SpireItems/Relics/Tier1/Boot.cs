@@ -41,20 +41,22 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // do bonus damage to armored enemies
-            //On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
+            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
 
             Log.LogInfo("Boot done");
         }
 
-        // THE BOOT STILL DOESN'T WORK!
-
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
-            // all temp, boot doesn't work rn
-            // one of these doesn't reference anything
-            var inv = false; // di.attacker.GetComponent<HealthComponent>().body.inventory;
-            int bootCount = 0; // inv.GetItemCount(item.itemIndex);
+            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject || di.attacker.GetComponent<CharacterBody>().inventory == null)
+            {
+                orig(self, di);
+                return;
+            }
+            
+            // blood shrines still don't work for some why, TODO: test updated if
+            var inv = di.attacker.GetComponent<HealthComponent>().body.inventory;
+            int bootCount = inv.GetItemCount(item.itemIndex);
 
 
             if (inv && self.body.armor > 0)
@@ -62,8 +64,7 @@ namespace SylmarDev.SpireItems
                 if (bootCount >= 1)
                 {
                     Log.LogMessage("stripping armor");
-                    
-                    self.body.SetPropertyValue<float>("armor", self.body.GetPropertyValue<float>("armor") - (1000 * bootCount)); // 10k for demo, put back at 10
+                    self.body.armor -= (15 * bootCount);
                 }
             }
             orig(self, di);
@@ -73,7 +74,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("SMBTHREEBOOT_NAME", "The Boot");
 			LanguageAPI.Add("SMBTHREEBOOT_PICKUP", "If enemy has armor, deal additional damage");
-			LanguageAPI.Add("SMBTHREEBOOT_DESC", "If enemy has armor, reduce it by 10<style=cStack>(+10 per stack)</style> when calculating your damage.");
+			LanguageAPI.Add("SMBTHREEBOOT_DESC", "If enemy has armor, reduce it by 15<style=cStack>(+15 per stack)</style> when calculating your damage.");
 			LanguageAPI.Add("SMBTHREEBOOT_LORE", "When wound up, the boot grows larger in size.");
         }
     }

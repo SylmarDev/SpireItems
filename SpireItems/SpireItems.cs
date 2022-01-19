@@ -49,7 +49,8 @@ namespace SylmarDev.SpireItems
         private static BagOfMarbles marbles = new BagOfMarbles();
         private static BloodVial vial = new BloodVial();
         private static Boot boot = new Boot();
-
+        private static BronzeScales scales = new BronzeScales();
+        private static CeramicFish fish = new CeramicFish();
 
         // any empty methods for BuffDefs need to go here to be edited later
         /*public static BuffDef freezeBuff { get; private set; }
@@ -76,6 +77,8 @@ namespace SylmarDev.SpireItems
             marbles.Init();
             vial.Init();
             boot.Init();
+            scales.Init();
+            fish.Init();
 
             Logger.LogDebug("Registering shared buffs. . .");
             vulnerableBuff.Init();
@@ -96,7 +99,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Akabeko.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(CeramicFish.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             //This if statement checks if the player has currently pressed F2.

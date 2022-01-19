@@ -59,8 +59,7 @@ namespace SylmarDev.SpireItems
                 int vialCount = inv.GetItemCount(item.itemIndex);
                 if (vialCount >= 1)
                 {
-                    attacker.GetComponent<HealthComponent>().health += attacker.GetComponent<HealthComponent>().fullHealth * 0.02f * vialCount;
-                    attacker.GetComponent<HealthComponent>().health = Math.Min(attacker.GetComponent<HealthComponent>().health, attacker.GetComponent<HealthComponent>().fullHealth); // make this not exceed base health value
+                    attacker.GetComponent<HealthComponent>().HealFraction(0.02f * vialCount, default (ProcChainMask));
                 }
             }
             orig(self, di);
@@ -70,7 +69,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("BLOODVIAL_NAME", "Blood Vial");
 			LanguageAPI.Add("BLOODVIAL_PICKUP", "Heal a little HP at the start of combat");
-			LanguageAPI.Add("BLOODVIAL_DESC", "<style=clsHealing>Heal 2%</style><style=cStack>(+2% per stack)</style> on hitting enemies with over 95% health.");
+			LanguageAPI.Add("BLOODVIAL_DESC", "<style=clsHealing>Heal 2%</style> <style=cStack>(+2% per stack)</style> on hitting enemies with over 95% health.");
 			LanguageAPI.Add("BLOODVIAL_LORE", "A vial containing the blood of a pure and elder vampire.");
         }
     }

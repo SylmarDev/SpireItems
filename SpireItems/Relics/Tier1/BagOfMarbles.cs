@@ -49,9 +49,9 @@ namespace SylmarDev.SpireItems
 
         private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
-            int marblesCount = damageInfo.attacker.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex);
+            int? marblesCount = damageInfo.attacker.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex);
 
-            if (marblesCount < 1)
+            if (marblesCount == null || marblesCount < 1)
             {
                 //orig(self, damageInfo, victim);
                 return;
@@ -63,7 +63,7 @@ namespace SylmarDev.SpireItems
                 var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
                 if (proc)
                 {
-                    victim.GetComponent<HealthComponent>().body.AddTimedBuff(Vulnerable.buff, marblesCount * 5f);
+                    victim.GetComponent<HealthComponent>().body.AddTimedBuff(Vulnerable.buff, (float) marblesCount * 5f);
                 }
 
             }

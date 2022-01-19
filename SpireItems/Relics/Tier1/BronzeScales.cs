@@ -9,6 +9,8 @@ namespace SylmarDev.SpireItems
     public class BronzeScales
     {
         public static ItemDef item;
+        public bool isThorning = true;
+        DamageInfo damageInfo = new DamageInfo();
         public void Init()
         {
             // init
@@ -39,6 +41,15 @@ namespace SylmarDev.SpireItems
 
             ItemAPI.Add(new CustomItem(item, displayRules));
 
+            // define damageInfo
+            damageInfo.inflictor = null;
+            damageInfo.damageType = (DamageType.BypassArmor | DamageType.Silent);
+            damageInfo.damageColorIndex = DamageColorIndex.Default;
+            damageInfo.procCoefficient = 0f; // no crazy procs sadge
+            damageInfo.rejected = false;
+            damageInfo.crit = false;
+
+
             // define what item does below
             // deal damage back to enemies hitting you
             On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
@@ -49,11 +60,22 @@ namespace SylmarDev.SpireItems
         {
             orig(self, di);
 
-            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
+            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject || !isThorning)
+            {
+                isThorning = true;
+                return;
+            }
 
             var thornCount = self.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex); // checks victims inventory since, you know
-            if (thornCount >= 1)
+            var attackerThorns = di.attacker.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex); // doing this to stop a theorhetical thorn loop crash
+            if (thornCount >= 1 && attackerThorns == 0)
             {
+                isThorning = false;
+                damageInfo.attacker = self.body.gameObject;
+                damageInfo.damage = self.body.damage * 0.5f * thornCount; // worth 50% attack I hope maybe
+                Log.LogMessage("using thorns!");
+                Log.LogMessage(damageInfo.damage);
+                di.attacker.GetComponent<HealthComponent>().TakeDamage(damageInfo);
                 // damage the attacker (di.attacker)
             }
         }
@@ -62,7 +84,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("THORNSCALES_NAME", "Bronze Scales");
 			LanguageAPI.Add("THORNSCALES_PICKUP", "When hit by an enemy, deal damage back");
-			LanguageAPI.Add("THORNSCALES_DESC", "");
+			LanguageAPI.Add("THORNSCALES_DESC", "When hit, deal back damage worth 50%<style=cStack>(+50% per stack)</style> of your damage.");
 			LanguageAPI.Add("THORNSCALES_LORE", "The sharp scales of the Guardian. Rearranges itself to protect its user.");
         }
     }

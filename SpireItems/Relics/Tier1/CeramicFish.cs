@@ -3,6 +3,7 @@ using RoR2;
 using R2API;
 using R2API.Utils;
 using UnityEngine;
+using System;
 
 namespace SylmarDev.SpireItems
 {
@@ -40,15 +41,33 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-			// give gold when you use an ability
-
+            // give gold when you interact with something
+            On.RoR2.GlobalEventManager.OnInteractionBegin += GlobalEventManager_OnInteractionBegin;
             Log.LogInfo("CeramicFish done");
+        }
+
+        private void GlobalEventManager_OnInteractionBegin(On.RoR2.GlobalEventManager.orig_OnInteractionBegin orig, GlobalEventManager self, Interactor interactor, IInteractable interactable, GameObject interactableObject)
+        {
+            var cb = interactor.GetComponent<CharacterBody>();
+            if (cb)
+            {
+                if (cb.inventory)
+                {
+                    int itemCount = cb.inventory.GetItemCount(item.itemIndex);
+                    if (itemCount > 0)
+                    {
+                        var scaledMoners = Run.instance.GetDifficultyScaledCost(9) * itemCount;
+                        cb.master.GiveMoney(Convert.ToUInt32(scaledMoners));
+                    }
+                }
+            }
+            orig(self, interactor, interactable, interactableObject);
         }
 
         private void AddTokens()
         {
             LanguageAPI.Add("CERAMICFISH_NAME", "Ceramic Fish");
-			LanguageAPI.Add("CERAMICFISH_PICKUP", "Whenever you use an ability, gain a small amount of gold");
+			LanguageAPI.Add("CERAMICFISH_PICKUP", "Activating an interactable gives you a small amount of gold");
 			LanguageAPI.Add("CERAMICFISH_DESC", "");
 			LanguageAPI.Add("CERAMICFISH_LORE", "Meticulousy painted, these fish were revered to bring great fortune.");
         }
