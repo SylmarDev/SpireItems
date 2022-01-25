@@ -51,6 +51,7 @@ namespace SylmarDev.SpireItems
         private static Boot boot = new Boot();
         private static BronzeScales scales = new BronzeScales();
         private static CeramicFish fish = new CeramicFish();
+        private static JuzuBracelet juzu = new JuzuBracelet();
 
         public static DamageInfo thornDi = new DamageInfo();
 
@@ -81,6 +82,7 @@ namespace SylmarDev.SpireItems
             boot.Init();
             scales.Init();
             fish.Init();
+            juzu.Init();
 
             Log.LogInfo("Loading Thorn di. . .");
             thornDi.inflictor = null;
@@ -110,7 +112,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BronzeScales.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(JuzuBracelet.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             //This if statement checks if the player has currently pressed F2.

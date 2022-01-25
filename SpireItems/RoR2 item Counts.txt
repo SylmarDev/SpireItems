@@ -1,0 +1,54 @@
+RoR2 Item Counts (sans scrap)
+White - 24
+Green - 25
+Red - 21
+Boss - 13 (sans artifact key)
+Lunar - 14 (minus 4 equipments)
+
+SPIRE ITEMS
+White
+	Working
+		Akabeko
+		Anchor (probably too good)
+		Bag of Marbles (probably too good)
+		Blood Vial
+		Boot
+		Bronze Scales
+		Ceramic Fish (probably too good)
+		
+	Not Working, but good plans
+		Juzu Bracelet
+		Maw Bank
+		Meal Ticket
+		Oddly Smooth Stone
+		Orichalcum
+		Pen Nib (may be busted)
+		Strawberry
+		Toy Ornithopter
+		Vajra
+		
+	Bad plans
+		Art of War (feasibility)
+		Happy Flower (feasibility)
+		Nunchaku (weird proc cond)
+		Omamori (way too op)
+		Potion Belt (nebulous)
+		Preserved Insect
+		Smiling Mask (viability / feasibility concerns)
+		Tiny Chest (feasibility)
+		War Paint
+		Whetstone
+		
+	No plans
+		Ancient Tea Set
+		Bag of Preperation
+		Centennial Puzzle
+		Dream Catcher
+		Lantern
+		Regal Pillow
+		
+Green
+	Working
+	Not Working, but good plans
+	Bad plans
+	No plans
