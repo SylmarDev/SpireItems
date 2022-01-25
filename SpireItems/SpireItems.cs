@@ -52,6 +52,8 @@ namespace SylmarDev.SpireItems
         private static BronzeScales scales = new BronzeScales();
         private static CeramicFish fish = new CeramicFish();
 
+        public static DamageInfo thornDi = new DamageInfo();
+
         // any empty methods for BuffDefs need to go here to be edited later
         /*public static BuffDef freezeBuff { get; private set; }
         public static BuffDef fearBuff { get; private set; }
@@ -80,6 +82,15 @@ namespace SylmarDev.SpireItems
             scales.Init();
             fish.Init();
 
+            Log.LogInfo("Loading Thorn di. . .");
+            thornDi.inflictor = null;
+            thornDi.damageType = (DamageType.BypassArmor | DamageType.Silent);
+            thornDi.damageColorIndex = DamageColorIndex.Default;
+            thornDi.procCoefficient = 0f; // no crazy procs sadge
+            thornDi.rejected = false;
+            thornDi.crit = false;
+
+
             Logger.LogDebug("Registering shared buffs. . .");
             vulnerableBuff.Init();
             
@@ -99,7 +110,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(CeramicFish.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BronzeScales.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             //This if statement checks if the player has currently pressed F2.

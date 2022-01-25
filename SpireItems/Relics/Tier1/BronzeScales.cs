@@ -10,7 +10,6 @@ namespace SylmarDev.SpireItems
     {
         public static ItemDef item;
         public bool isThorning = true;
-        DamageInfo damageInfo = new DamageInfo();
         public void Init()
         {
             // init
@@ -41,42 +40,32 @@ namespace SylmarDev.SpireItems
 
             ItemAPI.Add(new CustomItem(item, displayRules));
 
-            // define damageInfo
-            damageInfo.inflictor = null;
-            damageInfo.damageType = (DamageType.BypassArmor | DamageType.Silent);
-            damageInfo.damageColorIndex = DamageColorIndex.Default;
-            damageInfo.procCoefficient = 0f; // no crazy procs sadge
-            damageInfo.rejected = false;
-            damageInfo.crit = false;
-
-
             // define what item does below
             // deal damage back to enemies hitting you
-            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
+            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
             Log.LogInfo("BronzeScales done");
         }
 
-        private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
-            orig(self, di);
+            orig(self, damageInfo, victim);
 
-            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject || !isThorning)
+            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || !damageInfo.inflictor || damageInfo.attacker == victim || victim.GetComponent<CharacterBody>().inventory == null)
             {
-                isThorning = true;
                 return;
             }
 
-            var thornCount = self.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex); // checks victims inventory since, you know
-            var attackerThorns = di.attacker.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex); // doing this to stop a theorhetical thorn loop crash
-            if (thornCount >= 1 && attackerThorns == 0)
+            CharacterBody cb = damageInfo.attacker.GetComponent<CharacterBody>();
+
+            var thornCount = victim.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex);
+            var attackerThorns = cb.inventory.GetItemCount(item.itemIndex);
+
+            if (thornCount >= 1 && thornCount > attackerThorns)
             {
-                isThorning = false;
-                damageInfo.attacker = self.body.gameObject;
-                damageInfo.damage = self.body.damage * 0.5f * thornCount; // worth 50% attack I hope maybe
+                SpireItems.thornDi.attacker = victim;
+                SpireItems.thornDi.damage = victim.GetComponent<CharacterBody>().damage * 0.75f * thornCount;
                 Log.LogMessage("using thorns!");
-                Log.LogMessage(damageInfo.damage);
-                di.attacker.GetComponent<HealthComponent>().TakeDamage(damageInfo);
-                // damage the attacker (di.attacker)
+                damageInfo.attacker.GetComponent<HealthComponent>().TakeDamage(SpireItems.thornDi);
             }
         }
 
