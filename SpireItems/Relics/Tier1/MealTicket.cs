@@ -3,6 +3,10 @@ using RoR2;
 using R2API;
 using R2API.Utils;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Networking;
+using System;
+using System.ComponentModel;
 
 namespace SylmarDev.SpireItems
 {
@@ -40,9 +44,35 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-			// not sure yet, maybe gain max HP every bazaar trip, maybe random chance to gain HP on opening a chest
-
+            // not sure yet, maybe gain max HP every bazaar trip, maybe random chance to gain HP on opening a chest
+            On.RoR2.OnPlayerEnterEvent.OnTriggerEnter += OnPlayerEnterEvent_OnTriggerEnter;
             Log.LogInfo("MealTicket done");
+        }
+
+        private void OnPlayerEnterEvent_OnTriggerEnter(On.RoR2.OnPlayerEnterEvent.orig_OnTriggerEnter orig, OnPlayerEnterEvent self, Collider other)
+        {
+            if ((self.serverOnly && !NetworkServer.active) || self.calledAction)
+            {
+                return;
+            }
+            // might only work for first player to enter, who's to say!
+            CharacterBody cb = other.GetComponent<CharacterBody>();
+            if (cb && cb.isPlayerControlled)
+            {
+                Log.LogMessage(self.gameObject.name);
+                if(self.gameObject.name == "SpawnShopkeeperTrigger")
+                {
+                    Log.LogMessage("adding health. . .");
+                    // todo health adds, but only in the shop, leaves upon next stage
+                    var tc = cb.inventory.GetItemCount(item.itemIndex);
+                    if (tc >= 1)
+                    {
+                        cb.baseMaxHealth += (15 * tc);
+                        cb.RecalculateStats();
+                    }
+                }
+            }
+            orig(self, other);
         }
 
         private void AddTokens()

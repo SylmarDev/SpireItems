@@ -30,9 +30,10 @@ namespace SylmarDev.SpireItems
             Log.LogInfo("Vulnerable (Buff) done");
         }
 
+        // this and blood vial may cause issues with blood shrines
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || self.body == null || di.rejected || !di.attacker || !di.inflictor || di.attacker == self.gameObject)
+            if (di == null || self.body == null || di.rejected || !di.attacker || di.attacker == self.gameObject)
             {
                 orig(self, di);
                 return;

@@ -6,19 +6,19 @@ Boss - 13 (sans artifact key)
 Lunar - 14 (minus 4 equipments)
 
 SPIRE ITEMS
-White
+White - 9 implemented, 16 planned
 	Working
 		Akabeko
 		Anchor (probably too good)
 		Bag of Marbles (probably too good)
-		Blood Vial
-		Boot
+		Blood Vial (bugs blood shrines)
+		Boot (bugs blood shrines)
 		Bronze Scales
 		Ceramic Fish (probably too good)
-		
-	Not Working, but good plans
 		Juzu Bracelet
 		Maw Bank
+		
+	Not Working, but good plans
 		Meal Ticket
 		Oddly Smooth Stone
 		Orichalcum

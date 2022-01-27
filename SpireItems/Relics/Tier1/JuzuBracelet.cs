@@ -64,7 +64,7 @@ namespace SylmarDev.SpireItems
         {
             if (hasJuzu)
             {
-                Log.LogMessage("hasJuzu, reducing monsterCredit");
+                // Log.LogMessage("hasJuzu, reducing monsterCredit");
                 for (var i = 0; i < juzuCount; i++)
                 {
                     self.monsterCredit *= 0.9f; // temp set to 90% of self for every juzu bracelet
