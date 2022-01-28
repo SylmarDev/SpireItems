@@ -25,7 +25,7 @@ namespace SylmarDev.SpireItems
             item.tier = ItemTier.Tier1;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/ToyOrnithopter.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/toyornothopter.png");
             item.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
 
             // standard
@@ -40,9 +40,24 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-			// heal % when using equipment
+            // heal % when using equipment
+            On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
 
             Log.LogInfo("ToyOrnithopter done");
+        }
+
+
+        // this doesn't work and blood shrines are still bugged, those are the next two things
+        private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
+        {
+            orig(self, equipmentDef);
+            var cb = self.characterBody;
+            if (cb.inventory)
+            {
+                var oc = cb.inventory.GetItemCount(item.itemIndex);
+                cb.healthComponent.Heal(0.2f * oc, default(ProcChainMask));
+            }
+            return true;
         }
 
         private void AddTokens()

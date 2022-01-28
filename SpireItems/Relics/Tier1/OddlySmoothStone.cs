@@ -9,6 +9,7 @@ namespace SylmarDev.SpireItems
     public class OddlySmoothStone
     {
         public static ItemDef item;
+        public int activeSmoothStones = 0;
         public void Init()
         {
             // init
@@ -40,16 +41,55 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-			// give permanent armor up 
+            // give permanent armor up
+            On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
 
             Log.LogInfo("OddlySmoothStone done");
         }
 
+        private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
+        {
+            if(self.inventory)
+            {
+                var smoothStones = self.inventory.GetItemCount(item.itemIndex);
+                if (smoothStones >= 1 && smoothStones > activeSmoothStones)
+                {
+                    self.armor += 10 * (smoothStones - activeSmoothStones);
+                    activeSmoothStones = smoothStones;
+                } else if (smoothStones < activeSmoothStones)
+                {
+                    self.armor -= 10 * (activeSmoothStones - smoothStones);
+                    activeSmoothStones = smoothStones;
+                }
+            }
+            orig(self);
+        }
+
+
+        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        {
+            if (self.inventory)
+            {
+                if (self.inventory.GetItemCount(item.itemIndex) >= 1)
+                {
+                    var temp = self.baseArmor;
+                    self.baseArmor += 10 * activeSmoothStones;
+                    // Log.LogMessage($"temp: {temp} ... baseForCalcs: {self.baseArmor}");
+                    orig(self);
+                    self.baseArmor = temp;
+                    return;
+                }
+            }
+            orig(self);
+        }
+
+
         private void AddTokens()
         {
             LanguageAPI.Add("VERYSMOOTHSTONE_NAME", "Oddly Smooth Stone");
-			LanguageAPI.Add("VERYSMOOTHSTONE_PICKUP", "Gain armor");
-			LanguageAPI.Add("VERYSMOOTHSTONE_DESC", "");
+			LanguageAPI.Add("VERYSMOOTHSTONE_PICKUP", "Reduce incoming damage");
+			LanguageAPI.Add("VERYSMOOTHSTONE_DESC", "<style=clsHealing>Increase armor</style> by <style=clsHealing>10</style> <style=cStack>(+10 per stack)</style>");
 			LanguageAPI.Add("VERYSMOOTHSTONE_LORE", "You have never seen something so smooth and pristine. This must be the work of the Ancients.");
         }
     }

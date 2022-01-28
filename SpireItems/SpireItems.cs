@@ -44,6 +44,7 @@ namespace SylmarDev.SpireItems
         private static ConfigFile cfgFile;
 
         // declare items
+        // the java native has logged on
         private static Akabeko akabeko = new Akabeko();
         private static Anchor anchor = new Anchor();
         private static BagOfMarbles marbles = new BagOfMarbles();
@@ -54,6 +55,13 @@ namespace SylmarDev.SpireItems
         private static JuzuBracelet juzu = new JuzuBracelet();
         private static MawBank maw = new MawBank();
         private static MealTicket mealTicket = new MealTicket();
+        private static OddlySmoothStone smoothStone = new OddlySmoothStone();
+        private static Orichalcum ori = new Orichalcum();
+        private static PenNib nib = new PenNib();
+        private static Strawberry strawberry = new Strawberry();
+        private static ToyOrnithopter toy = new ToyOrnithopter();
+        private static Vajra vajra = new Vajra();
+        
 
         public static DamageInfo thornDi = new DamageInfo();
 
@@ -62,6 +70,10 @@ namespace SylmarDev.SpireItems
         public static BuffDef fearBuff { get; private set; }
         */
         public static Vulnerable vulnerableBuff = new Vulnerable();
+        public static PenNibBuff nibBuff = new PenNibBuff();
+
+        // item behaviors I guess
+        public OrichalcumItemBehavior oriItemBehavior = new OrichalcumItemBehavior();
 
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
@@ -87,6 +99,12 @@ namespace SylmarDev.SpireItems
             juzu.Init();
             maw.Init();
             mealTicket.Init();
+            smoothStone.Init();
+            ori.Init();
+            nib.Init();
+            strawberry.Init();
+            toy.Init();
+            vajra.Init();
 
             Log.LogInfo("Loading Thorn di. . .");
             thornDi.inflictor = null;
@@ -99,6 +117,7 @@ namespace SylmarDev.SpireItems
 
             Logger.LogDebug("Registering shared buffs. . .");
             vulnerableBuff.Init();
+            nibBuff.Init();
             
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
@@ -116,7 +135,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(MealTicket.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ToyOrnithopter.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             //This if statement checks if the player has currently pressed F2.

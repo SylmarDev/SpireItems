@@ -40,16 +40,23 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-			// bungus for barrier
+            // bungus for barrier
+            On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
 
             Log.LogInfo("Orichalcum done");
+        }
+
+        private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
+        {
+            self.AddItemBehavior<OrichalcumItemBehavior>(self.inventory.GetItemCount(item.itemIndex));
+            orig(self);
         }
 
         private void AddTokens()
         {
             LanguageAPI.Add("ORICHALCUM_NAME", "Orichalcum");
-			LanguageAPI.Add("ORICHALCUM_PICKUP", "Standing still grants barrier");
-			LanguageAPI.Add("ORICHALCUM_DESC", "");
+			LanguageAPI.Add("ORICHALCUM_PICKUP", "Gain barrier after standing still for 1 second");
+			LanguageAPI.Add("ORICHALCUM_DESC", "After standing still for <style=clsHealing>1</style> second, gain temporary barrier worth <style=clsHealing>0.6%</style> <style=cStack>(+0.6% per stack)</style> of your max barrier per second");
 			LanguageAPI.Add("ORICHALCUM_LORE", "A green tinted metal of an unknown origin. Seemingly indestructible.");
         }
     }

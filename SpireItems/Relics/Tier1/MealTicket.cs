@@ -45,7 +45,8 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-            // not sure yet, maybe gain max HP every bazaar trip, maybe random chance to gain HP on opening a chest
+            // not sure yet, maybe gain max HP every bazaar trip, maybe random chance to gain max HP on opening a chest
+            // Meal Ticket Max HP buffs stay even after scrapping them, partly cause I'm too lazy to fix it, partly because taking them with you to the bazaar back then warants you the max health, and its only 15 per lol
             On.RoR2.OnPlayerEnterEvent.OnTriggerEnter += OnPlayerEnterEvent_OnTriggerEnter;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             Log.LogInfo("MealTicket done");
@@ -61,11 +62,10 @@ namespace SylmarDev.SpireItems
             CharacterBody cb = other.GetComponent<CharacterBody>();
             if (cb && cb.isPlayerControlled)
             {
-                Log.LogMessage(self.gameObject.name);
+                //Log.LogMessage(self.gameObject.name);
                 if(self.gameObject.name == "SpawnShopkeeperTrigger")
                 {
-                    Log.LogMessage("adding health. . .");
-                    // todo health adds, but only in the shop, leaves upon next stage
+                    //Log.LogMessage("adding health. . .");
                     var tc = cb.inventory.GetItemCount(item.itemIndex);
                     if (tc >= 1)
                     {
@@ -98,8 +98,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("MEALTICKET_NAME", "Meal Ticket");
-			LanguageAPI.Add("MEALTICKET_PICKUP", "");
-			LanguageAPI.Add("MEALTICKET_DESC", "");
+			LanguageAPI.Add("MEALTICKET_PICKUP", "Gain 15 max health every time you enter the Bazaar Between Time");
+			LanguageAPI.Add("MEALTICKET_DESC", "PERMANENTLY Increase <style=clsHealth>maximum health</style> by <style=clsHealth>15</style> <style=cStack>(+15 per stack)</style> every time you visit the Bazaar Between Time.");
 			LanguageAPI.Add("MEALTICKET_LORE", "Complimentary meatballs with every visit!");
         }
     }

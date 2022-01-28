@@ -17,15 +17,15 @@ White - 9 implemented, 16 planned
 		Ceramic Fish (probably too good)
 		Juzu Bracelet
 		Maw Bank
-		
-	Not Working, but good plans
 		Meal Ticket
 		Oddly Smooth Stone
 		Orichalcum
-		Pen Nib (may be busted)
+		Pen Nib
 		Strawberry
-		Toy Ornithopter
 		Vajra
+		
+	Not Working, but good plans
+		Toy Ornithopter
 		
 	Bad plans
 		Art of War (feasibility)

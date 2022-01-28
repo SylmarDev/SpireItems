@@ -40,16 +40,35 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-			// flat damage buff
+            // flat damage buff
+            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
 
             Log.LogInfo("Vajra done");
+        }
+
+        private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
+        {
+            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
+
+            var inv = di.attacker.GetComponent<HealthComponent>().body.inventory;
+
+            if (inv)
+            {
+                int vajraCount = inv.GetItemCount(item.itemIndex);
+                if (vajraCount >= 1)
+                {
+                    Log.LogMessage("vajra proc'd!");
+                    di.damage *= 1f + (0.1f * vajraCount);
+                }
+            }
+            orig(self, di);
         }
 
         private void AddTokens()
         {
             LanguageAPI.Add("VAJRA_NAME", "Vajra");
 			LanguageAPI.Add("VAJRA_PICKUP", "Deal more damage");
-			LanguageAPI.Add("VAJRA_DESC", "");
+			LanguageAPI.Add("VAJRA_DESC", "Increase damage to enemies by 10% <style=cStack>(+10% per stack)</style>");
 			LanguageAPI.Add("VAJRA_LORE", "An ornamental relic given to warriors displaying glory in battle.");
         }
     }
