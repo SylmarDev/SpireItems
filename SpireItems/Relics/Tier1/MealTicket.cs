@@ -13,6 +13,7 @@ namespace SylmarDev.SpireItems
     public class MealTicket
     {
         public static ItemDef item;
+        public int activeTickets = 0;
         public void Init()
         {
             // init
@@ -46,6 +47,7 @@ namespace SylmarDev.SpireItems
             // define what item does below
             // not sure yet, maybe gain max HP every bazaar trip, maybe random chance to gain HP on opening a chest
             On.RoR2.OnPlayerEnterEvent.OnTriggerEnter += OnPlayerEnterEvent_OnTriggerEnter;
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             Log.LogInfo("MealTicket done");
         }
 
@@ -67,13 +69,31 @@ namespace SylmarDev.SpireItems
                     var tc = cb.inventory.GetItemCount(item.itemIndex);
                     if (tc >= 1)
                     {
-                        cb.baseMaxHealth += (15 * tc);
+                        activeTickets += tc;
                         cb.RecalculateStats();
                     }
                 }
             }
             orig(self, other);
         }
+
+
+        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        {
+            if (self.inventory)
+            {
+                if (self.inventory.GetItemCount(item.itemIndex) >= 1)
+                {
+                    var x = self.baseMaxHealth;
+                    self.baseMaxHealth += (15 * activeTickets);
+                    orig(self);
+                    self.baseMaxHealth = x; // put this back to prevent horrible atrocitites
+                    return;
+                }
+            }
+            orig(self);
+        }
+
 
         private void AddTokens()
         {
