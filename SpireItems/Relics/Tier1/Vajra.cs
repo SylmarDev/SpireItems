@@ -57,7 +57,7 @@ namespace SylmarDev.SpireItems
                 int vajraCount = inv.GetItemCount(item.itemIndex);
                 if (vajraCount >= 1)
                 {
-                    Log.LogMessage("vajra proc'd!");
+                    //Log.LogMessage("vajra proc'd!");
                     di.damage *= 1f + (0.1f * vajraCount);
                 }
             }

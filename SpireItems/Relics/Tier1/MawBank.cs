@@ -53,13 +53,13 @@ namespace SylmarDev.SpireItems
             {
                 if (self.GetBody().inventory.GetItemCount(item.itemIndex) >= 1)
                 {
-                    Log.LogMessage("multing moners. . .");
-                    Log.LogMessage(amount);
+                    //Log.LogMessage("multing moners. . .");
+                    //Log.LogMessage(amount);
                     var famount = (float) amount;
                     famount *= 1f + (self.GetBody().inventory.GetItemCount(item.itemIndex) * 0.3f);
                     amount = (uint) famount;
                     amount += 3;
-                    Log.LogMessage(amount);
+                    //Log.LogMessage(amount);
                 }
             }
             orig(self, amount);
@@ -68,7 +68,6 @@ namespace SylmarDev.SpireItems
         private void PurchaseInteraction_OnInteractionBegin(On.RoR2.PurchaseInteraction.orig_OnInteractionBegin orig, PurchaseInteraction self, Interactor activator)
         {
             orig(self, activator);
-            Log.LogMessage(self.costType);
             var cb = activator.GetComponent<CharacterBody>();
             if (cb && self.costType == CostTypeIndex.LunarCoin)
             {

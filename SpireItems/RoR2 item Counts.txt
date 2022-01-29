@@ -6,7 +6,7 @@ Boss - 13 (sans artifact key)
 Lunar - 14 (minus 4 equipments)
 
 SPIRE ITEMS
-White - 9 implemented, 16 planned
+White - 16 implemented, 16 planned
 	Working
 		Akabeko
 		Anchor (probably too good)
@@ -22,10 +22,11 @@ White - 9 implemented, 16 planned
 		Orichalcum
 		Pen Nib
 		Strawberry
+		Toy Ornithopter
 		Vajra
 		
 	Not Working, but good plans
-		Toy Ornithopter
+		all done woo
 		
 	Bad plans
 		Art of War (feasibility)

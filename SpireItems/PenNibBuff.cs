@@ -43,7 +43,7 @@ namespace SylmarDev.SpireItems
 
             if (isNib)
             {
-                Log.LogMessage($"nib proced! damage prior to nib calc: {di.damage}.. damage after nib: {(di.damage * 2)}");
+                //Log.LogMessage($"nib proced! damage prior to nib calc: {di.damage}.. damage after nib: {(di.damage * 2)}");
                 di.damage *= 2f; // temp 1k, move to 1.5f
                 di.attacker.GetComponent<HealthComponent>().body.RemoveBuff(buff);
             }

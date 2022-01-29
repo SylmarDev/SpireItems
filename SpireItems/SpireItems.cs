@@ -147,7 +147,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BagOfMarbles.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex((EquipmentIndex) 11), transform.position, transform.forward * 20f);
             }
         }
     }

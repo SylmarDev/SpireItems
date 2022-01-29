@@ -50,14 +50,18 @@ namespace SylmarDev.SpireItems
         // this doesn't work and blood shrines are still bugged, those are the next two things
         private bool EquipmentSlot_PerformEquipmentAction(On.RoR2.EquipmentSlot.orig_PerformEquipmentAction orig, EquipmentSlot self, EquipmentDef equipmentDef)
         {
-            orig(self, equipmentDef);
-            var cb = self.characterBody;
-            if (cb.inventory)
+            bool flag = orig.Invoke(self, equipmentDef);
+            if (flag && self)
             {
-                var oc = cb.inventory.GetItemCount(item.itemIndex);
-                cb.healthComponent.Heal(0.2f * oc, default(ProcChainMask));
+                var cb = self.characterBody;
+                if (cb && cb.inventory != null)
+                {
+                    var oc = cb.inventory.GetItemCount(item.itemIndex);
+                    self.GetComponent<HealthComponent>().Heal(0.2f * oc * cb.maxHealth, default(ProcChainMask));
+                    Log.LogMessage($"here! {oc} ornothpoters, healed for {0.2f * oc * cb.maxHealth}!");
+                }
             }
-            return true;
+            return flag;
         }
 
         private void AddTokens()
