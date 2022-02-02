@@ -26,8 +26,7 @@ namespace SylmarDev.SpireItems
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/toyornothopter.png");
-            item.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
-
+            item.pickupModelPrefab = SpireItems.cardPrefab;
             // standard
             item.canRemove = true;
             item.hidden = false;
@@ -57,8 +56,11 @@ namespace SylmarDev.SpireItems
                 if (cb && cb.inventory != null)
                 {
                     var oc = cb.inventory.GetItemCount(item.itemIndex);
-                    self.GetComponent<HealthComponent>().Heal(0.2f * oc * cb.maxHealth, default(ProcChainMask));
-                    Log.LogMessage($"here! {oc} ornothpoters, healed for {0.2f * oc * cb.maxHealth}!");
+                    if (oc >= 1)
+                    {
+                        self.GetComponent<HealthComponent>().Heal(0.2f * oc * cb.maxHealth, default(ProcChainMask));
+                        Log.LogMessage($"here! {oc} ornothpoters, healed for {0.2f * oc * cb.maxHealth}!");
+                    }
                 }
             }
             return flag;

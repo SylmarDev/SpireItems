@@ -56,7 +56,7 @@ namespace SylmarDev.SpireItems
                     //Log.LogMessage("multing moners. . .");
                     //Log.LogMessage(amount);
                     var famount = (float) amount;
-                    famount *= 1f + (self.GetBody().inventory.GetItemCount(item.itemIndex) * 0.3f);
+                    famount *= 1f + (self.GetBody().inventory.GetItemCount(item.itemIndex) * 0.15f);
                     amount = (uint) famount;
                     amount += 3;
                     //Log.LogMessage(amount);

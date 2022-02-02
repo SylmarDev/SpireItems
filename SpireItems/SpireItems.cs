@@ -25,6 +25,8 @@ namespace SylmarDev.SpireItems
     [R2APISubmoduleDependency(nameof(ItemAPI), nameof(ItemDropAPI), nameof(LanguageAPI), nameof(BuffAPI))]
     //[R2APISubmoduleDependency(nameof(BuffAPI)]
 
+    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
+
     //This is the main declaration of our plugin class. BepInEx searches for all classes inheriting from BaseUnityPlugin to initialize on startup.
     //BaseUnityPlugin itself inherits from MonoBehaviour, so you can use this as a reference for what you can declare and use in your plugin class: https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
 
@@ -35,10 +37,13 @@ namespace SylmarDev.SpireItems
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.0.1";
+        public const string PluginVersion = "0.1.0";
 
         // assets
         public static AssetBundle resources;
+
+        public static GameObject cardPrefab;
+        public static GameObject smallPrefab;
 
         // config file
         private static ConfigFile cfgFile;
@@ -75,18 +80,23 @@ namespace SylmarDev.SpireItems
         // item behaviors I guess
         public OrichalcumItemBehavior oriItemBehavior = new OrichalcumItemBehavior();
 
+        // hellfire is broken, so are blood shrines
+
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
         {
             //Init our logging class so that we can properly log for debugging
             Log.Init(Logger);
 
-            // load assets (fingers crossed)
+            // load assets
             Log.LogInfo("Loading Resources. . .");
             using(var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SpireItems.spireitems_assets"))
             {
                 resources = AssetBundle.LoadFromStream(stream);
             }
+
+            cardPrefab = resources.LoadAsset<GameObject>("assets/SpireRelics/models/prefabs/item/cube.prefab");
+            smallPrefab = resources.LoadAsset<GameObject>("assets/SpireRelics/models/prefabs/item/smallerCube.prefab");
 
             Log.LogInfo("Loading Items. . .");
             akabeko.Init();
@@ -147,7 +157,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex((EquipmentIndex) 11), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Anchor.item.itemIndex), transform.position, transform.forward * 20f);
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿{
 	"name": "SpireItems",
-	"version_number": "0.0.1",
-	"website_url": "",
+	"version_number": "0.1.0",
+	"website_url": "https://github.com/SylmarDev/SpireItems",
 	"description": "Slay the Spire Relics",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.9",
