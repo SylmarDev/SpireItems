@@ -95,8 +95,7 @@ namespace SylmarDev.SpireItems
                 resources = AssetBundle.LoadFromStream(stream);
             }
 
-            cardPrefab = resources.LoadAsset<GameObject>("assets/SpireRelics/models/prefabs/item/cube.prefab");
-            smallPrefab = resources.LoadAsset<GameObject>("assets/SpireRelics/models/prefabs/item/smallerCube.prefab");
+            cardPrefab = resources.LoadAsset<GameObject>("assets/SpireRelics/models/prefabs/item/card.prefab");
 
             Log.LogInfo("Loading Items. . .");
             akabeko.Init();

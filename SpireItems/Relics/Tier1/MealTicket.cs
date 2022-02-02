@@ -31,7 +31,7 @@ namespace SylmarDev.SpireItems
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/MealTicket.png");
-            item.pickupModelPrefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
+            item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
             item.canRemove = true;

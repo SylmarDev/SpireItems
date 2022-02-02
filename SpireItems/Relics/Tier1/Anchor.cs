@@ -26,7 +26,7 @@ namespace SylmarDev.SpireItems
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/anchor.png");
-            item.pickupModelPrefab = SpireItems.smallPrefab;
+            item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
             item.canRemove = true;
@@ -59,7 +59,7 @@ namespace SylmarDev.SpireItems
                 if (anchorCount >= 1)
                 {
                     //Log.LogMessage("Anchor proc'd!");
-                    attacker.GetComponent<HealthComponent>().barrier += (10 * anchorCount);
+                    attacker.GetComponent<HealthComponent>().AddBarrier(10f * anchorCount);
                 }
             }
             orig(self, di);
