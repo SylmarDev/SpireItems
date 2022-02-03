@@ -9,10 +9,10 @@ SPIRE ITEMS
 White - 16 implemented, 16 planned
 	Working
 		Akabeko
-		Anchor (probably too good)
+		Anchor
 		Bag of Marbles (probably too good)
-		Blood Vial (bugs blood shrines)
-		Boot (bugs blood shrines)
+		Blood Vial
+		Boot
 		Bronze Scales
 		Ceramic Fish (probably too good)
 		Juzu Bracelet

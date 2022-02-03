@@ -33,19 +33,23 @@ namespace SylmarDev.SpireItems
 
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || self.body == null || di.rejected || !di.attacker || di.attacker == self.gameObject)
+            if (di == null || self.body == null || di.rejected || !di.attacker || di.inflictor == null || di.attacker == self.gameObject)
             {
                 orig(self, di);
                 return;
             }
 
-            var isNib = di.attacker.GetComponent<HealthComponent>().body.HasBuff(buff);
-
-            if (isNib)
+            var cb = di.attacker.GetComponent<HealthComponent>().body;
+            
+            if (cb)
             {
-                //Log.LogMessage($"nib proced! damage prior to nib calc: {di.damage}.. damage after nib: {(di.damage * 2)}");
-                di.damage *= 2f; // temp 1k, move to 1.5f
-                di.attacker.GetComponent<HealthComponent>().body.RemoveBuff(buff);
+                var isNib = cb.HasBuff(buff);
+                if (isNib)
+                {
+                    //Log.LogMessage($"nib proced! damage prior to nib calc: {di.damage}.. damage after nib: {(di.damage * 2)}");
+                    di.damage *= 2f; // temp 1k, move to 2f
+                    di.attacker.GetComponent<HealthComponent>().body.RemoveBuff(buff);
+                }
             }
 
             orig(self, di);

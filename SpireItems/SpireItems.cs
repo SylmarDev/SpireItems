@@ -45,6 +45,8 @@ namespace SylmarDev.SpireItems
         public static GameObject cardPrefab;
         public static GameObject smallPrefab;
 
+        public static Vector3 scaleTo;
+
         // config file
         private static ConfigFile cfgFile;
 
@@ -97,6 +99,8 @@ namespace SylmarDev.SpireItems
 
             cardPrefab = resources.LoadAsset<GameObject>("assets/SpireRelics/models/prefabs/item/card.prefab");
 
+            scaleTo = new Vector3(2f, 2f, 2f);
+
             Log.LogInfo("Loading Items. . .");
             akabeko.Init();
             anchor.Init();
@@ -114,6 +118,10 @@ namespace SylmarDev.SpireItems
             strawberry.Init();
             toy.Init();
             vajra.Init();
+
+            // no idea why this has to go after, but it just works
+            var transform = cardPrefab.transform;
+            transform.localScale = scaleTo;
 
             Log.LogInfo("Loading Thorn di. . .");
             thornDi.inflictor = null;
@@ -144,7 +152,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(ToyOrnithopter.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BloodVial.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             //This if statement checks if the player has currently pressed F2.

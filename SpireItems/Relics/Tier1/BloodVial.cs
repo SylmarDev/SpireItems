@@ -43,25 +43,41 @@ namespace SylmarDev.SpireItems
             // define what item does below
             // first to hit an enemy heal
             On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
+            On.RoR2.ShrineBloodBehavior.Start += ShrineBloodBehavior_Start;
 
             Log.LogInfo("BloodVial done");
         }
 
+        private void ShrineBloodBehavior_Start(On.RoR2.ShrineBloodBehavior.orig_Start orig, ShrineBloodBehavior self)
+        {
+            Log.LogMessage("starting a blood shrine!!!");
+            orig(self);
+        }
+
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject || !di.attacker.GetComponent<HealthComponent>().body) return;
-
-            var attacker = di.attacker;
-            var inv = attacker.GetComponent<HealthComponent>().body.inventory;
-
-            if (inv && (self.health > (self.fullCombinedHealth * 0.95)))
+            if (di == null || di.rejected || !di.attacker || di.inflictor == null || di.attacker == self.gameObject)
             {
-                int vialCount = inv.GetItemCount(item.itemIndex);
-                if (vialCount >= 1)
+                orig(self, di);
+                return;
+            }
+            
+            var cb = di.attacker.GetComponent<HealthComponent>().body;
+
+            if (cb)
+            {
+                var inv = cb.inventory;
+                if (inv && (self.health > (self.fullCombinedHealth * 0.95)))
                 {
-                    attacker.GetComponent<HealthComponent>().HealFraction(0.02f * vialCount, default (ProcChainMask));
+                    int vialCount = inv.GetItemCount(item.itemIndex);
+                    if (vialCount >= 1)
+                    {
+                        cb.healthComponent.HealFraction(0.02f * vialCount, default(ProcChainMask));
+                    }
                 }
             }
+
+            
             orig(self, di);
         }
 

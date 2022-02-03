@@ -64,7 +64,7 @@ namespace SylmarDev.SpireItems
             {
                 SpireItems.thornDi.attacker = victim;
                 SpireItems.thornDi.damage = victim.GetComponent<CharacterBody>().damage * 0.75f * thornCount;
-                Log.LogMessage("using thorns!");
+                // Log.LogMessage("using thorns!");
                 damageInfo.attacker.GetComponent<HealthComponent>().TakeDamage(SpireItems.thornDi);
             }
         }
@@ -73,7 +73,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("THORNSCALES_NAME", "Bronze Scales");
 			LanguageAPI.Add("THORNSCALES_PICKUP", "When hit by an enemy, deal damage back");
-			LanguageAPI.Add("THORNSCALES_DESC", "When hit, deal back damage worth 50%<style=cStack>(+50% per stack)</style> of your damage.");
+			LanguageAPI.Add("THORNSCALES_DESC", "When hit, deal back damage worth 75%<style=cStack>(+75% per stack)</style> of your damage.");
 			LanguageAPI.Add("THORNSCALES_LORE", "The sharp scales of the Guardian. Rearranges itself to protect its user.");
         }
     }

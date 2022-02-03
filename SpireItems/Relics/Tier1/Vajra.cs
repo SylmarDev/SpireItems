@@ -48,7 +48,11 @@ namespace SylmarDev.SpireItems
 
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
+            if (di == null || di.rejected || !di.attacker || di.inflictor == null || di.attacker == self.gameObject)
+            {
+                orig(self, di);
+                return;
+            }
 
             var inv = di.attacker.GetComponent<HealthComponent>().body.inventory;
 
