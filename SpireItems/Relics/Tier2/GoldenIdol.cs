@@ -67,9 +67,9 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
 			LanguageAPI.Add("STSGOLDIDOL_NAME", "Golden Idol");
-			LanguageAPI.Add("STSGOLDIDOL_PICKUP", "Gain 25% more gold whenever you gain gold");
-			LanguageAPI.Add("STSGOLDIDOL_DESC", "");
-			LanguageAPI.Add("STSGOLDIDOL_LORE", "Made of solid gold, you feel richer just holding it.");
+			LanguageAPI.Add("STSGOLDIDOL_PICKUP", "Gain 25% more gold whenever you gain gold.");
+			LanguageAPI.Add("STSGOLDIDOL_DESC", "Every time you gain gold, gain an additional 25% <style=cStack>(+25% per stack)</style>");
+            LanguageAPI.Add("STSGOLDIDOL_LORE", "Made of solid gold, you feel richer just holding it.");
         }
     }
 }

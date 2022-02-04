@@ -25,7 +25,7 @@ namespace SylmarDev.SpireItems
             item.tier = ItemTier.Tier2;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/BloodIdol.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/BloodyIdol.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
@@ -104,8 +104,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
 			LanguageAPI.Add("STSBLOODIDOL_NAME", "Bloody Idol");
-			LanguageAPI.Add("STSBLOODIDOL_PICKUP", "Whenever you gain gold, heal 5 HP");
-			LanguageAPI.Add("STSBLOODIDOL_DESC", "");
+			LanguageAPI.Add("STSBLOODIDOL_PICKUP", "Whenever you gain gold, heal 5 HP.");
+			LanguageAPI.Add("STSBLOODIDOL_DESC", "Every time you gain gold, <style=cIsHealing>heal for 5 HP</style> <style=cStack>(+5 per stack)</style> ");
 			LanguageAPI.Add("STSBLOODIDOL_LORE", "The idol now weeps a constant stream of blood.");
         }
     }

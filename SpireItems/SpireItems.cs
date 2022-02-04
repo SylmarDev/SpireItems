@@ -37,7 +37,7 @@ namespace SylmarDev.SpireItems
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.2.0";
 
         // assets
         public static AssetBundle resources;
@@ -67,13 +67,21 @@ namespace SylmarDev.SpireItems
         private static OddlySmoothStone smoothStone = new OddlySmoothStone();
         private static Orichalcum ori = new Orichalcum();
         private static PenNib nib = new PenNib();
+        private static RedMask rm = new RedMask();
         private static Strawberry strawberry = new Strawberry();
         private static ToyOrnithopter toy = new ToyOrnithopter();
         private static Vajra vajra = new Vajra();
 
         // green
-        //private static GoldenIdol gi = new GoldenIdol(); 
-        //private static BloodIdol bloodidol = new BloodIdol();
+        private static GoldenIdol gi = new GoldenIdol(); 
+        private static BloodIdol bloodidol = new BloodIdol();
+        private static Pear pear = new Pear();
+        private static ClockworkSouvenir cs = new ClockworkSouvenir();
+        private static OrangePellets op = new OrangePellets();
+        private static SingingBowl sb = new SingingBowl();
+
+        // red
+        private static StrangeSpoon strangeSpoon = new StrangeSpoon();
         
 
         public static DamageInfo thornDi = new DamageInfo();
@@ -84,6 +92,8 @@ namespace SylmarDev.SpireItems
         */
         public static Vulnerable vulnerableBuff = new Vulnerable();
         public static PenNibBuff nibBuff = new PenNibBuff();
+        public static Weakness weak = new Weakness();
+        public static ArtifactBuff ab = new ArtifactBuff();
 
         // item behaviors I guess
         public OrichalcumItemBehavior oriItemBehavior = new OrichalcumItemBehavior();
@@ -121,13 +131,21 @@ namespace SylmarDev.SpireItems
             smoothStone.Init();
             ori.Init();
             nib.Init();
+            rm.Init();
             strawberry.Init();
             toy.Init();
             vajra.Init();
 
             // green
-            //gi.Init();
-            //bloodidol.Init();
+            gi.Init();
+            bloodidol.Init();
+            pear.Init();
+            cs.Init();
+            op.Init();
+            sb.Init();
+
+            // red
+            strangeSpoon.Init();
 
             // no idea why this has to go after, but it just works
             var transform = cardPrefab.transform;
@@ -145,6 +163,8 @@ namespace SylmarDev.SpireItems
             Logger.LogDebug("Registering shared buffs. . .");
             vulnerableBuff.Init();
             nibBuff.Init();
+            weak.Init();
+            ab.Init(); // artifact buff
             
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
@@ -159,7 +179,7 @@ namespace SylmarDev.SpireItems
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GoldenIdol.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(StrangeSpoon.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             if (Input.GetKeyDown(KeyCode.F3))
@@ -167,7 +187,13 @@ namespace SylmarDev.SpireItems
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Boot.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GoldenIdol.item.itemIndex), transform.position, transform.forward * 20f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                var cb = PlayerCharacterMasterController.instances[0].master.GetBody();
+                cb.AddBuff(Vulnerable.buff);
             }
         } */
     }

@@ -4,7 +4,7 @@
 
 Do your runs need variety? Maybe want to try some novel item ideas? A fan of Slay the Spire? You've come to the right place! This mod adds several items from the deckbuilder rouge-like, Slay The Spire into Risk of Rain 2.
 
-Please note this mod hasn't been tested for multiplayer yet!!
+This mod is still very early on in development, so please note that it hasn't been tested for multiplayer yet!!
 
 ### Currently Added
 #### White
@@ -20,9 +20,22 @@ Please note this mod hasn't been tested for multiplayer yet!!
 * Oddly Smooth Stone - Gain 10 Armor
 * Orichalcum - Gain Barrier when standing still
 * Pen Nib - Every 10th attack does double damage
+* Red Mask - Chance on hit to make enemies Weak
 * Strawberry - Gain Max HP
 * Toy Ornithopter - Heal every time you use equipment
 * Vajra - Deal more damage
+
+#### Green
+* Bloody Idol - A mysterious idol of blood. I wonder how you obtain it...
+* Clockwork Souvenir - Chance to gain Artifact on kill
+* Golden Idol - Gain additional gold
+* Orange Pellets - Chance to remove all debuffs on kill
+* Pear - Gain Max HP
+* Singing Bowl - Gain Max HP every time you pick up an item
+
+#### Red
+Strange Spoon - 50% chance to avoid cooldowns on skills
+
 
 ### .. with more to come!
 
@@ -46,6 +59,11 @@ Please note this mod hasn't been tested for multiplayer yet!!
 #### Thank you
 
 ## Changelog
+
+**0.2.0**
+
+* Added a few new items
+* Added R2API as a dependency
 
 **0.1.0**
 

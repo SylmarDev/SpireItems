@@ -21,6 +21,7 @@ White - 16 implemented, 16 planned
 		Oddly Smooth Stone
 		Orichalcum
 		Pen Nib
+		Red Mask - Chance to apply weak on hit (white)
 		Strawberry
 		Toy Ornithopter
 		Vajra
@@ -55,6 +56,7 @@ Green - 0 implemented, 14 planned
 	Working
 		Golden Idol - Gain 25% more gold whenever you gain gold
 		Bloody Idol - Whenever you gain gold, heal 5 HP. on use blood shrine, REMOVE ALL GOLDEN IDOLS + TURN INTO BLOODY
+		Pear - Raise max HP by a %
 	Not Working, but good plans
 		Darkstone Periapt - Whenever you pickup a lunar item, permanently increase your max HP
 		Gremlin Horn - Do an on kill effect (unsure of what yet)
@@ -64,7 +66,6 @@ Green - 0 implemented, 14 planned
 		Matryoshka - Guarentee Reds from next two chests? Next 2 chests you open give you two items?
 		Meat on the Bone - If your HP is at or below 50% on kill, heal %
 		Ornamental Fan - Chance on hit to gain 3 barrier? Too similar to horn cleat
-		Pear - Raise max HP by a %
 		Shuriken - Chance to gain attack damage on hit
 		Singing Bowl - Whenever you pickup an item, gain 2 Max HP
 		Paper Phrog - Vulnerable enemies take 75% damage rather than 50%
@@ -142,9 +143,8 @@ Misc
 		Face of Cleric - On kill gain +1 HP, no cap (maybe 1k cap). RoR1 Infusion (red)
 		Necronomicon - Chance for attacks over 300% to hit again (red?)
 		Neow's Lament - Small chance to instantly kill enemy on hit (green?)
-		Red Mask - Chance to apply weak on hit (white)
 		Clockwork Souvenir - Chance to gain artifact on hit (artifact buff negates next debuff) (green)
-		Orange Pellets - Chance to remove all debuffs on hit (green)
+		Orange Pellets - Chance to remove all debuffs on kill (green)
 		Sling of Courage - 20% additional elite damage (green)
 		Strange Spoon - 50% to not send ability into cooldown after use (red, probably cracked even for a red item)
 	Decent plan, not sure if worth implementing
