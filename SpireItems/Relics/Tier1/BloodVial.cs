@@ -72,7 +72,7 @@ namespace SylmarDev.SpireItems
                     int vialCount = inv.GetItemCount(item.itemIndex);
                     if (vialCount >= 1)
                     {
-                        cb.healthComponent.HealFraction(0.02f * vialCount, default(ProcChainMask));
+                        cb.healthComponent.HealFraction(0.02f * vialCount, default);
                     }
                 }
             }

@@ -54,7 +54,6 @@ namespace SylmarDev.SpireItems
                 return;
             }
             
-            // blood shrines still don't work for some why, TODO: test updated if
             var inv = di.attacker.GetComponent<HealthComponent>().body.inventory;
             int bootCount = inv.GetItemCount(item.itemIndex);
 

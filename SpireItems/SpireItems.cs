@@ -50,6 +50,8 @@ namespace SylmarDev.SpireItems
         // config file
         private static ConfigFile cfgFile;
 
+        // todo: apply item tags to all items
+
         // declare items
         // the java native has logged on
         private static Akabeko akabeko = new Akabeko();
@@ -68,6 +70,10 @@ namespace SylmarDev.SpireItems
         private static Strawberry strawberry = new Strawberry();
         private static ToyOrnithopter toy = new ToyOrnithopter();
         private static Vajra vajra = new Vajra();
+
+        // green
+        private static GoldenIdol gi = new GoldenIdol(); 
+        private static BloodIdol bloodidol = new BloodIdol();
         
 
         public static DamageInfo thornDi = new DamageInfo();
@@ -119,6 +125,10 @@ namespace SylmarDev.SpireItems
             toy.Init();
             vajra.Init();
 
+            // green
+            gi.Init();
+            bloodidol.Init();
+
             // no idea why this has to go after, but it just works
             var transform = cardPrefab.transform;
             transform.localScale = scaleTo;
@@ -152,7 +162,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BloodVial.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GoldenIdol.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             //This if statement checks if the player has currently pressed F2.
@@ -164,7 +174,7 @@ namespace SylmarDev.SpireItems
                 //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Anchor.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Boot.item.itemIndex), transform.position, transform.forward * 20f);
             }
         }
     }

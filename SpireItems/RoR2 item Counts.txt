@@ -53,6 +53,8 @@ White - 16 implemented, 16 planned
 		
 Green - 0 implemented, 14 planned
 	Working
+		Golden Idol - Gain 25% more gold whenever you gain gold
+		Bloody Idol - Whenever you gain gold, heal 5 HP. on use blood shrine, REMOVE ALL GOLDEN IDOLS + TURN INTO BLOODY
 	Not Working, but good plans
 		Darkstone Periapt - Whenever you pickup a lunar item, permanently increase your max HP
 		Gremlin Horn - Do an on kill effect (unsure of what yet)
@@ -62,13 +64,13 @@ Green - 0 implemented, 14 planned
 		Matryoshka - Guarentee Reds from next two chests? Next 2 chests you open give you two items?
 		Meat on the Bone - If your HP is at or below 50% on kill, heal %
 		Ornamental Fan - Chance on hit to gain 3 barrier? Too similar to horn cleat
-		Pantograph - Heal to full health at the start of the teleporter event (underpowered?)
 		Pear - Raise max HP by a %
 		Shuriken - Chance to gain attack damage on hit
 		Singing Bowl - Whenever you pickup an item, gain 2 Max HP
 		Paper Phrog - Vulnerable enemies take 75% damage rather than 50%
 		Self-Forming Clay - Chance when *you're* hit to gain barrier
 	Bad plans
+		Pantograph - Heal to full health at the start of the teleporter event (underpowered)
 	No plans
 		Blue Candle
 		Bottled Flame, Lightning and Tornado
@@ -90,9 +92,9 @@ Red - 0 implemented, 13 planned
 		Calipers - Barrier drains slower
 		Captains Wheel - Chance to gain 18 barrier on hit
 		Du-Vu Doll - Deal an additional 10% damage (+10% per stack) for each lunar item you have
-		Fossilied Helix  - Chance to gain the damage-null buff on kill or on hit
+		Fossilied Helix  - Chance to gain the damage-null buff on kill
 		Ginger - makes you uneffected by certain debuffs
-		Incense Burner - Chance to gain intangible on hit
+		Incense Burner - Chance to gain intangible on kill
 		Mango - Raise max HP by a %
 		Tungsten Rod - 5 repulsions
 		Turnip - makes you uneffected by certain other debuffs
@@ -137,8 +139,6 @@ Misc
 		Tiny House - Drop one random equipment, one random item, gain 500 gold, raise max HP by 25 (red)
 		Black Star - Tele bosses drop an additional item when defeated (green-red)
 		Sacred Bark - Double the effectiveness of equipment (red)
-		Golden Idol - Gain 25% more gold whenever you gain gold (green?)
-		Bloody Idol - Whenever you gain gold, heal 5 HP (green)
 		Face of Cleric - On kill gain +1 HP, no cap (maybe 1k cap). RoR1 Infusion (red)
 		Necronomicon - Chance for attacks over 300% to hit again (red?)
 		Neow's Lament - Small chance to instantly kill enemy on hit (green?)
