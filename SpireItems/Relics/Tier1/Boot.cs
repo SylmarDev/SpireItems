@@ -72,7 +72,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("SMBTHREEBOOT_NAME", "The Boot");
-			LanguageAPI.Add("SMBTHREEBOOT_PICKUP", "If enemy has armor, deal additional damage");
+			LanguageAPI.Add("SMBTHREEBOOT_PICKUP", "If enemy has armor, deal additional damage.");
 			LanguageAPI.Add("SMBTHREEBOOT_DESC", "If enemy has armor, reduce it by 15<style=cStack>(+15 per stack)</style> when calculating your damage.");
 			LanguageAPI.Add("SMBTHREEBOOT_LORE", "When wound up, the boot grows larger in size.");
         }

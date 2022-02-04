@@ -81,7 +81,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("VIOLENTPEN_NAME", "Pen Nib");
-			LanguageAPI.Add("VIOLENTPEN_PICKUP", "Every 10th attack deals double damage");
+			LanguageAPI.Add("VIOLENTPEN_PICKUP", "Every 10th attack deals double damage.");
 			LanguageAPI.Add("VIOLENTPEN_DESC", "After landing 10 hits, Deal an additional 100% damage for 1 <style=cStack>(+1 per stack)</style> attack(s). Maximum cap at 10 attacks.");
 			LanguageAPI.Add("VIOLENTPEN_LORE", "Holding the nib, you can see everyone ever slain by a previous owner of the pen. A violent history.");
         }

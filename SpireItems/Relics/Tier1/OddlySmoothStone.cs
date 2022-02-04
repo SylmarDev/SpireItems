@@ -88,8 +88,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("VERYSMOOTHSTONE_NAME", "Oddly Smooth Stone");
-			LanguageAPI.Add("VERYSMOOTHSTONE_PICKUP", "Reduce incoming damage");
-			LanguageAPI.Add("VERYSMOOTHSTONE_DESC", "<style=clsHealing>Increase armor</style> by <style=clsHealing>10</style> <style=cStack>(+10 per stack)</style>");
+			LanguageAPI.Add("VERYSMOOTHSTONE_PICKUP", "Reduce incoming damage.");
+			LanguageAPI.Add("VERYSMOOTHSTONE_DESC", "<style=cIsHealing>Increase armor</style> by <style=cIsHealing>10</style> <style=cStack>(+10 per stack)</style>");
 			LanguageAPI.Add("VERYSMOOTHSTONE_LORE", "You have never seen something so smooth and pristine. This must be the work of the Ancients.");
         }
     }

@@ -72,7 +72,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("THORNSCALES_NAME", "Bronze Scales");
-			LanguageAPI.Add("THORNSCALES_PICKUP", "When hit by an enemy, deal damage back");
+			LanguageAPI.Add("THORNSCALES_PICKUP", "When hit by an enemy, deal damage back.");
 			LanguageAPI.Add("THORNSCALES_DESC", "When hit, deal back damage worth 75%<style=cStack>(+75% per stack)</style> of your damage.");
 			LanguageAPI.Add("THORNSCALES_LORE", "The sharp scales of the Guardian. Rearranges itself to protect its user.");
         }

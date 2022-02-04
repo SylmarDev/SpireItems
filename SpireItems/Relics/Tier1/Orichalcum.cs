@@ -55,8 +55,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("ORICHALCUM_NAME", "Orichalcum");
-			LanguageAPI.Add("ORICHALCUM_PICKUP", "Gain barrier after standing still for 1 second");
-			LanguageAPI.Add("ORICHALCUM_DESC", "After standing still for <style=clsHealing>1</style> second, gain temporary barrier worth <style=clsHealing>0.6%</style> <style=cStack>(+0.6% per stack)</style> of your max barrier per second");
+			LanguageAPI.Add("ORICHALCUM_PICKUP", "Gain barrier after standing still for 1 second.");
+			LanguageAPI.Add("ORICHALCUM_DESC", "After standing still for <style=cIsHealing>1</style> second, gain temporary barrier worth <style=cIsHealing>0.6%</style> <style=cStack>(+0.6% per stack)</style> of your max barrier per second");
 			LanguageAPI.Add("ORICHALCUM_LORE", "A green tinted metal of an unknown origin. Seemingly indestructible.");
         }
     }

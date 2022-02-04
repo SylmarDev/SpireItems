@@ -78,7 +78,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("JUZUBRACELET_NAME", "Juzu Bracelet");
-			LanguageAPI.Add("JUZUBRACELET_PICKUP", "Reduce amount of enemies at the start of Teleporter events");
+			LanguageAPI.Add("JUZUBRACELET_PICKUP", "Reduce amount of enemies at the start of Teleporter events.");
 			LanguageAPI.Add("JUZUBRACELET_DESC", "Teleporter events start with only 90%<style=cStack>(+90% per stack)</style> of boss credit.");
 			LanguageAPI.Add("JUZUBRACELET_LORE", "A ward against the unknown.");
         }

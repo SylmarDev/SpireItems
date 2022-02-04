@@ -71,7 +71,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("VAJRA_NAME", "Vajra");
-			LanguageAPI.Add("VAJRA_PICKUP", "Deal more damage");
+			LanguageAPI.Add("VAJRA_PICKUP", "Deal more damage.");
 			LanguageAPI.Add("VAJRA_DESC", "Increase damage to enemies by 10% <style=cStack>(+10% per stack)</style>");
 			LanguageAPI.Add("VAJRA_LORE", "An ornamental relic given to warriors displaying glory in battle.");
         }

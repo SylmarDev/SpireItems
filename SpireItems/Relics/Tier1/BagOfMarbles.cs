@@ -79,7 +79,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("BAGOFMARBLES_NAME", "Bag of Marbles");
-			LanguageAPI.Add("BAGOFMARBLES_PICKUP", "Chance to make enemies vulnerable");
+			LanguageAPI.Add("BAGOFMARBLES_PICKUP", "Chance to make enemies vulnerable.");
 			LanguageAPI.Add("BAGOFMARBLES_DESC", "10% to make enemies Vulnerable for 5 seconds<style=cStack>(+5 seconds per stack)</style> on hit. Vulnernbility deals +50% damage from all sources.");
 			LanguageAPI.Add("BAGOFMARBLES_LORE", "A once popular toy in the City. Useful for throwing enemies off balance.");
         }

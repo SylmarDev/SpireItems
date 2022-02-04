@@ -82,7 +82,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("MAWBANK_NAME", "Maw Bank");
 			LanguageAPI.Add("MAWBANK_PICKUP", "Gain additional gold, until you spend Lunar Coins.");
-			LanguageAPI.Add("MAWBANK_DESC", "");
+			LanguageAPI.Add("MAWBANK_DESC", "Every time you gain gold, gain an additional 12% <style=cStack>(+12% per stack)</style> + 3");
 			LanguageAPI.Add("MAWBANK_LORE", "Surprisingly popular, despite maw attacks being a regular occurrence.");
         }
     }

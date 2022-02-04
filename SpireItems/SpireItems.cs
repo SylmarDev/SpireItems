@@ -72,8 +72,8 @@ namespace SylmarDev.SpireItems
         private static Vajra vajra = new Vajra();
 
         // green
-        private static GoldenIdol gi = new GoldenIdol(); 
-        private static BloodIdol bloodidol = new BloodIdol();
+        //private static GoldenIdol gi = new GoldenIdol(); 
+        //private static BloodIdol bloodidol = new BloodIdol();
         
 
         public static DamageInfo thornDi = new DamageInfo();
@@ -126,8 +126,8 @@ namespace SylmarDev.SpireItems
             vajra.Init();
 
             // green
-            gi.Init();
-            bloodidol.Init();
+            //gi.Init();
+            //bloodidol.Init();
 
             // no idea why this has to go after, but it just works
             var transform = cardPrefab.transform;
@@ -150,32 +150,25 @@ namespace SylmarDev.SpireItems
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
-        //The Update() method is run on every frame of the game.
+        /*
         private void Update()
         {
-            //This if statement checks if the player has currently pressed F2.
+            
             if (Input.GetKeyDown(KeyCode.F2))
-            {
-                //Get the player body to use a position:	
+            {	
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-
-                //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GoldenIdol.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
-            //This if statement checks if the player has currently pressed F2.
             if (Input.GetKeyDown(KeyCode.F3))
-            {
-                //Get the player body to use a position:	
+            {	
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-
-                //And then drop our defined item in front of the player.
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
                 PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Boot.item.itemIndex), transform.position, transform.forward * 20f);
             }
-        }
+        } */
     }
 }

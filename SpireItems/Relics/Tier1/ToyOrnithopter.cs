@@ -70,8 +70,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("TOYORNITHOPTER_NAME", "Toy Ornithopter");
-			LanguageAPI.Add("TOYORNITHOPTER_PICKUP", "Heal after using your equipment");
-			LanguageAPI.Add("TOYORNITHOPTER_DESC", "");
+			LanguageAPI.Add("TOYORNITHOPTER_PICKUP", "Heal after using your equipment.");
+			LanguageAPI.Add("TOYORNITHOPTER_DESC", "<style=cIsHealing>Heal</style> for <style=cIsHealing>20%</style> <style=cStack>(+20% per stack)</style> of your max HP when using equipment.");
 			LanguageAPI.Add("TOYORNITHOPTER_LORE", "This little toy is the perfect companion for the lone adventurer!");
         }
     }

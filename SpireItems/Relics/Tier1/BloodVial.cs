@@ -84,8 +84,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("BLOODVIAL_NAME", "Blood Vial");
-			LanguageAPI.Add("BLOODVIAL_PICKUP", "Heal a little HP at the start of combat");
-			LanguageAPI.Add("BLOODVIAL_DESC", "<style=clsHealing>Heal 2%</style> <style=cStack>(+2% per stack)</style> on hitting enemies with over 95% health.");
+			LanguageAPI.Add("BLOODVIAL_PICKUP", "Heal a little HP at the start of combat.");
+			LanguageAPI.Add("BLOODVIAL_DESC", "<style=cIsHealing>Heal 2% </style> <style=cStack>(+2% per stack)</style> on hitting enemies with over 95% health.");
 			LanguageAPI.Add("BLOODVIAL_LORE", "A vial containing the blood of a pure and elder vampire.");
         }
     }

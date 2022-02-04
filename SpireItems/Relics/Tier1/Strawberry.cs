@@ -89,8 +89,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("STSSTRAWBERRY_NAME", "Strawberry");
-			LanguageAPI.Add("STSSTRAWBERRY_PICKUP", "Increase your maximum health");
-			LanguageAPI.Add("STSSTRAWBERRY_DESC", "Increase <style=clsHealth>maximum health</style> by <style=clsHealth>5%</style> <style=cStack>(+5% per stack)</style>.");
+			LanguageAPI.Add("STSSTRAWBERRY_PICKUP", "Increase your maximum health.");
+			LanguageAPI.Add("STSSTRAWBERRY_DESC", "Increase <style=cIsHealing>maximum health</style> by <style=cIsHealing>5%</style> <style=cStack>(+5% per stack)</style>.");
 			LanguageAPI.Add("STSSTRAWBERRY_LORE", "Delicious! Haven't seen any of these since the blight. - Ranwind");
         }
     }

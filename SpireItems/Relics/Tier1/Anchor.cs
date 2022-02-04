@@ -72,7 +72,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("ANCHOR_NAME", "Anchor");
-			LanguageAPI.Add("ANCHOR_PICKUP", "Hitting enemies above 95% health gives you a temporary barrier");
+			LanguageAPI.Add("ANCHOR_PICKUP", "Hitting enemies above 95% health gives you a temporary barrier.");
 			LanguageAPI.Add("ANCHOR_DESC", "Gain a temporary barrier on hitting enemies above 95% health for 10<style=cStack>(+10 per stack)</style> health.");
 			LanguageAPI.Add("ANCHOR_LORE", "Holding this miniature trinket, you feel heavier and more stable.");
         }

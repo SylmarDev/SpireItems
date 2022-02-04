@@ -98,7 +98,7 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("MEALTICKET_NAME", "Meal Ticket");
-			LanguageAPI.Add("MEALTICKET_PICKUP", "Gain 15 max health every time you enter the Bazaar Between Time");
+			LanguageAPI.Add("MEALTICKET_PICKUP", "Gain 15 max health every time you enter the Bazaar Between Time.");
 			LanguageAPI.Add("MEALTICKET_DESC", "PERMANENTLY Increase <style=clsHealth>maximum health</style> by <style=clsHealth>15</style> <style=cStack>(+15 per stack)</style> every time you visit the Bazaar Between Time.");
 			LanguageAPI.Add("MEALTICKET_LORE", "Complimentary meatballs with every visit!");
         }

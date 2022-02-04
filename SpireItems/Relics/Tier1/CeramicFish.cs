@@ -67,8 +67,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("CERAMICFISH_NAME", "Ceramic Fish");
-			LanguageAPI.Add("CERAMICFISH_PICKUP", "Activating an interactable gives you a small amount of gold");
-			LanguageAPI.Add("CERAMICFISH_DESC", "");
+			LanguageAPI.Add("CERAMICFISH_PICKUP", "Activating an interactable gives you a small amount of gold.");
+			LanguageAPI.Add("CERAMICFISH_DESC", "Activating an interactable gives you 9 <style=cStack>(+9 per stack)</style> gold. Scales over time.");
 			LanguageAPI.Add("CERAMICFISH_LORE", "Meticulousy painted, these fish were revered to bring great fortune.");
         }
     }

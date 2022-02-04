@@ -2,7 +2,7 @@
 	"name": "SpireItems",
 	"version_number": "0.1.0",
 	"website_url": "https://github.com/SylmarDev/SpireItems",
-	"description": "Slay the Spire Relics",
+	"description": "Adds items from Slay the Spire to Risk of Rain 2.",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.9",
 		"RiskofThunder-HookGenPatcher-1.2.1"
