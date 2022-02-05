@@ -33,6 +33,9 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
+            ItemTag[] tags = new ItemTag[] { ItemTag.Damage };
+            item.tags = tags;
+
             // Turn Tokens into strings
             AddTokens();
 

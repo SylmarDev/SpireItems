@@ -34,7 +34,7 @@ This mod is still very early on in development, so please note that it hasn't be
 * Singing Bowl - Gain Max HP every time you pick up an item
 
 #### Red
-Strange Spoon - 50% chance to avoid cooldowns on skills
+* Strange Spoon - 50% chance to avoid cooldowns on skills
 
 
 ### .. with more to come!
@@ -59,6 +59,11 @@ Strange Spoon - 50% chance to avoid cooldowns on skills
 #### Thank you
 
 ## Changelog
+
+**0.2.1**
+
+* Fixed bug with some surivors not procing Bag of Marbles and Red Mask items
+* Added Item Tags to all items
 
 **0.2.0**
 

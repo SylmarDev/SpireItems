@@ -32,6 +32,9 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
+            ItemTag[] tags = new ItemTag[] { ItemTag.OnKillEffect }; // be sure to update tags once I know what this one does
+            item.tags = tags;
+
             // Turn Tokens into strings
             AddTokens();
 

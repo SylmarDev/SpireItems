@@ -26,33 +26,32 @@ namespace SylmarDev.SpireItems
             BuffAPI.Add(completeBuff);
 
             // hook
-            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
+            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
 
             Log.LogInfo("Pen Nib (Buff) done");
         }
 
-        private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
-            if (di == null || self.body == null || di.rejected || !di.attacker || di.inflictor == null || di.attacker == self.gameObject)
+            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || damageInfo.attacker == victim.gameObject || damageInfo.attacker.GetComponent<CharacterBody>().inventory == null)
             {
-                orig(self, di);
+                orig(self, damageInfo, victim);
                 return;
             }
 
-            var cb = di.attacker.GetComponent<HealthComponent>().body;
-            
+            var cb = damageInfo.attacker.GetComponent<CharacterBody>();
             if (cb)
             {
                 var isNib = cb.HasBuff(buff);
                 if (isNib)
                 {
-                    //Log.LogMessage($"nib proced! damage prior to nib calc: {di.damage}.. damage after nib: {(di.damage * 2)}");
-                    di.damage *= 2f; // temp 1k, move to 2f
-                    di.attacker.GetComponent<HealthComponent>().body.RemoveBuff(buff);
+                    Log.LogMessage($"nib proced! damage prior to nib calc: {damageInfo.damage}.. damage after nib: {(damageInfo.damage * 2)}");
+                    Log.LogMessage($"btw, character base damage is {damageInfo.attacker.stats}");
+                    damageInfo.damage *= 2f; // temp 1k, move to 2f
+                    damageInfo.attacker.GetComponent<HealthComponent>().body.RemoveBuff(buff);
                 }
             }
-
-            orig(self, di);
+            orig(self, damageInfo, victim);
         }
     }
 }

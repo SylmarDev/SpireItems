@@ -3,6 +3,7 @@ using RoR2;
 using R2API;
 using R2API.Utils;
 using UnityEngine;
+using System.ComponentModel;
 
 namespace SylmarDev.SpireItems
 {
@@ -33,6 +34,9 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
+            ItemTag[] tags = new ItemTag[] { ItemTag.Damage };
+            item.tags = tags;
+
             // Turn Tokens into strings
             AddTokens();
 
@@ -49,7 +53,7 @@ namespace SylmarDev.SpireItems
 
         private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
-            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || damageInfo.inflictor == null || damageInfo.attacker == victim.gameObject || damageInfo.attacker.GetComponent<CharacterBody>().inventory == null)
+            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || damageInfo.attacker == victim.gameObject || damageInfo.attacker.GetComponent<CharacterBody>().inventory == null)
             {
                 orig(self, damageInfo, victim);
                 return;

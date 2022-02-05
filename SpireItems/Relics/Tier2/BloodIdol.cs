@@ -32,7 +32,7 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
-            ItemTag[] tags = new ItemTag[] { ItemTag.WorldUnique };
+            ItemTag[] tags = new ItemTag[] { ItemTag.WorldUnique, ItemTag.Healing };
             item.tags = tags;
 
             // Turn Tokens into strings

@@ -37,7 +37,7 @@ namespace SylmarDev.SpireItems
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.2.0";
+        public const string PluginVersion = "0.2.2";
 
         // assets
         public static AssetBundle resources;
@@ -51,6 +51,9 @@ namespace SylmarDev.SpireItems
         private static ConfigFile cfgFile;
 
         // todo: apply item tags to all items
+        // todo: next items are;
+        // Darkstone, Gremlin Horn, Neows Lament, Sling of Courage, Face of Cleric, Necronomicon
+        // then import new batch
 
         // declare items
         // the java native has logged on
@@ -98,12 +101,8 @@ namespace SylmarDev.SpireItems
         // item behaviors I guess
         public OrichalcumItemBehavior oriItemBehavior = new OrichalcumItemBehavior();
 
-        // hellfire is broken, so are blood shrines
-
-        //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
         {
-            //Init our logging class so that we can properly log for debugging
             Log.Init(Logger);
 
             // load assets
@@ -115,6 +114,7 @@ namespace SylmarDev.SpireItems
 
             cardPrefab = resources.LoadAsset<GameObject>("assets/SpireRelics/models/prefabs/item/card.prefab");
 
+            // scale cards to look right
             scaleTo = new Vector3(2f, 2f, 2f);
 
             Log.LogInfo("Loading Items. . .");
@@ -170,7 +170,7 @@ namespace SylmarDev.SpireItems
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
-        /*
+        
         private void Update()
         {
             
@@ -179,7 +179,7 @@ namespace SylmarDev.SpireItems
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(StrangeSpoon.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(PenNib.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             if (Input.GetKeyDown(KeyCode.F3))
@@ -195,6 +195,6 @@ namespace SylmarDev.SpireItems
                 var cb = PlayerCharacterMasterController.instances[0].master.GetBody();
                 cb.AddBuff(Vulnerable.buff);
             }
-        } */
+        }
     }
 }

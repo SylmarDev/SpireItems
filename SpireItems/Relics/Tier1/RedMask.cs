@@ -49,7 +49,7 @@ namespace SylmarDev.SpireItems
 
         private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
-            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || damageInfo.inflictor == null || damageInfo.attacker == victim.gameObject || damageInfo.attacker.GetComponent<CharacterBody>().inventory == null)
+            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || damageInfo.attacker == victim.gameObject || damageInfo.attacker.GetComponent<CharacterBody>().inventory == null)
             {
                 orig(self, damageInfo, victim);
                 return;
