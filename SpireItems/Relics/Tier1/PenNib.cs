@@ -77,7 +77,6 @@ namespace SylmarDev.SpireItems
                     }
                 }
             }
-
             orig(self, damageInfo, victim);
         }
 

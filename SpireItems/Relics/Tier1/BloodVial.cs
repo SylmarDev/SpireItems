@@ -59,28 +59,30 @@ namespace SylmarDev.SpireItems
 
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || di.rejected || !di.attacker || di.inflictor == null || di.attacker == self.gameObject)
+            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject)
             {
                 orig(self, di);
                 return;
             }
-            
-            var cb = di.attacker.GetComponent<HealthComponent>().body;
 
-            if (cb)
+            // nested if disaster zone
+            var hc = di.attacker.GetComponent<HealthComponent>();
+            if (hc)
             {
-                var inv = cb.inventory;
-                if (inv && (self.health > (self.fullCombinedHealth * 0.95)))
+                var cb = di.attacker.GetComponent<HealthComponent>().body;
+                if (cb)
                 {
-                    int vialCount = inv.GetItemCount(item.itemIndex);
-                    if (vialCount >= 1)
+                    var inv = cb.inventory;
+                    if (inv && (self.health > (self.fullCombinedHealth * 0.95)))
                     {
-                        cb.healthComponent.HealFraction(0.02f * vialCount, default);
+                        int vialCount = inv.GetItemCount(item.itemIndex);
+                        if (vialCount >= 1)
+                        {
+                            cb.healthComponent.HealFraction(0.02f * vialCount, default);
+                        }
                     }
                 }
             }
-
-            
             orig(self, di);
         }
 

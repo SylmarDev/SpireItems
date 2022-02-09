@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class PenNibBuff
+    public class Divinity
     {
         public static BuffDef buff;
         public CustomBuff completeBuff;
@@ -15,12 +15,12 @@ namespace SylmarDev.SpireItems
         {
             buff = ScriptableObject.CreateInstance<BuffDef>();
 
-            buff.buffColor = Color.yellow;
-            buff.canStack = true;
+            buff.buffColor = Color.white;
+            buff.canStack = false;
             buff.isDebuff = false;
-            buff.name = "STSPenNib";
+            buff.name = "STSDivinity";
 
-            buff.iconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/penNibBuff.png");
+            buff.iconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/divinity.png");
 
             completeBuff = new CustomBuff(buff);
             BuffAPI.Add(completeBuff);
@@ -28,7 +28,7 @@ namespace SylmarDev.SpireItems
             // hook
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
 
-            Log.LogInfo("Pen Nib (Buff) done");
+            Log.LogInfo("Divinity (Buff) done");
         }
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
@@ -37,16 +37,15 @@ namespace SylmarDev.SpireItems
             {
                 orig(self, di);
                 return;
-            } // no inflictor check so this is probably doomed to a blood shrine bug
+            }
 
             var cb = di.attacker.GetComponent<CharacterBody>();
             if (cb)
             {
-                var isNib = cb.HasBuff(buff);
-                if (isNib)
-                { 
-                    di.damage *= 2f; // temp 1k, move to 2f
-                    di.attacker.GetComponent<HealthComponent>().body.RemoveBuff(buff);
+                var isDivine = cb.HasBuff(buff);
+                if (isDivine)
+                {
+                    di.damage *= 3f;
                 }
             }
             orig(self, di);

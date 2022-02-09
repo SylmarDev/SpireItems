@@ -14,6 +14,7 @@ This mod is still very early on in development, so please note that it hasn't be
 * The Boot - Deal additional damage to enemies that have armor
 * Bronze Scales - When you're hit, deal damage back
 * Ceramic Fish - Gain a small amount of gold when you interact with things
+* Damaru - Chance on kill to gain Mantra
 * Juzu Bracelet - Reduce severity of Teleporter bosses
 * Maw Bank - Gain additional Gold until you spend Lunar Coins
 * Meal Ticket - Permanently Gain HP every time you visit the Bazaar Between Time
@@ -28,14 +29,18 @@ This mod is still very early on in development, so please note that it hasn't be
 #### Green
 * Bloody Idol - A mysterious idol of blood. I wonder how you obtain it...
 * Clockwork Souvenir - Chance to gain Artifact on kill
+* Darkstone Periapt - Gain 6 Max HP for every Lunar item you have
 * Golden Idol - Gain additional gold
+* Gremlin Horn - Chance to lower all cooldowns on kill
+* Neow's Lament - Small chance to instantly kill enemy on hit
 * Orange Pellets - Chance to remove all debuffs on kill
 * Pear - Gain Max HP
 * Singing Bowl - Gain Max HP every time you pick up an item
 
 #### Red
+* Face of Cleric - Gain 1 Max HP every kill
+* Necronomicon - High damage hits hit again
 * Strange Spoon - 50% chance to avoid cooldowns on skills
-
 
 ### .. with more to come!
 
@@ -60,9 +65,17 @@ This mod is still very early on in development, so please note that it hasn't be
 
 ## Changelog
 
+**0.3.0**
+
+* Fixed bug with items and buffs not procing correctly
+* Buffed Akabeko to stack better (85% first stack, +65% per stack)
+* Added several items
+* Updated to newer BepInEx version
+* Updated Maw Bank pickup text to better reflect how it works.
+
 **0.2.1**
 
-* Fixed bug with some surivors not procing Bag of Marbles and Red Mask items
+* Fixed bug with some survivors not procing Bag of Marbles and Red Mask items
 * Added Item Tags to all items
 
 **0.2.0**

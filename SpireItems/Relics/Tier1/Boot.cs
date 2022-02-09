@@ -51,22 +51,29 @@ namespace SylmarDev.SpireItems
 
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || self == null || di.rejected || !di.attacker || !di.inflictor || di.attacker == self.gameObject || di.attacker.GetComponent<CharacterBody>().inventory == null)
+            if (di == null || self == null || di.rejected || !di.attacker || di.attacker == self.gameObject || di.attacker.GetComponent<CharacterBody>() == null)
             {
                 orig(self, di);
                 return;
             }
-            
-            var inv = di.attacker.GetComponent<HealthComponent>().body.inventory;
-            int bootCount = inv.GetItemCount(item.itemIndex);
 
-
-            if (inv && self.body.armor > 0)
+            var hc = di.attacker.GetComponent<HealthComponent>();
+            if (hc)
             {
-                if (bootCount >= 1)
+                var cb = hc.body;
+                if (cb)
                 {
-                    Log.LogMessage("stripping armor");
-                    self.body.armor -= (15 * bootCount);
+                    var inv = cb.inventory;
+                    int bootCount = inv.GetItemCount(item.itemIndex);
+
+                    if (inv && self.body.armor > 0)
+                    {
+                        if (bootCount >= 1)
+                        {
+                            Log.LogMessage("stripping armor");
+                            self.body.armor -= (15 * bootCount);
+                        }
+                    }
                 }
             }
             orig(self, di);

@@ -57,8 +57,12 @@ Green - 0 implemented, 14 planned
 		Golden Idol - Gain 25% more gold whenever you gain gold
 		Bloody Idol - Whenever you gain gold, heal 5 HP. on use blood shrine, REMOVE ALL GOLDEN IDOLS + TURN INTO BLOODY
 		Pear - Raise max HP by a %
-	Not Working, but good plans
 		Darkstone Periapt - Whenever you pickup a lunar item, permanently increase your max HP
+		Neow's Lament - Small chance to instantly kill enemy on hit (green?)
+		Clockwork Souvenir - Chance to gain artifact on hit (artifact buff negates next debuff) (green)
+		Orange Pellets - Chance to remove all debuffs on kill (green)
+		Sling of Courage - 20% additional elite damage (green)
+	Not Working, but good plans
 		Gremlin Horn - Do an on kill effect (unsure of what yet)
 		Horn Cleat - Chance on hit to gain 14 barrier
 		Ink Bottle - Whenever you use 10 abilities, reset a random cooldown
@@ -88,6 +92,9 @@ Green - 0 implemented, 14 planned
 		
 Red - 0 implemented, 13 planned
 	Working
+		Face of Cleric - On kill gain +1 HP, no cap (maybe 1k cap). RoR1 Infusion (red)
+		Strange Spoon - 50% to not send ability into cooldown after use (red, probably cracked even for a red item)
+		Necronomicon - Chance for attacks over 300% to hit again (red?)
 	Not Working, but good plans
 		Bird Faced Urn - Whenever you use an ability, heal 2 HP
 		Calipers - Barrier drains slower
@@ -140,13 +147,6 @@ Misc
 		Tiny House - Drop one random equipment, one random item, gain 500 gold, raise max HP by 25 (red)
 		Black Star - Tele bosses drop an additional item when defeated (green-red)
 		Sacred Bark - Double the effectiveness of equipment (red)
-		Face of Cleric - On kill gain +1 HP, no cap (maybe 1k cap). RoR1 Infusion (red)
-		Necronomicon - Chance for attacks over 300% to hit again (red?)
-		Neow's Lament - Small chance to instantly kill enemy on hit (green?)
-		Clockwork Souvenir - Chance to gain artifact on hit (artifact buff negates next debuff) (green)
-		Orange Pellets - Chance to remove all debuffs on kill (green)
-		Sling of Courage - 20% additional elite damage (green)
-		Strange Spoon - 50% to not send ability into cooldown after use (red, probably cracked even for a red item)
 	Decent plan, not sure if worth implementing
 	Bad plans
 		Hand Drill - chance to apply vulnerable, higher chance but only in melee range? idk. green.

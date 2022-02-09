@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class GremlinHorn
+    public class Damaru
     {
         public static ItemDef item;
         public void Init()
@@ -15,24 +15,24 @@ namespace SylmarDev.SpireItems
             item = ScriptableObject.CreateInstance<ItemDef>();
 
             // Tokens
-            item.name = "STSGREMLINHORN_NAME";
-            item.nameToken = "STSGREMLINHORN_NAME";
-            item.pickupToken = "STSGREMLINHORN_PICKUP";
-            item.descriptionToken = "STSGREMLINHORN_DESC";
-            item.loreToken = "STSGREMLINHORN_LORE";
+            item.name = "DAMARU_NAME";
+            item.nameToken = "DAMARU_NAME";
+            item.pickupToken = "DAMARU_PICKUP";
+            item.descriptionToken = "DAMARU_DESC";
+            item.loreToken = "DAMARU_LORE";
 
             // tier
-            item.tier = ItemTier.Tier2;
+            item.tier = ItemTier.Tier1;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/GremlinHorn.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/Damaru.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
             item.canRemove = true;
             item.hidden = false;
 
-            ItemTag[] tags = new ItemTag[] { ItemTag.Utility, ItemTag.OnKillEffect }; // be sure to update tags once I know what this one does
+            ItemTag[] tags = new ItemTag[] { ItemTag.Damage };
             item.tags = tags;
 
             // Turn Tokens into strings
@@ -43,10 +43,10 @@ namespace SylmarDev.SpireItems
             ItemAPI.Add(new CustomItem(item, displayRules));
 
             // define what item does below
-            // Do an on kill effect (unsure of what yet)
+            // chance on kill to gain mantra
             On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
 
-            Log.LogInfo("GremlinHorn done.");
+            Log.LogInfo("Damaru done.");
         }
 
         private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
@@ -59,16 +59,17 @@ namespace SylmarDev.SpireItems
 
             var cb = damageReport.attackerBody;
             var inv = cb.inventory;
+            
             if (inv)
             {
                 var ic = inv.GetItemCount(item.itemIndex);
                 if (ic >= 1)
                 {
-                    var procChance = ic == 1 ? 20f : 20f + (10f * (ic-1));
+                    var procChance = ic * 15f;
                     var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
                     if (proc)
                     {
-                        damageReport.attackerBody.skillLocator.DeductCooldownFromAllSkillsAuthority(2f + (ic-1));
+                        cb.AddBuff(Mantra.buff);
                     }
                 }
             }
@@ -76,10 +77,10 @@ namespace SylmarDev.SpireItems
 
         private void AddTokens()
         {
-			LanguageAPI.Add("STSGREMLINHORN_NAME", "Gremlin Horn");
-			LanguageAPI.Add("STSGREMLINHORN_PICKUP", "Chance to reduce all skill cooldowns on kill.");
-			LanguageAPI.Add("STSGREMLINHORN_DESC", "20% <style=cStack>(+10% per stack)</style> chance to reduce all skill cooldowns by 2 <style=cStack>(+1 per stack)</style> seconds.");
-			LanguageAPI.Add("STSGREMLINHORN_LORE", "Gremlin Nobs are capable of growing until the day they die. Remarkable. - Ranwid");
+			LanguageAPI.Add("DAMARU_NAME", "Damaru");
+			LanguageAPI.Add("DAMARU_PICKUP", "Chance on kill to gain Mantra.");
+			LanguageAPI.Add("DAMARU_DESC", "15% Chance <style=cStack>(+15% per stack)</style> on kill to gain Mantra. Once you get 10 Mantra, enter Divinity for 5 seconds. In Divinity, deal an additional 200% damage.");
+			LanguageAPI.Add("DAMARU_LORE", "The sound of the small drum keeps your mind awake, revealing a path forward.");
         }
     }
 }

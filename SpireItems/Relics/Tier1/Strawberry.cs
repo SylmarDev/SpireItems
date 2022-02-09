@@ -45,10 +45,17 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // raise Max HP by 5%, poor mans pearl probably
+            On.RoR2.Run.Start += Run_Start;
             On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
 
             Log.LogInfo("Strawberry done");
+        }
+
+        private void Run_Start(On.RoR2.Run.orig_Start orig, Run self)
+        {
+            strawberries = 0;
+            orig(self);
         }
 
         private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)

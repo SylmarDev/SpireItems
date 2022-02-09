@@ -37,7 +37,7 @@ namespace SylmarDev.SpireItems
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.2.2";
+        public const string PluginVersion = "0.3.0";
 
         // assets
         public static AssetBundle resources;
@@ -52,7 +52,7 @@ namespace SylmarDev.SpireItems
 
         // todo: apply item tags to all items
         // todo: next items are;
-        // Darkstone, Gremlin Horn, Neows Lament, Sling of Courage, Face of Cleric, Necronomicon
+        // Darkstone, Gremlin Horn
         // then import new batch
 
         // declare items
@@ -74,6 +74,7 @@ namespace SylmarDev.SpireItems
         private static Strawberry strawberry = new Strawberry();
         private static ToyOrnithopter toy = new ToyOrnithopter();
         private static Vajra vajra = new Vajra();
+        private static Damaru damaru = new Damaru();
 
         // green
         private static GoldenIdol gi = new GoldenIdol(); 
@@ -82,9 +83,15 @@ namespace SylmarDev.SpireItems
         private static ClockworkSouvenir cs = new ClockworkSouvenir();
         private static OrangePellets op = new OrangePellets();
         private static SingingBowl sb = new SingingBowl();
+        private static SlingOfCourage sling = new SlingOfCourage();
+        private static NeowsLament neow = new NeowsLament();
+        private static DarkstonePeriapt darkstone = new DarkstonePeriapt();
+        private static GremlinHorn gh = new GremlinHorn();
 
         // red
         private static StrangeSpoon strangeSpoon = new StrangeSpoon();
+        private static Necronomicon necronomicon = new Necronomicon();
+        private static FaceOfCleric cleric = new FaceOfCleric();
         
 
         public static DamageInfo thornDi = new DamageInfo();
@@ -97,6 +104,8 @@ namespace SylmarDev.SpireItems
         public static PenNibBuff nibBuff = new PenNibBuff();
         public static Weakness weak = new Weakness();
         public static ArtifactBuff ab = new ArtifactBuff();
+        public static Mantra mantra = new Mantra();
+        public static Divinity divinity = new Divinity();
 
         // item behaviors I guess
         public OrichalcumItemBehavior oriItemBehavior = new OrichalcumItemBehavior();
@@ -135,6 +144,7 @@ namespace SylmarDev.SpireItems
             strawberry.Init();
             toy.Init();
             vajra.Init();
+            damaru.Init();
 
             // green
             gi.Init();
@@ -143,9 +153,15 @@ namespace SylmarDev.SpireItems
             cs.Init();
             op.Init();
             sb.Init();
+            sling.Init();
+            neow.Init();
+            darkstone.Init();
+            gh.Init();
 
             // red
             strangeSpoon.Init();
+            necronomicon.Init();
+            cleric.Init();
 
             // no idea why this has to go after, but it just works
             var transform = cardPrefab.transform;
@@ -165,6 +181,8 @@ namespace SylmarDev.SpireItems
             nibBuff.Init();
             weak.Init();
             ab.Init(); // artifact buff
+            mantra.Init();
+            divinity.Init();
             
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
@@ -179,7 +197,7 @@ namespace SylmarDev.SpireItems
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(PenNib.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(MawBank.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             if (Input.GetKeyDown(KeyCode.F3))
@@ -187,7 +205,7 @@ namespace SylmarDev.SpireItems
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GoldenIdol.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GremlinHorn.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             if (Input.GetKeyDown(KeyCode.F4))

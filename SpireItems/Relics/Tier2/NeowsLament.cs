@@ -44,15 +44,46 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // small chance to instantly kill enemy on hit
+            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
 
             Log.LogInfo("NeowsLament done.");
+        }
+
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+        {
+            if (damageInfo.attacker == null || damageInfo.attacker.GetComponent<CharacterBody>().inventory == null || damageInfo.rejected || victim.GetComponent<HealthComponent>() == null)
+            {
+                orig(self, damageInfo, victim);
+                return;
+            }
+
+            var cb = damageInfo.attacker.GetComponent<HealthComponent>().body;
+            var inv = cb.inventory;
+
+            if (inv)
+            {
+                if (inv.GetItemCount(item.itemIndex) >= 1)
+                {
+                    var procChance = Mathf.Min(inv.GetItemCount(item.itemIndex) * 0.5f, 1.5f);
+                    var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
+                    if (proc)
+                    {
+                        // Log.LogMessage("neow's lament proced, starting death protocol");
+                        DamageInfo instaKill = damageInfo;
+                        instaKill.damageColorIndex = DamageColorIndex.DeathMark;
+                        instaKill.damage = victim.GetComponent<HealthComponent>().fullCombinedHealth * 5; // just to be sure
+                        victim.GetComponent<HealthComponent>().TakeDamage(instaKill);
+                    }
+                }
+            }
+            orig(self, damageInfo, victim);
         }
 
         private void AddTokens()
         {
 			LanguageAPI.Add("NEOWSLAMENT_NAME", "Neow's Lament");
-			LanguageAPI.Add("NEOWSLAMENT_PICKUP", "small chance to instantly kill enemy on hit");
-			LanguageAPI.Add("NEOWSLAMENT_DESC", "");
+			LanguageAPI.Add("NEOWSLAMENT_PICKUP", "Small chance to instantly kill enemy on hit. Stacks up to 3 times.");
+			LanguageAPI.Add("NEOWSLAMENT_DESC", "0.5% chance to instantly kill enemy on hit. Stacks up to 1.5% chance.");
 			LanguageAPI.Add("NEOWSLAMENT_LORE", "The blessing of lamentation bestowed by Neow.");
         }
     }

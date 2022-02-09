@@ -53,12 +53,12 @@ namespace SylmarDev.SpireItems
         {
             orig(self, damageInfo, victim);
 
-            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || !damageInfo.inflictor || damageInfo.attacker == victim || victim.GetComponent<CharacterBody>().inventory == null)
+            if (damageInfo == null || damageInfo.rejected || !damageInfo.attacker || !damageInfo.inflictor || damageInfo.attacker == victim || victim.GetComponent<CharacterBody>().inventory == null || damageInfo.attacker.GetComponent<CharacterBody>() == null || damageInfo.attacker.GetComponent<CharacterBody>().inventory == null)
             {
                 return;
             }
 
-            CharacterBody cb = damageInfo.attacker.GetComponent<CharacterBody>();
+            var cb = damageInfo.attacker.GetComponent<CharacterBody>();
 
             var thornCount = victim.GetComponent<CharacterBody>().inventory.GetItemCount(item.itemIndex);
             var attackerThorns = cb.inventory.GetItemCount(item.itemIndex);

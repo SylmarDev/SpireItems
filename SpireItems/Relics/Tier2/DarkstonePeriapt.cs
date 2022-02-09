@@ -25,7 +25,7 @@ namespace SylmarDev.SpireItems
             item.tier = ItemTier.Tier2;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/DarkstonePeriapt.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/darkstonePericept.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
@@ -44,15 +44,48 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // Whenever you pickup a lunar item, permanently increase your max HP
+            On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
 
             Log.LogInfo("DarkstonePeriapt done.");
+        }
+
+        private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
+        {
+            if (self.inventory)
+            {
+                var invDSP = self.inventory.GetItemCount(item.itemIndex);
+                if (invDSP >= 1)
+                {
+                    self.RecalculateStats();
+                }
+            }
+            orig(self);
+        }
+
+
+        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        {
+            if (self.inventory)
+            {
+                var invDSP = self.inventory.GetItemCount(item.itemIndex);
+                if (invDSP >= 1)
+                {
+                    var toAdd = self.inventory.GetTotalItemCountOfTier(ItemTier.Lunar) * invDSP * 6;
+                    self.baseMaxHealth += toAdd;
+                    orig(self);
+                    self.baseMaxHealth -= toAdd;
+                    return;
+                }
+            }
+            orig(self);
         }
 
         private void AddTokens()
         {
 			LanguageAPI.Add("STSDARKSTONEPERI_NAME", "Darkstone Periapt");
-			LanguageAPI.Add("STSDARKSTONEPERI_PICKUP", "");
-			LanguageAPI.Add("STSDARKSTONEPERI_DESC", "");
+			LanguageAPI.Add("STSDARKSTONEPERI_PICKUP", "Increase your maximum health for every Lunar item you have.");
+			LanguageAPI.Add("STSDARKSTONEPERI_DESC", "Gain 6 Max HP <style=cStack>(+6 Per Stack)</style> for every Lunar Item you have");
 			LanguageAPI.Add("STSDARKSTONEPERI_LORE", "The stone draws power from dark energy, converting it into vitality for the wearer.");
         }
     }
