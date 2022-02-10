@@ -25,13 +25,9 @@ White - 16 implemented, 16 planned
 		Strawberry
 		Toy Ornithopter
 		Vajra
-		
-	Not Working, but good plans
-		all done woo
-		
+		Damaru
 	Decent Plan, not sure if worth implementing
 		Red Skull - While at 50% or below HP, do 1.3x damage
-		
 	Bad plans
 		Art of War (feasibility)
 		Happy Flower (feasibility)
@@ -62,8 +58,8 @@ Green - 0 implemented, 14 planned
 		Clockwork Souvenir - Chance to gain artifact on hit (artifact buff negates next debuff) (green)
 		Orange Pellets - Chance to remove all debuffs on kill (green)
 		Sling of Courage - 20% additional elite damage (green)
+		Gremlin Horn - Do an on kill effect (cooldowns)
 	Not Working, but good plans
-		Gremlin Horn - Do an on kill effect (unsure of what yet)
 		Horn Cleat - Chance on hit to gain 14 barrier
 		Ink Bottle - Whenever you use 10 abilities, reset a random cooldown
 		Kunai - Chance to temporarily gain armor on hit

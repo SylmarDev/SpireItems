@@ -27,6 +27,7 @@ namespace SylmarDev.SpireItems
 
             // hook
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            // On.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += CharacterBody_UpdateAllTemporaryVisualEffects;
 
             Log.LogInfo("Divinity (Buff) done");
         }
@@ -50,5 +51,14 @@ namespace SylmarDev.SpireItems
             }
             orig(self, di);
         }
+
+        /*
+         // I'll do this later
+        private void CharacterBody_UpdateAllTemporaryVisualEffects(On.RoR2.CharacterBody.orig_UpdateAllTemporaryVisualEffects orig, CharacterBody self)
+        {
+            orig(self);
+            TemporaryVisualEffect tve = default;
+            self.UpdateSingleTemporaryVisualEffect(ref default, "Prefabs/TemporaryVisualEffects/NoCooldownEffect", self.radius, self.HasBuff(buff), "Head");
+        } */
     }
 }

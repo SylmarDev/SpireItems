@@ -50,10 +50,8 @@ namespace SylmarDev.SpireItems
         // config file
         private static ConfigFile cfgFile;
 
-        // todo: apply item tags to all items
-        // todo: next items are;
-        // Darkstone, Gremlin Horn
-        // then import new batch
+        // todo: visual effects for divinity and maybe other buffs
+        // todo: next batch of items
 
         // declare items
         // the java native has logged on
@@ -96,10 +94,7 @@ namespace SylmarDev.SpireItems
 
         public static DamageInfo thornDi = new DamageInfo();
 
-        // any empty methods for BuffDefs need to go here to be edited later
-        /*public static BuffDef freezeBuff { get; private set; }
-        public static BuffDef fearBuff { get; private set; }
-        */
+        // set buffs
         public static Vulnerable vulnerableBuff = new Vulnerable();
         public static PenNibBuff nibBuff = new PenNibBuff();
         public static Weakness weak = new Weakness();
@@ -182,13 +177,13 @@ namespace SylmarDev.SpireItems
             weak.Init();
             ab.Init(); // artifact buff
             mantra.Init();
-            divinity.Init();
+            divinity.Init(); // todo; 
             
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
-        
+        /*
         private void Update()
         {
             
@@ -205,7 +200,7 @@ namespace SylmarDev.SpireItems
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
 
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GremlinHorn.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Damaru.item.itemIndex), transform.position, transform.forward * 20f);
             }
 
             if (Input.GetKeyDown(KeyCode.F4))
@@ -213,6 +208,6 @@ namespace SylmarDev.SpireItems
                 var cb = PlayerCharacterMasterController.instances[0].master.GetBody();
                 cb.AddBuff(Vulnerable.buff);
             }
-        }
+        } */
     }
 }

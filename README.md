@@ -6,7 +6,7 @@ Do your runs need variety? Maybe want to try some novel item ideas? A fan of Sla
 
 This mod is still very early on in development, so please note that it hasn't been tested for multiplayer yet!!
 
-### Currently Added
+## Currently Added
 #### White
 * Akabeko - Deal additional damage to high health enemies
 * Anchor - Gain barrier for hitting high health enemies
@@ -71,7 +71,7 @@ This mod is still very early on in development, so please note that it hasn't be
 * Buffed Akabeko to stack better (85% first stack, +65% per stack)
 * Added several items
 * Updated to newer BepInEx version
-* Updated Maw Bank pickup text to better reflect how it works.
+* Updated Maw Bank pickup text to better reflect how it works
 
 **0.2.1**
 
@@ -86,7 +86,3 @@ This mod is still very early on in development, so please note that it hasn't be
 **0.1.0**
 
 * All (currently planned) white items added and functional
-
-**0.0.1**
-
-* Indev

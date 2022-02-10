@@ -38,7 +38,6 @@ namespace SylmarDev.SpireItems
             {
                 self.SetBuffCount(buff.buffIndex, 0);
                 self.AddTimedBuff(Divinity.buff, 5f);
-                //self.UpdateSingleTemporaryVisualEffect(); // temp
                 return;
             } else
             {
