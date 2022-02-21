@@ -51,7 +51,7 @@ namespace SylmarDev.SpireItems
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject || di.attacker.GetComponent<CharacterBody>() == null)
+            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject || di.attacker.GetComponent<CharacterBody>() == null || !self.gameObject)
             {
                 orig(self, di);
                 return;

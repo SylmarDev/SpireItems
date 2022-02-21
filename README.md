@@ -65,6 +65,10 @@ This mod is still very early on in development, so please note that it hasn't be
 
 ## Changelog
 
+**0.3.1**
+
+* Fixed bug with pots on Abandoned Aqueduct
+
 **0.3.0**
 
 * Fixed bug with items and buffs not procing correctly

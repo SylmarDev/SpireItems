@@ -37,7 +37,7 @@ namespace SylmarDev.SpireItems
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.3.0";
+        public const string PluginVersion = "0.3.1";
 
         // assets
         public static AssetBundle resources;
@@ -52,6 +52,7 @@ namespace SylmarDev.SpireItems
 
         // todo: visual effects for divinity and maybe other buffs
         // todo: next batch of items
+        // todo: pots on aqueduct explode break
 
         // declare items
         // the java native has logged on
