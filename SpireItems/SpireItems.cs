@@ -52,7 +52,6 @@ namespace SylmarDev.SpireItems
 
         // todo: visual effects for divinity and maybe other buffs
         // todo: next batch of items
-        // todo: pots on aqueduct explode break
 
         // declare items
         // the java native has logged on
@@ -92,7 +91,6 @@ namespace SylmarDev.SpireItems
         private static Necronomicon necronomicon = new Necronomicon();
         private static FaceOfCleric cleric = new FaceOfCleric();
         
-
         public static DamageInfo thornDi = new DamageInfo();
 
         // set buffs

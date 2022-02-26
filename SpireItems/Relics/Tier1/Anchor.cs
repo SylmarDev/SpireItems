@@ -51,11 +51,13 @@ namespace SylmarDev.SpireItems
 
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || di.rejected || !di.attacker || di.inflictor == null || di.attacker == self.gameObject)
+            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject)
             {
                 orig(self, di);
                 return;
             }
+
+            // test this to make sure it works with Huntress arrows (just removed inflictor check)
 
             var attacker = di.attacker;
             var inv = attacker.GetComponent<HealthComponent>().body.inventory;

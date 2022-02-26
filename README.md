@@ -50,7 +50,7 @@ This mod is still very early on in development, so please note that it hasn't be
 
 ## Important Notes
 * I didn't make Slay the Spire, or any of the item art, this is a fan project. Don't sue me.
-* This mod has ***NOT BEEN TESTED ONLINE***. Not a bit. It doesn't work yet, so please don't come to me asking why it's not working for you.
+* This mod has ***NOT BEEN TESTED ONLINE***. Not a bit. So please don't come to me asking why it's not working for you.
 * Speaking of, please feel free to leave any comments, suggestions, or stack traces with me at by either
 
 	* pinging me on the RoR2 Modding Discord
@@ -64,6 +64,10 @@ This mod is still very early on in development, so please note that it hasn't be
 #### Thank you
 
 ## Changelog
+
+**0.3.2**
+
+* Fixed the pot bug again, came up differently on multiplayer
 
 **0.3.1**
 
