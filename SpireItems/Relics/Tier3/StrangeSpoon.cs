@@ -46,10 +46,17 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // 50% to not send ability into cooldown
+            On.RoR2.Run.Start += Run_Start;
             On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
             On.RoR2.Skills.SkillDef.OnExecute += SkillDef_OnExecute;
 
             Log.LogInfo("StrangeSpoon done.");
+        }
+
+        // resest procChance after a run
+        private void Run_Start(On.RoR2.Run.orig_Start orig, Run self)
+        {
+            procChance = 0f;
         }
 
         private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
