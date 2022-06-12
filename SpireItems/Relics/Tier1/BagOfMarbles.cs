@@ -24,7 +24,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "BAGOFMARBLES_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier1;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/BagOfMarbles.png");
@@ -73,7 +75,7 @@ namespace SylmarDev.SpireItems
                 var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
                 if (proc)
                 {
-                    victim.GetComponent<HealthComponent>().body.AddTimedBuff(Vulnerable.buff, (float) marblesCount * 5f);
+                    victim.GetComponent<HealthComponent>().body.AddTimedBuff(Vulnerable.instance.BuffDef, (float) marblesCount * 5f);
                 }
 
             }

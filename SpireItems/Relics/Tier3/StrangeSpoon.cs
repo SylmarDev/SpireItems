@@ -24,7 +24,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "STRANGESPOON_LORE";
 
             // tier
-            item.tier = ItemTier.Tier3;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier3;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/StrangeSpoon.png");
@@ -57,6 +59,7 @@ namespace SylmarDev.SpireItems
         private void Run_Start(On.RoR2.Run.orig_Start orig, Run self)
         {
             procChance = 0f;
+            orig(self);
         }
 
         private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)

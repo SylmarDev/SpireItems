@@ -22,7 +22,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "NEOWSLAMENT_LORE";
 
             // tier
-            item.tier = ItemTier.Tier2;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier2;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/NeowsLament.png");
@@ -32,7 +34,7 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
-            ItemTag[] tags = new ItemTag[] { ItemTag.Damage };
+            ItemTag[] tags = new ItemTag[] { ItemTag.Damage, ItemTag.AIBlacklist, ItemTag.BrotherBlacklist };
             item.tags = tags;
 
             // Turn Tokens into strings

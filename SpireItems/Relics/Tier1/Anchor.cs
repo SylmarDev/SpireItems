@@ -1,4 +1,4 @@
-﻿using BepInEx;
+﻿/*using BepInEx;
 using RoR2;
 using R2API;
 using R2API.Utils;
@@ -22,7 +22,7 @@ namespace SylmarDev.SpireItems
             item.loreToken = "ANCHOR_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            item.deprecatedTier = ItemTier.Tier1;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/anchor.png");
@@ -83,3 +83,4 @@ namespace SylmarDev.SpireItems
         }
     }
 }
+*/

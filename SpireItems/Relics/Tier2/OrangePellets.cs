@@ -23,7 +23,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "ORANGEPELLETS_LORE";
 
             // tier
-            item.tier = ItemTier.Tier2;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier2;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/OrangePellets.png");

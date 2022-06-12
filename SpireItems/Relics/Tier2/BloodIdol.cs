@@ -22,7 +22,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "STSBLOODIDOL_LORE";
 
             // tier
-            item.tier = ItemTier.Tier2;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier2;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/BloodyIdol.png");
@@ -44,10 +46,17 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // Whenever you gain gold, heal 5 HP
+            //On.RoR2.ShrineBloodBehavior.Start += ShrineBloodBehavior_Start; // debug
             On.RoR2.ShrineBloodBehavior.AddShrineStack += ShrineBloodBehavior_AddShrineStack;
             On.RoR2.CharacterMaster.GiveMoney += CharacterMaster_GiveMoney;
 
             Log.LogInfo("BloodIdol done.");
+        }
+
+        private void ShrineBloodBehavior_Start(On.RoR2.ShrineBloodBehavior.orig_Start orig, ShrineBloodBehavior self)
+        {
+            Log.LogInfo("Blood Shrine started oomfie!!");
+            orig(self);
         }
 
         private void ShrineBloodBehavior_AddShrineStack(On.RoR2.ShrineBloodBehavior.orig_AddShrineStack orig, ShrineBloodBehavior self, Interactor interactor)

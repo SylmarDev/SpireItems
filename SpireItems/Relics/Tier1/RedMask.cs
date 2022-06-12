@@ -23,7 +23,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "REDMASK_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier1;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/RedMask.png");
@@ -69,7 +71,7 @@ namespace SylmarDev.SpireItems
                 var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
                 if (proc)
                 {
-                    victim.GetComponent<HealthComponent>().body.AddTimedBuff(Weakness.buff, (float)maskCount * 5f);
+                    victim.GetComponent<HealthComponent>().body.AddTimedBuff(Weakness.instance.BuffDef, (float)maskCount * 5f);
                 }
 
             }

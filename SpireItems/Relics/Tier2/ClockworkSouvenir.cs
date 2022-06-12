@@ -23,7 +23,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "CLOCKWORKSOUVENIR_LORE";
 
             // tier
-            item.tier = ItemTier.Tier2;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier2;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/clockworkSouviner.png");
@@ -63,7 +65,7 @@ namespace SylmarDev.SpireItems
                     var proc = cb.master ? Util.CheckRoll(procChance * clockCount, cb.master) : Util.CheckRoll(procChance * clockCount);
                     if (proc)
                     {
-                        cb.AddBuff(ArtifactBuff.buff);
+                        cb.AddBuff(ArtifactBuff.instance.BuffDef);
                     }
                 }
             }

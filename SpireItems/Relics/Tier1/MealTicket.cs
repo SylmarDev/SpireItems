@@ -27,7 +27,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "MEALTICKET_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier1;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/MealTicket.png");
@@ -37,7 +39,7 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
-            ItemTag[] tags = new ItemTag[] { ItemTag.Utility, ItemTag.Healing };
+            ItemTag[] tags = new ItemTag[] { ItemTag.Utility, ItemTag.Healing, ItemTag.InteractableRelated };
             item.tags = tags;
 
             // Turn Tokens into strings
@@ -102,7 +104,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("MEALTICKET_NAME", "Meal Ticket");
 			LanguageAPI.Add("MEALTICKET_PICKUP", "Gain 15 max health every time you enter the Bazaar Between Time.");
-			LanguageAPI.Add("MEALTICKET_DESC", "PERMANENTLY Increase <style=clsHealth>maximum health</style> by <style=clsHealth>15</style> <style=cStack>(+15 per stack)</style> every time you visit the Bazaar Between Time.");
+			LanguageAPI.Add("MEALTICKET_DESC", "Permanently increase <style=cIsHealing>maximum health</style> by <style=cIsHealing>15</style> <style=cStack>(+15 per stack)</style> every time you visit the Bazaar Between Time.");
 			LanguageAPI.Add("MEALTICKET_LORE", "Complimentary meatballs with every visit!");
         }
     }

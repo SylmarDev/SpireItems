@@ -4,33 +4,27 @@ using System.Text;
 using RoR2;
 using R2API;
 using UnityEngine;
+using SpireItems.Buffs;
+using BepInEx.Configuration;
 
 namespace SylmarDev.SpireItems
 {
-    public class PenNibBuff
+    public class PenNibBuff : BuffBase<PenNibBuff>
     {
-        public static BuffDef buff;
-        public CustomBuff completeBuff;
-        public void Init()
+        public override string BuffName => "Pen Nib Buff";
+        public override Color Color => Color.yellow;
+        public override bool CanStack => true;
+        public override bool IsDebuff => false;
+        public override Sprite BuffIcon => SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/penNibBuff.png");
+        public override void Init()
         {
-            buff = ScriptableObject.CreateInstance<BuffDef>();
-
-            buff.buffColor = Color.yellow;
-            buff.canStack = true;
-            buff.isDebuff = false;
-            buff.name = "STSPenNib";
-
-            buff.iconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/penNibBuff.png");
-
-            completeBuff = new CustomBuff(buff);
-            BuffAPI.Add(completeBuff);
-
-            // hook
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
-
-            Log.LogInfo("Pen Nib (Buff) done");
+            CreateBuff();
+            Hooks();
         }
-
+        public override void Hooks()
+        {
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+        }
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
             if (di == null || self.body == null || di.rejected || !di.attacker || di.attacker == self.gameObject)
@@ -42,11 +36,11 @@ namespace SylmarDev.SpireItems
             var cb = di.attacker.GetComponent<CharacterBody>();
             if (cb)
             {
-                var isNib = cb.HasBuff(buff);
+                var isNib = cb.HasBuff(BuffDef);
                 if (isNib)
-                { 
+                {
                     di.damage *= 2f; // temp 1k, move to 2f
-                    di.attacker.GetComponent<HealthComponent>().body.RemoveBuff(buff);
+                    di.attacker.GetComponent<HealthComponent>().body.RemoveBuff(BuffDef);
                 }
             }
             orig(self, di);

@@ -24,7 +24,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "JUZUBRACELET_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier1;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/JuzuBracelet.png");
@@ -34,7 +36,7 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
-            ItemTag[] tags = new ItemTag[] { ItemTag.Utility };
+            ItemTag[] tags = new ItemTag[] { ItemTag.Utility, ItemTag.InteractableRelated };
             item.tags = tags;
 
             // Turn Tokens into strings
@@ -82,7 +84,7 @@ namespace SylmarDev.SpireItems
         {
             LanguageAPI.Add("JUZUBRACELET_NAME", "Juzu Bracelet");
 			LanguageAPI.Add("JUZUBRACELET_PICKUP", "Reduce amount of enemies at the start of Teleporter events.");
-			LanguageAPI.Add("JUZUBRACELET_DESC", "Teleporter events start with only 90%<style=cStack>(+90% per stack)</style> of boss credit.");
+			LanguageAPI.Add("JUZUBRACELET_DESC", "Teleporter events start with only 90%<style=cStack>(-10% of the boss credits at the time of the teleporter event per stack)</style> of boss credit.");
 			LanguageAPI.Add("JUZUBRACELET_LORE", "A ward against the unknown.");
         }
     }

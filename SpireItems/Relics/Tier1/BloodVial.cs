@@ -23,7 +23,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "BLOODVIAL_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier1;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/BloodVial.png");

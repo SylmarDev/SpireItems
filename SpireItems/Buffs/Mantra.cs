@@ -4,42 +4,37 @@ using System.Text;
 using RoR2;
 using R2API;
 using UnityEngine;
+using SpireItems.Buffs;
+using BepInEx.Configuration;
 
 namespace SylmarDev.SpireItems
 {
-    public class Mantra
+    public class Mantra : BuffBase<Mantra>
     {
-        public static BuffDef buff;
-        public CustomBuff completeBuff;
-        public void Init()
+        public override string BuffName => "Mantra";
+        public override Color Color => Color.white;
+        public override bool CanStack => true;
+        public override bool IsDebuff => false;
+        public override Sprite BuffIcon => SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/mantra.png");
+        public override void Init()
         {
-            buff = ScriptableObject.CreateInstance<BuffDef>();
-
-            buff.buffColor = Color.white;
-            buff.canStack = true;
-            buff.isDebuff = false;
-            buff.name = "STSMantra";
-
-            buff.iconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/mantra.png");
-
-            completeBuff = new CustomBuff(buff);
-            BuffAPI.Add(completeBuff);
-
-            // hook
-            On.RoR2.CharacterBody.AddBuff_BuffDef += CharacterBody_AddBuff_BuffDef;
-
-            Log.LogInfo("Mantra (Buff) done");
+            CreateBuff();
+            Hooks();
         }
-
+        public override void Hooks()
+        {
+            On.RoR2.CharacterBody.AddBuff_BuffDef += CharacterBody_AddBuff_BuffDef;
+        }
         private void CharacterBody_AddBuff_BuffDef(On.RoR2.CharacterBody.orig_AddBuff_BuffDef orig, CharacterBody self, BuffDef buffDef)
         {
-            var mantraCount = self.GetBuffCount(buff);
+            var mantraCount = self.GetBuffCount(BuffDef);
             if (mantraCount >= 9)
             {
-                self.SetBuffCount(buff.buffIndex, 0);
-                self.AddTimedBuff(Divinity.buff, 5f);
+                self.SetBuffCount(BuffDef.buffIndex, 0);
+                self.AddTimedBuff(Divinity.instance.BuffDef, 5f);
                 return;
-            } else
+            }
+            else
             {
                 orig(self, buffDef);
             }

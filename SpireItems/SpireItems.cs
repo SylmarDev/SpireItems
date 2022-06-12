@@ -22,7 +22,7 @@ namespace SylmarDev.SpireItems
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
 	
 	//We will be using 3 modules from R2API: ItemAPI to add our item, ItemDropAPI to have our item drop ingame, and LanguageAPI to add our language tokens.
-    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(ItemDropAPI), nameof(LanguageAPI), nameof(BuffAPI))]
+    [R2APISubmoduleDependency(nameof(ItemAPI), nameof(LanguageAPI))]
     //[R2APISubmoduleDependency(nameof(BuffAPI)]
 
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
@@ -37,7 +37,7 @@ namespace SylmarDev.SpireItems
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.3.1";
+        public const string PluginVersion = "0.3.3";
 
         // assets
         public static AssetBundle resources;
@@ -56,7 +56,7 @@ namespace SylmarDev.SpireItems
         // declare items
         // the java native has logged on
         private static Akabeko akabeko = new Akabeko();
-        private static Anchor anchor = new Anchor();
+        //private static Anchor anchor = new Anchor();
         private static BagOfMarbles marbles = new BagOfMarbles();
         private static BloodVial vial = new BloodVial();
         private static Boot boot = new Boot();
@@ -80,11 +80,12 @@ namespace SylmarDev.SpireItems
         private static Pear pear = new Pear();
         private static ClockworkSouvenir cs = new ClockworkSouvenir();
         private static OrangePellets op = new OrangePellets();
-        private static SingingBowl sb = new SingingBowl();
+        //private static SingingBowl sb = new SingingBowl();
         private static SlingOfCourage sling = new SlingOfCourage();
         private static NeowsLament neow = new NeowsLament();
         private static DarkstonePeriapt darkstone = new DarkstonePeriapt();
         private static GremlinHorn gh = new GremlinHorn();
+        private static PaperPhrog pp = new PaperPhrog(); // I fly like paper get high like planes
 
         // red
         private static StrangeSpoon strangeSpoon = new StrangeSpoon();
@@ -122,7 +123,7 @@ namespace SylmarDev.SpireItems
 
             Log.LogInfo("Loading Items. . .");
             akabeko.Init();
-            anchor.Init();
+            //anchor.Init();
             marbles.Init();
             vial.Init();
             boot.Init();
@@ -146,11 +147,12 @@ namespace SylmarDev.SpireItems
             pear.Init();
             cs.Init();
             op.Init();
-            sb.Init();
+            //sb.Init();
             sling.Init();
             neow.Init();
             darkstone.Init();
             gh.Init();
+            pp.Init(); // if you catch me at the border I got visas in my name
 
             // red
             strangeSpoon.Init();
@@ -182,31 +184,25 @@ namespace SylmarDev.SpireItems
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
-        /*
-        private void Update()
+        /*private void Update()
         {
-            
             if (Input.GetKeyDown(KeyCode.F2))
-            {	
+            {
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(MawBank.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GoldenIdol.item.itemIndex), transform.position, transform.forward * 20f);
             }
-
             if (Input.GetKeyDown(KeyCode.F3))
-            {	
+            {
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Damaru.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(NeowsLament.item.itemIndex), transform.position, transform.forward * 20f);
             }
-
             if (Input.GetKeyDown(KeyCode.F4))
             {
                 var cb = PlayerCharacterMasterController.instances[0].master.GetBody();
-                cb.AddBuff(Vulnerable.buff);
+                cb.AddBuff(vulnerableBuff.BuffDef);
             }
-        } */
+        }*/
     }
 }

@@ -3,33 +3,29 @@ using RoR2;
 using R2API;
 using R2API.Utils;
 using UnityEngine;
+using SpireItems.Buffs;
+using BepInEx.Configuration;
 
 namespace SylmarDev.SpireItems
 {
-    public class Vulnerable
+    public class Vulnerable : BuffBase<Vulnerable>
     {
-        public static BuffDef buff;
-        public CustomBuff completeBuff;
-        public void Init()
+        public override string BuffName => "Vulnerable";
+        public override Color Color => Color.magenta;
+        public override bool CanStack => false;
+        public override bool IsDebuff => true;
+        public override Sprite BuffIcon => SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/icon_vulnerable.png");
+
+        public override void Init()
         {
-            buff = ScriptableObject.CreateInstance<BuffDef>();
-
-            buff.buffColor = Color.magenta;
-            buff.canStack = false;
-            buff.isDebuff = true;
-            buff.name = "STSVulnerable";
-
-            buff.iconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/icon_vulnerable.png");
-
-            completeBuff = new CustomBuff(buff);
-            BuffAPI.Add(completeBuff);
-
-            // hook
-            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
-
-            Log.LogInfo("Vulnerable (Buff) done");
+            CreateBuff();
+            Hooks();
         }
 
+        public override void Hooks()
+        {
+            On.RoR2.HealthComponent.TakeDamage += On_HCTakeDamage;
+        }
 
         private void On_HCTakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
@@ -39,14 +35,23 @@ namespace SylmarDev.SpireItems
                 return;
             }
 
-            var isVulnerable = self.body.HasBuff(buff);
+            var isVulnerable = self.body.HasBuff(BuffDef);
+            var cb = di.attacker.GetComponent<CharacterBody>();
+            var inv = cb ? cb.inventory : null;
 
             if (isVulnerable)
             {
-                di.damage *= 1.5f; // temp 1k, move to 1.5f
+                if (inv) {
+                    var phrogCount = inv.GetItemCount(PaperPhrog.item.itemIndex);
+                    di.damage = phrogCount >= 1 ? di.damage * (1.5f + (phrogCount * 0.25f)) : di.damage * 1.5f;
+                } else
+                {
+                    di.damage *= 1.5f;
+                }
+                //di.damage *= 1.5f; // temp 1k, move to 1.5f
             }
 
-            orig(self, di); 
+            orig(self, di);
         }
     }
 }

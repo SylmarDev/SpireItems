@@ -24,7 +24,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "VIOLENTPEN_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier1;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/PenNib.png");
@@ -71,7 +73,7 @@ namespace SylmarDev.SpireItems
                         var nine = Math.Min(9, cb.inventory.GetItemCount(item.itemIndex));
                         for (var i = 0; i < nine; i++)
                         {
-                            cb.AddBuff(PenNibBuff.buff);
+                            cb.AddBuff(PenNibBuff.instance.BuffDef);
                         }
                         hits = 0;
                     }

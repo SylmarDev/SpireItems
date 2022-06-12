@@ -34,6 +34,7 @@ This mod is still very early on in development, so please note that it hasn't be
 * Gremlin Horn - Chance to lower all cooldowns on kill
 * Neow's Lament - Small chance to instantly kill enemy on hit
 * Orange Pellets - Chance to remove all debuffs on kill
+* Paper Phrog - Vulnerable enemies take more damage
 * Pear - Gain Max HP
 * Singing Bowl - Gain Max HP every time you pick up an item
 
@@ -46,7 +47,8 @@ This mod is still very early on in development, so please note that it hasn't be
 
 ## TODO
 * Many new items and equipments are planned
-* Probably won't update this version too much until Survivors of the Void, however
+* Item Balancing
+* Visual effects for divinity buff
 
 ## Important Notes
 * I didn't make Slay the Spire, or any of the item art, this is a fan project. Don't sue me.
@@ -58,12 +60,23 @@ This mod is still very early on in development, so please note that it hasn't be
 	* @PrincessCoales on twitter
 
 #### This mod made possible by
+* Phreel - Updated mod to the SOTV patch when I was too lazy to do so
 * The RoR2 Modding Discord
 * Anyone who sends suggestions, constructive criticism or error logs
 * My Mom
 #### Thank you
 
 ## Changelog
+
+**0.3.3**
+
+* We're finally back!
+* Updated to SOTV - big thanks to Phreel! also thanks for the following:
+	* Temporarily disabled Anchor and Singing Bowl until they can be fixed or their effects can be changed
+	* Updated descriptions and removed from Simulacrum; Meal Ticket, Juzu Bracelet
+	* Enemies can no longer obtain Bronze Scales & Neow's Lament (you guys are weak LOL - syl)
+* Fixed Strange Spoon, was broken in the unofficial patch
+* Added Paper Phrog
 
 **0.3.2**
 

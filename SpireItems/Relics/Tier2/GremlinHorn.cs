@@ -21,8 +21,10 @@ namespace SylmarDev.SpireItems
             item.descriptionToken = "STSGREMLINHORN_DESC";
             item.loreToken = "STSGREMLINHORN_LORE";
 
-            // tier
-            item.tier = ItemTier.Tier2;
+            // set tier
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier2;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/GremlinHorn.png");

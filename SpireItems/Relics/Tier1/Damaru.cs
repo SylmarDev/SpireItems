@@ -22,7 +22,9 @@ namespace SylmarDev.SpireItems
             item.loreToken = "DAMARU_LORE";
 
             // tier
-            item.tier = ItemTier.Tier1;
+            ItemTierDef itd = new ItemTierDef();
+            itd.tier = ItemTier.Tier1;
+            item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
             item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/Damaru.png");
@@ -69,7 +71,7 @@ namespace SylmarDev.SpireItems
                     var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
                     if (proc)
                     {
-                        cb.AddBuff(Mantra.buff);
+                        cb.AddBuff(Mantra.instance.BuffDef);
                     }
                 }
             }
