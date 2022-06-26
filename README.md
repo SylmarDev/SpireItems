@@ -68,6 +68,10 @@ This mod is still very early on in development, so please note that it hasn't be
 
 ## Changelog
 
+**0.3.4**
+
+* Fixed bug with Orichalcum not having an upper limit (no more free eclipse wins for engineer)
+
 **0.3.3**
 
 * We're finally back!

@@ -37,7 +37,7 @@ namespace SylmarDev.SpireItems
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.3.3";
+        public const string PluginVersion = "0.3.4";
 
         // assets
         public static AssetBundle resources;
@@ -73,6 +73,7 @@ namespace SylmarDev.SpireItems
         private static ToyOrnithopter toy = new ToyOrnithopter();
         private static Vajra vajra = new Vajra();
         private static Damaru damaru = new Damaru();
+        //private static BagOfPreparation bop = new BagOfPreparation();
 
         // green
         private static GoldenIdol gi = new GoldenIdol(); 
@@ -140,6 +141,7 @@ namespace SylmarDev.SpireItems
             toy.Init();
             vajra.Init();
             damaru.Init();
+            //bop.Init();
 
             // green
             gi.Init();
@@ -184,19 +186,20 @@ namespace SylmarDev.SpireItems
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
-        /*private void Update()
+        /*
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F2))
             {
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(GoldenIdol.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BagOfPreparation.item.itemIndex), transform.position, transform.forward * 20f);
             }
             if (Input.GetKeyDown(KeyCode.F3))
             {
                 var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
                 Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(NeowsLament.item.itemIndex), transform.position, transform.forward * 20f);
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex((EquipmentIndex) 3), transform.position, transform.forward * 20f);
             }
             if (Input.GetKeyDown(KeyCode.F4))
             {

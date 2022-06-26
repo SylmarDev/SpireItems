@@ -50,7 +50,7 @@ namespace SylmarDev.SpireItems
             // I just realized this thing might be able to kill you if you proc a blood shrine while vulnerable,
             // but you'd have to be a huge dope to do that and probably deserve it so I'm not going to do anything about it
 
-            Log.LogInfo("Paper Phrog done.");
+            Log.LogInfo("PaperPhrog done.");
         }
 
         private void AddTokens()
