@@ -46,9 +46,33 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // 2 bonus charges at the start of a stage
+            Stage.onStageStartGlobal += Stage_onStageStartGlobal;
             
 
-            Log.LogInfo("Bag of Prep done");
+            Log.LogInfo("Bag of Prep is done");
+        }
+
+        private void Stage_onStageStartGlobal(Stage obj)
+        {
+            Log.LogMessage("hi :)");
+            Log.LogMessage(PlayerCharacterMasterController.instances.Count);
+            // get an NRE here after stage 1 for somehow
+
+            for (var i = 0; i < PlayerCharacterMasterController.instances.Count; i++)
+            {
+                CharacterBody cb = CharacterMaster.readOnlyInstancesList[i].GetBody() != null ? CharacterMaster.readOnlyInstancesList[i].GetBody() : null;
+
+                var bops = cb.inventory.GetItemCount(item.itemIndex);
+
+
+                Log.LogMessage($"bop count: {bops}");
+
+                if (bops > 0)
+                {
+                    var toAdd = 2 * bops;
+                    cb.equipmentSlot.stock += toAdd;
+                }
+            }
         }
 
         private void AddTokens()

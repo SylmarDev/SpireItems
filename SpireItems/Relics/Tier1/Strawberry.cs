@@ -67,12 +67,13 @@ namespace SylmarDev.SpireItems
                 var invBerries = self.inventory.GetItemCount(item.itemIndex);
                 if (invBerries >= 1 && invBerries > strawberries)
                 {
-                    self.maxHealth *= 1f + (0.05f * invBerries);
+                    self.maxHealth += 35 * invBerries;
+                    self.healthComponent.Heal(35, new ProcChainMask());
                     strawberries = invBerries;
                 }
                 else if (invBerries < strawberries)
                 {
-                    self.maxHealth /= 1f + (0.05f * strawberries);
+                    self.maxHealth -= 35 * strawberries;
                     strawberries = invBerries;
                 }
             }
@@ -87,8 +88,7 @@ namespace SylmarDev.SpireItems
                 var invBerries = self.inventory.GetItemCount(item.itemIndex);
                 if (invBerries >= 1)
                 {
-                    var maxHP = self.baseMaxHealth + self.levelMaxHealth * (self.level - 1f);
-                    var toAdd = (maxHP * (1f + (0.05f * invBerries))) - maxHP;
+                    var toAdd = 35 * invBerries;
                     self.baseMaxHealth += toAdd;
                     orig(self);
                     self.baseMaxHealth -= toAdd;

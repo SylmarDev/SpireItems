@@ -47,26 +47,34 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // increase max hp
+            On.RoR2.Run.Start += Run_Start;
             On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
 
             Log.LogInfo("Pear done.");
         }
 
+        private void Run_Start(On.RoR2.Run.orig_Start orig, Run self)
+        {
+            pears = 0;
+            orig(self);
+        }
+
         private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
         {
             if (self.inventory)
             {
-                var invPears = self.inventory.GetItemCount(item.itemIndex);
-                if (invPears >= 1 && invPears > pears)
+                var invBerries = self.inventory.GetItemCount(item.itemIndex);
+                if (invBerries >= 1 && invBerries > pears)
                 {
-                    self.maxHealth *= 1f + (0.08f * invPears);
-                    pears = invPears;
+                    self.maxHealth += 100 * invBerries;
+                    self.healthComponent.Heal(100, new ProcChainMask());
+                    pears = invBerries;
                 }
-                else if (invPears < pears)
+                else if (invBerries < pears)
                 {
-                    self.maxHealth /= 1f + (0.08f * pears);
-                    pears = invPears;
+                    self.maxHealth -= 100 * pears;
+                    pears = invBerries;
                 }
             }
             orig(self);
@@ -80,8 +88,7 @@ namespace SylmarDev.SpireItems
                 var invPears = self.inventory.GetItemCount(item.itemIndex);
                 if (invPears >= 1)
                 {
-                    var maxHP = self.baseMaxHealth + self.levelMaxHealth * (self.level - 1f);
-                    var toAdd = (maxHP * (1f + (0.08f * invPears))) - maxHP;
+                    var toAdd = 100 * invPears;
                     self.baseMaxHealth += toAdd;
                     orig(self);
                     self.baseMaxHealth -= toAdd;

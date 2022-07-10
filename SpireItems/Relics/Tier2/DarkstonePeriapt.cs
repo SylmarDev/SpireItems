@@ -73,7 +73,7 @@ namespace SylmarDev.SpireItems
                 var invDSP = self.inventory.GetItemCount(item.itemIndex);
                 if (invDSP >= 1)
                 {
-                    var toAdd = self.inventory.GetTotalItemCountOfTier(ItemTier.Lunar) * invDSP * 6;
+                    var toAdd = self.inventory.GetTotalItemCountOfTier(ItemTier.Lunar) * invDSP * 60;
                     self.baseMaxHealth += toAdd;
                     orig(self);
                     self.baseMaxHealth -= toAdd;
@@ -87,7 +87,7 @@ namespace SylmarDev.SpireItems
         {
 			LanguageAPI.Add("STSDARKSTONEPERI_NAME", "Darkstone Periapt");
 			LanguageAPI.Add("STSDARKSTONEPERI_PICKUP", "Increase your maximum health for every Lunar item you have.");
-			LanguageAPI.Add("STSDARKSTONEPERI_DESC", "Gain 6 Max HP <style=cStack>(+6 Per Stack)</style> for every Lunar Item you have");
+			LanguageAPI.Add("STSDARKSTONEPERI_DESC", "Gain 60 Max HP <style=cStack>(+60 Per Stack)</style> for every Lunar Item you have");
 			LanguageAPI.Add("STSDARKSTONEPERI_LORE", "The stone draws power from dark energy, converting it into vitality for the wearer.");
         }
     }
