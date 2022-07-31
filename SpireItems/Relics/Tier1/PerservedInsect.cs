@@ -72,9 +72,25 @@ namespace SylmarDev.SpireItems
         {
             orig(self);
             var num = 0;
+
+            if (PlayerCharacterMasterController.instances.Count == 0)
+            {
+                return;
+            }
+
             for (var i = 0; i < PlayerCharacterMasterController.instances.Count; i++)
             {
-                num += CharacterMaster.readOnlyInstancesList[i].GetBody().inventory.GetItemCount(item.itemIndex);
+                var cb = CharacterMaster.readOnlyInstancesList[i].GetBody();
+                if (cb == null)
+                {
+                    return;
+                }
+                var inv = cb.inventory;
+                if (inv == null)
+                {
+                    return;
+                }
+                num += inv.GetItemCount(item.itemIndex);
             }
             insects = num;
         }

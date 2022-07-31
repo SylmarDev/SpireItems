@@ -22,23 +22,41 @@ namespace SylmarDev.SpireItems
         }
         public override void Hooks()
         {
-            On.RoR2.CharacterBody.SetBuffCount += CharacterBody_SetBuffCount;
+            On.RoR2.CharacterBody.AddTimedBuff_BuffDef_float += CharacterBody_AddTimedBuff_BuffDef_float;
+            On.RoR2.CharacterBody.AddTimedBuff_BuffDef_float_int += CharacterBody_AddTimedBuff_BuffDef_float_int;
+            On.RoR2.DotController.InflictDot_refInflictDotInfo += DotController_InflictDot_refInflictDotInfo;
         }
-        private void CharacterBody_SetBuffCount(On.RoR2.CharacterBody.orig_SetBuffCount orig, CharacterBody self, BuffIndex buffType, int newCount)
+
+        private void CharacterBody_AddTimedBuff_BuffDef_float(On.RoR2.CharacterBody.orig_AddTimedBuff_BuffDef_float orig, CharacterBody self, BuffDef buffDef, float duration)
         {
-            var bd = BuffCatalog.GetBuffDef(buffType);
-            var oldCount = self.GetBuffCount(bd); // only removes additive buffs
-            if (self.GetBuffCount(BuffDef) >= 1 && bd.isDebuff && newCount > oldCount)
+            if (self.healthComponent && self.HasBuff(BuffDef) && buffDef.buffIndex != BuffIndex.None && buffDef.isDebuff)
             {
-                self.RemoveBuff(bd);
                 self.RemoveBuff(BuffDef);
                 return;
             }
-            else
-            {
-                orig(self, buffType, newCount);
-            }
+            orig(self, buffDef, duration);
+        }
 
+        private void CharacterBody_AddTimedBuff_BuffDef_float_int(On.RoR2.CharacterBody.orig_AddTimedBuff_BuffDef_float_int orig, CharacterBody self, BuffDef buffDef, float duration, int maxStacks)
+        {
+            if (self.healthComponent && self.HasBuff(BuffDef) && buffDef.buffIndex != BuffIndex.None && buffDef.isDebuff)
+            {
+                self.RemoveBuff(BuffDef);
+                return;
+            }
+            orig(self, buffDef, duration, maxStacks);
+        }
+
+        private void DotController_InflictDot_refInflictDotInfo(On.RoR2.DotController.orig_InflictDot_refInflictDotInfo orig, ref InflictDotInfo inflictDotInfo)
+        {
+            var victim = inflictDotInfo.victimObject;
+            var cb = victim?.GetComponent<CharacterBody>();
+            if (cb && cb.healthComponent && cb.HasBuff(BuffDef))
+            {
+                cb.RemoveBuff(BuffDef);
+                return;
+            }
+            orig(ref inflictDotInfo);
         }
     }
 }

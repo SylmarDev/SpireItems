@@ -84,7 +84,7 @@ namespace SylmarDev.SpireItems
             var playerCount = PlayerCharacterMasterController.instances.Count;
             var cc = CharacterMaster.readOnlyInstancesList[0].GetBody();
 
-            if (playerCount != 1) // more than 1 player
+            if (playerCount >= 1) // more than 1 player
             {
                 cc = CharacterMaster.readOnlyInstancesList[0].GetBody();
                 var shortestDist = Vector3.Distance(position, CharacterMaster.readOnlyInstancesList[0].GetBody().corePosition);
@@ -132,7 +132,7 @@ namespace SylmarDev.SpireItems
                 PickupDropletController.CreatePickupDroplet(pickupInfo, position, velocity);
             } else
             {
-                On.RoR2.PickupDropletController.CreatePickupDroplet_PickupIndex_Vector3_Vector3 -= CreatePickupDroplet_BasicPickupDropTable; // might not need you
+                //On.RoR2.PickupDropletController.CreatePickupDroplet_PickupIndex_Vector3_Vector3 -= CreatePickupDroplet_BasicPickupDropTable; // might not need you
                 orig(pickupIndex, position, velocity);
             }
 

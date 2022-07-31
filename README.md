@@ -16,7 +16,7 @@ This mod is still early on in development, so please note that it hasn't been te
 * Bronze Scales - When you're hit, deal damage back
 * Ceramic Fish - Gain a small amount of gold when you interact with things
 * Damaru - Chance on kill to gain Mantra
-* Dream Catcher - Chance Items from chests will be Void Potentials
+* Dream Catcher - Chance items from chests will be Void Potentials
 * Happy Flower -  Chance on killing an enemy to summon a weak ghost
 * Juzu Bracelet - Reduce severity of Teleporter bosses
 * Maw Bank - Gain additional Gold until you spend Lunar Coins
@@ -35,7 +35,7 @@ This mod is still early on in development, so please note that it hasn't been te
 #### Green
 * Bloody Idol - A mysterious idol of blood. I wonder how you obtain it...
 * Clockwork Souvenir - Chance to gain Artifact on kill
-* Darkstone Periapt - Gain 6 Max HP for every Lunar item you have
+* Darkstone Periapt - Gain 60 Max HP for every Lunar item you have
 * Golden Idol - Gain additional gold
 * Gremlin Horn - Chance to lower all cooldowns on kill
 * Neow's Lament - Small chance to instantly kill enemy on hit
@@ -68,12 +68,23 @@ This mod is still early on in development, so please note that it hasn't been te
 #### This mod made possible by
 * Ape - Design and Suggestions
 * Phreel - Updated mod to the SOTV patch when I was too lazy to do so
+* Kauuyna - Helping debug multiplayer
 * The RoR2 Modding Discord
 * Anyone who sends suggestions, constructive criticism or error logs
 * My Mom
 #### Thank you
 
 ## Changelog
+
+**0.4.3**
+* Fixed Artifact buff acting up
+
+**0.4.2**
+* More multiplayer fixes
+* Meal Ticket (~~15 HP per Baazar Visit~~ => 35 HP per Baazar Visit)
+
+**0.4.1**
+* Fixed Multiplayer not working (hopefully, its hard to test)
 
 **0.4.0**
 

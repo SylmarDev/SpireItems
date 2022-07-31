@@ -36,8 +36,8 @@ namespace SylmarDev.SpireItems
         //If we see this PluginGUID as it is on thunderstore, we will deprecate this mod. Change the PluginAuthor and the PluginName !
         public const string PluginGUID = "SylmarDev.SpireItems";
         public const string PluginAuthor = "SylmarDev";
-        public const string PluginName = "Slay The Spire Relics";
-        public const string PluginVersion = "0.4.0";
+        public const string PluginName = "SpireItems";
+        public const string PluginVersion = "0.4.3";
 
         // assets
         public static AssetBundle resources;
@@ -53,7 +53,6 @@ namespace SylmarDev.SpireItems
         // todo: visual effects for divinity and maybe other buffs
         // todo: next batch of items
         // implement:
-        // dream catcher
         // tiny chest
         // war paint
         // whetstone
@@ -203,39 +202,38 @@ namespace SylmarDev.SpireItems
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
-
-        //private void Update()
-        //{
-        //    if (Input.GetKeyDown(KeyCode.F2))
-        //    {
-        //        var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-        //        Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-        //        PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(RedSkull.item.itemIndex), transform.position, transform.forward * 20f);
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.F3))
-        //    {
-        //        var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-        //        Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-        //        PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(SmilingMask.item.itemIndex), transform.position, transform.forward * 20f);
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.F4))
-        //    {
-        //        var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-        //        Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-        //        PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(DreamCatcher.item.itemIndex), transform.position, transform.forward * 20f);
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.F5))
-        //    {
-        //        var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-        //        Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-        //        PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(HappyFlower.item.itemIndex), transform.position, transform.forward * 20f);
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.F6))
-        //    {
-        //        var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-        //        Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-        //        PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(PerservedInsect.item.itemIndex), transform.position, transform.forward * 20f);
-        //    }
-        //}
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
+                cb.AddBuff(ab.BuffDef);
+                //var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+                //Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+                //PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(), transform.position, transform.forward * 20f);
+            }
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+                var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
+                cb.AddTimedBuff(vulnerableBuff.BuffDef, 5);
+            }
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
+                DotController.InflictDot(cb.gameObject, cb.gameObject, DotController.DotIndex.Bleed);
+            }
+            //if (Input.GetKeyDown(KeyCode.F5))
+            //{
+            //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+            //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(HappyFlower.item.itemIndex), transform.position, transform.forward * 20f);
+            //}
+            //if (Input.GetKeyDown(KeyCode.F6))
+            //{
+            //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+            //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(PerservedInsect.item.itemIndex), transform.position, transform.forward * 20f);
+            //}
+        }
     }
 }

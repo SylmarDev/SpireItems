@@ -90,7 +90,7 @@ namespace SylmarDev.SpireItems
                 if (self.inventory.GetItemCount(item.itemIndex) >= 1)
                 {
                     var x = self.baseMaxHealth;
-                    self.baseMaxHealth += (15 * activeTickets);
+                    self.baseMaxHealth += (35 * activeTickets);
                     orig(self);
                     self.baseMaxHealth = x; // put this back to prevent horrible atrocitites
                     return;
@@ -103,8 +103,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
             LanguageAPI.Add("MEALTICKET_NAME", "Meal Ticket");
-			LanguageAPI.Add("MEALTICKET_PICKUP", "Gain 15 max health every time you enter the Bazaar Between Time.");
-			LanguageAPI.Add("MEALTICKET_DESC", "Permanently increase <style=cIsHealing>maximum health</style> by <style=cIsHealing>15</style> <style=cStack>(+15 per stack)</style> every time you visit the Bazaar Between Time.");
+			LanguageAPI.Add("MEALTICKET_PICKUP", "Gain max health every time you enter the Bazaar Between Time.");
+			LanguageAPI.Add("MEALTICKET_DESC", "Permanently increase <style=cIsHealing>maximum health</style> by <style=cIsHealing>35/style> <style=cStack>(+35 per stack)</style> every time you visit the Bazaar Between Time.");
 			LanguageAPI.Add("MEALTICKET_LORE", "Complimentary meatballs with every visit!");
         }
     }
