@@ -3,6 +3,8 @@ using RoR2;
 using R2API;
 using R2API.Utils;
 using UnityEngine;
+using MonoMod.RuntimeDetour;
+using static MonoMod.Cil.RuntimeILReferenceBag.FastDelegateInvokers;
 
 namespace SylmarDev.SpireItems
 {
@@ -34,7 +36,7 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
-            ItemTag[] tags = new ItemTag[] { ItemTag.Damage };
+            ItemTag[] tags = new ItemTag[] { ItemTag.Utility };
             item.tags = tags;
 
             // Turn Tokens into strings
@@ -46,8 +48,6 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // 2 bonus charges at the start of a stage
-            Stage.onStageStartGlobal += Stage_onStageStartGlobal;
-            
 
             Log.LogInfo("Bag of Prep is done");
         }

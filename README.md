@@ -78,6 +78,7 @@ This mod is still early on in development, so please note that it hasn't been te
 
 **0.4.3**
 * Fixed Artifact buff acting up
+* Added Coffee Dripper
 
 **0.4.2**
 * More multiplayer fixes

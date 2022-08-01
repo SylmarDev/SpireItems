@@ -103,6 +103,9 @@ namespace SylmarDev.SpireItems
         private static StrangeSpoon strangeSpoon = new StrangeSpoon();
         private static Necronomicon necronomicon = new Necronomicon();
         private static FaceOfCleric cleric = new FaceOfCleric();
+
+        // lunar
+        private static CoffeeDripper cd = new CoffeeDripper();
         
         public static DamageInfo thornDi = new DamageInfo();
 
@@ -177,6 +180,9 @@ namespace SylmarDev.SpireItems
             necronomicon.Init();
             cleric.Init();
 
+            // lunar
+            cd.Init();
+
             // no idea why this has to go after, but it just works
             var transform = cardPrefab.transform;
             transform.localScale = scaleTo;
@@ -206,16 +212,19 @@ namespace SylmarDev.SpireItems
         {
             if (Input.GetKeyDown(KeyCode.F2))
             {
-                var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
-                cb.AddBuff(ab.BuffDef);
-                //var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-                //Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                //PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(), transform.position, transform.forward * 20f);
+                var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+                Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(CoffeeDripper.item.itemIndex), transform.position, transform.forward * 20f);
+                Log.LogMessage("Coffee Dripper: " + CoffeeDripper.item.canRemove);
             }
             if (Input.GetKeyDown(KeyCode.F3))
             {
-                var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
-                cb.AddTimedBuff(vulnerableBuff.BuffDef, 5);
+                //var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
+                //cb.AddTimedBuff(vulnerableBuff.BuffDef, 5);
+                var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+                Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex((ItemIndex) 107), transform.position, transform.forward * 20f);
+                Log.LogMessage("Glass: " + RoR2.ItemCatalog.GetItemDef((ItemIndex) 107).canRemove);
             }
             if (Input.GetKeyDown(KeyCode.F4))
             {
