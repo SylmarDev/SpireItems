@@ -87,8 +87,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
 			LanguageAPI.Add("STS_COFFEEDRIPPER_NAME", "Coffee Dripper");
-			LanguageAPI.Add("STS_COFFEEDRIPPER_PICKUP", "reduce healing by 25%, increase damage by 50%");
-			LanguageAPI.Add("STS_COFFEEDRIPPER_DESC", "");
+			LanguageAPI.Add("STS_COFFEEDRIPPER_PICKUP", "Reduce Healing, but Increase Damage");
+			LanguageAPI.Add("STS_COFFEEDRIPPER_DESC", "Reduce healing by 25%<style=cStack>(-25% per stack)</style>, increase damage by 50%<style=cStack>(+50% per stack)</style>. Stacks multiplicatively.");
 			LanguageAPI.Add("STS_COFFEEDRIPPER_LORE", "\"Yes, another cup please. Back to work. Back to work!\" -The Architect");
         }
     }

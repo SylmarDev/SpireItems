@@ -82,7 +82,19 @@ namespace SylmarDev.SpireItems
 
             // find closest character
             var playerCount = PlayerCharacterMasterController.instances.Count;
-            var cc = CharacterMaster.readOnlyInstancesList[0].GetBody();
+            CharacterBody cc = null;
+            var ii = 0;
+
+            while (cc == null)
+            {
+                if (ii == 5)
+                {
+                    Log.LogError("No valid characterbodies in game!");
+                    orig(pickupIndex, position, velocity);
+                }
+                cc = CharacterMaster.readOnlyInstancesList[ii].GetBody(); // closest character
+                ii++;
+            }
 
             if (playerCount >= 1) // more than 1 player
             {
@@ -90,6 +102,11 @@ namespace SylmarDev.SpireItems
                 var shortestDist = Vector3.Distance(position, CharacterMaster.readOnlyInstancesList[0].GetBody().corePosition);
                 for (var i = 0; i < playerCount; i++)
                 {
+                    var inst = CharacterMaster.readOnlyInstancesList[i];
+                    if (inst == null) continue;
+                    var cb = inst.GetBody();
+                    if (cb == null) continue;
+
                     var dist = Vector3.Distance(position,
                         CharacterMaster.readOnlyInstancesList[i].GetBody().corePosition);
                     if (dist < shortestDist)
@@ -135,8 +152,6 @@ namespace SylmarDev.SpireItems
                 //On.RoR2.PickupDropletController.CreatePickupDroplet_PickupIndex_Vector3_Vector3 -= CreatePickupDroplet_BasicPickupDropTable; // might not need you
                 orig(pickupIndex, position, velocity);
             }
-
-            
         }
 
         private void AddTokens()

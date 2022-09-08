@@ -74,14 +74,8 @@ namespace SylmarDev.SpireItems
                         inv.RemoveItem(GoldenIdol.item, ic);
                         inv.GiveItem(item.itemIndex, ic);
 
-                        var bt = "";
-                        if (ic == 1)
-                        {
-                            bt = "<style=cEvent>Your <color=#FFC733>golden idol</color> begins to dull in color and begins bleeding from its eyes. The bleeding never ceases.</style>";
-                        } else
-                        {
-                            bt = "<style=cEvent>Your <color=#FFC733>golden idols</color> begin to dull in color and begin bleeding from their eyes. The bleeding never ceases.</style>";
-                        }
+                        var bt = ic == 1 ? "<style=cEvent>Your <color=#FFC733>golden idol</color> begins to dull in color and begins bleeding from its eyes. The bleeding never ceases.</style>" :
+                            "<style=cEvent>Your <color=#FFC733>golden idols</color> begin to dull in color and begin bleeding from their eyes. The bleeding never ceases.</style>";
 
                         Chat.SendBroadcastChat(new Chat.SubjectFormatChatMessage
                         {

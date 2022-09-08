@@ -3,12 +3,16 @@ using RoR2;
 using R2API;
 using R2API.Utils;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SylmarDev.SpireItems
 {
     public class Whetstone
     {
         public static ItemDef item;
+        public bool inPickupAlready = false;
         public void Init()
         {
             // init
@@ -34,6 +38,9 @@ namespace SylmarDev.SpireItems
             item.canRemove = true;
             item.hidden = false;
 
+            ItemTag[] tags = new ItemTag[] { ItemTag.Utility };
+            item.tags = tags;
+
             // Turn Tokens into strings
             AddTokens();
 
@@ -43,8 +50,73 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // upgrade 2 stacks of damage items into their next rarity
+            On.RoR2.Inventory.GiveItem_ItemIndex_int += Inventory_GiveItem_ItemIndex_int;
 
             Log.LogInfo("Whetstone done.");
+        }
+
+        private void Inventory_GiveItem_ItemIndex_int(On.RoR2.Inventory.orig_GiveItem_ItemIndex_int orig, Inventory self, ItemIndex itemIndex, int count)
+        {
+            orig(self, itemIndex, count);
+
+            // deal with recursion problem
+            if (inPickupAlready)
+            {
+                return;
+            }
+
+            inPickupAlready = true;
+
+            // start from here
+            CharacterBody cb = CharacterBody.readOnlyInstancesList.ToList().Find((CharacterBody body2) => body2.inventory == self);
+            if (cb && self.GetItemCount(item) >= 1)
+            {
+                var whetstoneCount = self.GetItemCount(item);
+
+                var viableReplaces = new List<ItemDef>();
+                var rnd = new System.Random();
+
+                foreach (var ii in self.itemAcquisitionOrder)
+                {
+                    var itemDef = ItemCatalog.GetItemDef(ii);
+
+                    if (self.GetItemCount(itemDef) >= 1 && // is in inventory 
+                        (itemDef.tier == ItemTier.Tier1 || itemDef.tier == ItemTier.Tier2) && // is white or green
+                        Array.Exists(itemDef.tags, element => element == ItemTag.Damage)) // is a healing item
+                    {
+                        viableReplaces.Add(itemDef);
+                    }
+                }
+
+                for (var i = 0; i < whetstoneCount; i++)
+                {
+                    for (var q = 0; q < 2; q++) // upgrade two items
+                    {
+                        if (viableReplaces.Count == 0) continue;
+
+                        var r = rnd.Next(viableReplaces.Count);
+                        var toReplace = viableReplaces.ElementAt(i);
+                        var listByTier = toReplace.tier == ItemTier.Tier1 ? ItemCatalog.tier2ItemList : ItemCatalog.tier3ItemList; // should be fine
+
+                        // add new
+                        ItemDef toAdd = null;
+
+                        while (toAdd == null || !(Array.Exists(toAdd.tags, element => element == ItemTag.Damage)))
+                        {
+                            toAdd = ItemCatalog.GetItemDef(listByTier.ElementAt(rnd.Next(listByTier.Count)));
+                        }
+
+                        self.GiveItem(toAdd); // this will probably inifinite loop
+
+                        // remove old
+                        self.RemoveItem(toReplace);
+                        if (self.GetItemCount(toReplace) < 1) viableReplaces.RemoveAt(i);
+                    }
+                    self.RemoveItem(item); // remove whetstone
+                }
+            }
+
+            inPickupAlready = false;
         }
 
         private void AddTokens()

@@ -68,7 +68,7 @@ This mod is still early on in development, so please note that it hasn't been te
 #### This mod made possible by
 * Ape - Design and Suggestions
 * Phreel - Updated mod to the SOTV patch when I was too lazy to do so
-* Kauuyna - Helping debug multiplayer
+* Kanna - Helping debug multiplayer
 * The RoR2 Modding Discord
 * Anyone who sends suggestions, constructive criticism or error logs
 * My Mom
@@ -76,9 +76,19 @@ This mod is still early on in development, so please note that it hasn't been te
 
 ## Changelog
 
-**0.4.3**
-* Fixed Artifact buff acting up
-* Added Coffee Dripper
+**0.5.0**
+* New Items:
+	* War Paint - 
+	* Whetstone - 
+	* Mutagenic Strength - 
+	* Calipers - 
+	* Du-Vu Doll - 
+	* Fossilized Helix -
+	* Tungsten Rod - 
+	* Coffee Dripper - 
+* Other:
+	* Fixed Artifact buff acting up
+	* Potentially fixed Dream Catcher breaking when a player in multiplayer dies / leaves (can't test it but we hope)
 
 **0.4.2**
 * More multiplayer fixes
@@ -88,7 +98,6 @@ This mod is still early on in development, so please note that it hasn't been te
 * Fixed Multiplayer not working (hopefully, its hard to test)
 
 **0.4.0**
-
 * New Items:
 	* Dream Catcher - Chance items from chests will be Void Potentials
 	* Happy Flower -  Chance on killing an enemy to summon a weak ghost

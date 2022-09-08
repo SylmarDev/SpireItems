@@ -34,10 +34,11 @@ namespace SylmarDev.SpireItems
 	{
         //The Plugin GUID should be a unique ID for this plugin, which is human readable (as it is used in places like the config).
         //If we see this PluginGUID as it is on thunderstore, we will deprecate this mod. Change the PluginAuthor and the PluginName !
-        public const string PluginGUID = "SylmarDev.SpireItems";
+        
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "SpireItems";
-        public const string PluginVersion = "0.4.3";
+        public const string PluginGUID = PluginAuthor + "." + PluginName;
+        public const string PluginVersion = "0.5.0";
 
         // assets
         public static AssetBundle resources;
@@ -50,13 +51,29 @@ namespace SylmarDev.SpireItems
         // config file
         private static ConfigFile cfgFile;
 
+        // check that fossilized helix works. everything else seems to work its just a bit rough around the edges
+        // calipers needs a buff or rework
+
+        // todo : add to assets:
+        // War Paint
+        // Whetstone
+        // Mutagenic Strength
+        // mutagenic buff
+        // calipers
+        // duvu doll
+        // tungsten rod
+        // fossilized helix
+        // fossilized helix buff
+        // coffee dripper
+        // todo : config
         // todo: visual effects for divinity and maybe other buffs
         // todo: next batch of items
         // implement:
+        // fossilized helix
         // tiny chest
-        // war paint
-        // whetstone
         // fix:
+        // anchor
+        // singing bowl
         // bag of prep
 
         // declare items
@@ -84,6 +101,8 @@ namespace SylmarDev.SpireItems
         private static PerservedInsect pi = new PerservedInsect();
         private static RedSkull rs = new RedSkull();
         private static SmilingMask sm = new SmilingMask();
+        private static WarPaint wp = new WarPaint();
+        private static Whetstone wt = new Whetstone();
         //private static BagOfPreparation bop = new BagOfPreparation();
 
         // green
@@ -98,11 +117,16 @@ namespace SylmarDev.SpireItems
         private static DarkstonePeriapt darkstone = new DarkstonePeriapt();
         private static GremlinHorn gh = new GremlinHorn();
         private static PaperPhrog pp = new PaperPhrog(); // I fly like paper get high like planes
+        private static MutagenicStrength ms = new MutagenicStrength();
 
         // red
         private static StrangeSpoon strangeSpoon = new StrangeSpoon();
         private static Necronomicon necronomicon = new Necronomicon();
         private static FaceOfCleric cleric = new FaceOfCleric();
+        private static DuVuDoll duvu = new DuVuDoll();
+        private static TungstenRod tung = new TungstenRod();
+        private static Calipers calipers = new Calipers();
+        private static FossilizedHelix fh = new FossilizedHelix();
 
         // lunar
         private static CoffeeDripper cd = new CoffeeDripper();
@@ -116,6 +140,8 @@ namespace SylmarDev.SpireItems
         public static ArtifactBuff ab = new ArtifactBuff();
         public static Mantra mantra = new Mantra();
         public static Divinity divinity = new Divinity();
+        public static MutagenicBuff mutaBuff = new MutagenicBuff();
+        public static Buffer buffer = new Buffer();
 
         // item behaviors I guess
         public OrichalcumItemBehavior oriItemBehavior = new OrichalcumItemBehavior();
@@ -160,6 +186,8 @@ namespace SylmarDev.SpireItems
             pi.Init();
             rs.Init();
             sm.Init();
+            wp.Init();
+            wt.Init();
             //bop.Init();
 
             // green
@@ -174,11 +202,16 @@ namespace SylmarDev.SpireItems
             darkstone.Init();
             gh.Init();
             pp.Init(); // if you catch me at the border I got visas in my name
+            ms.Init();
 
             // red
             strangeSpoon.Init();
             necronomicon.Init();
             cleric.Init();
+            duvu.Init();
+            tung.Init();
+            calipers.Init();
+            fh.Init();
 
             // lunar
             cd.Init();
@@ -203,45 +236,54 @@ namespace SylmarDev.SpireItems
             ab.Init(); // artifact buff
             mantra.Init();
             divinity.Init(); // todo; 
-            
+            mutaBuff.Init();
+            buffer.Init();
+
             // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F2))
-            {
-                var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-                Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(CoffeeDripper.item.itemIndex), transform.position, transform.forward * 20f);
-                Log.LogMessage("Coffee Dripper: " + CoffeeDripper.item.canRemove);
-            }
-            if (Input.GetKeyDown(KeyCode.F3))
-            {
-                //var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
-                //cb.AddTimedBuff(vulnerableBuff.BuffDef, 5);
-                var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-                Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-                PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex((ItemIndex) 107), transform.position, transform.forward * 20f);
-                Log.LogMessage("Glass: " + RoR2.ItemCatalog.GetItemDef((ItemIndex) 107).canRemove);
-            }
-            if (Input.GetKeyDown(KeyCode.F4))
-            {
-                var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
-                DotController.InflictDot(cb.gameObject, cb.gameObject, DotController.DotIndex.Bleed);
-            }
+            //if (Input.GetKeyDown(KeyCode.F1))
+            //{
+            //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+            //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Whetstone.item.itemIndex), transform.position, transform.forward * 20f);
+            //}
+
+            //if (Input.GetKeyDown(KeyCode.F2))
+            //{
+            //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+            //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(DuVuDoll.item.itemIndex), transform.position, transform.forward * 20f);
+            //} 
+
+            //if (Input.GetKeyDown(KeyCode.F3))
+            //{
+            //    //var cb = PlayerCharacterMasterController.instances[0].master.GetBodyObject().GetComponent<CharacterBody>();
+            //    //cb.AddTimedBuff(vulnerableBuff.BuffDef, 5);
+            //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+            //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(MutagenicStrength.item.itemIndex), transform.position, transform.forward * 20f);
+            //}
+            //if (Input.GetKeyDown(KeyCode.F4))
+            //{
+            //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+            //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Calipers.item.itemIndex), transform.position, transform.forward * 20f);
+            //}
             //if (Input.GetKeyDown(KeyCode.F5))
             //{
             //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
             //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(HappyFlower.item.itemIndex), transform.position, transform.forward * 20f);
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(TungstenRod.item.itemIndex), transform.position, transform.forward * 20f);
             //}
             //if (Input.GetKeyDown(KeyCode.F6))
             //{
             //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
             //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(PerservedInsect.item.itemIndex), transform.position, transform.forward * 20f);
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(FossilizedHelix.item.itemIndex), transform.position, transform.forward * 20f);
             //}
         }
     }
