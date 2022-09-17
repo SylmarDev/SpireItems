@@ -83,7 +83,7 @@ This mod is still early on in development, so please note that it hasn't been te
 	* Mutagenic Strength - 
 	* Calipers - 
 	* Du-Vu Doll - 
-	* Fossilized Helix -
+	* Fossilized Helix - 
 	* Tungsten Rod - 
 	* Coffee Dripper - 
 * Other:

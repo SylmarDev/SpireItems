@@ -150,6 +150,8 @@ namespace SylmarDev.SpireItems
         {
             Log.Init(Logger);
 
+            new SpireConfig().Init(Paths.ConfigPath);
+
             // load assets
             Log.LogInfo("Loading Resources. . .");
             using(var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SpireItems.spireitems_assets"))
@@ -163,7 +165,17 @@ namespace SylmarDev.SpireItems
             scaleTo = new Vector3(2f, 2f, 2f);
 
             Log.LogInfo("Loading Items. . .");
-            akabeko.Init();
+            foreach(var configBool in SpireConfig.GetToggles())
+            {
+
+            }
+
+            if (SpireConfig.enableAkabeko.Value) 
+            {
+                var akabeko = new Akabeko();
+                akabeko.Init();
+            }
+                
             //anchor.Init();
             marbles.Init();
             vial.Init();
@@ -286,5 +298,9 @@ namespace SylmarDev.SpireItems
             //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(FossilizedHelix.item.itemIndex), transform.position, transform.forward * 20f);
             //}
         }
+    }
+
+    public abstract class Relic
+    {
     }
 }
