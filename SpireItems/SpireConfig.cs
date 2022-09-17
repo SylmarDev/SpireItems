@@ -104,59 +104,5 @@ namespace SylmarDev.SpireItems
 
             enableCoffeeDripper = config.Bind("General.Toggles", "Enable Coffee Dripper", true, "Set to true to enable Coffee Dripper.");
         }
-
-        public List<ConfigEntry<bool>> GetToggles() 
-        {
-            List<ConfigEntry<bool>> toggles = new List<ConfigEntry<bool>>();
-
-            toggles.Add(enableAkabeko);
-            toggles.Add(enableBagOfMarbles);
-            toggles.Add(enableBloodVial);
-            toggles.Add(enableBoot);
-            toggles.Add(enableBronzeScales);
-            toggles.Add(enableCeramicFish);
-            toggles.Add(enableJuzuBracelet);
-            toggles.Add(enableMawBank);
-            toggles.Add(enableMealTicket);
-            toggles.Add(enableOddlySmoothStone);
-            toggles.Add(enableOrichalcum);
-            toggles.Add(enablePenNib);
-            toggles.Add(enableRedMask);
-            toggles.Add(enableStrawberry);
-            toggles.Add(enableToyOrnithopter);
-            toggles.Add(enableVajra);
-            toggles.Add(enableDamaru);
-            toggles.Add(enableDreamCatcher);
-            toggles.Add(enableHappyFlower);
-            toggles.Add(enablePerservedInsect);
-            toggles.Add(enableRedSkull);
-            toggles.Add(enableSmilingMask);
-            toggles.Add(enableWarPaint);
-            toggles.Add(enableWhetstone);
-
-            toggles.Add(enableGoldenIdol);
-            toggles.Add(enableBloodIdol);
-            toggles.Add(enablePear);
-            toggles.Add(enableClockworkSouvenir);
-            toggles.Add(enableOrangePellets);
-            toggles.Add(enableSlingOfCourage);
-            toggles.Add(enableNeowsLament);
-            toggles.Add(enableDarkstonePeriapt);
-            toggles.Add(enableGremlinHorn);
-            toggles.Add(enableMutagenicStrength);
-
-            toggles.Add(enableStrangeSpoon);
-            toggles.Add(enableNecronomicon);
-            toggles.Add(enableFaceOfCleric);
-            toggles.Add(enableDuVuDoll);
-            toggles.Add(enableTungstenRod);
-            toggles.Add(enableCalipers);
-            toggles.Add(enableFossilizedHelix);
-
-            toggles.Add(enableCoffeeDripper);
-
-            return toggles;
-        }
-
     }
 }

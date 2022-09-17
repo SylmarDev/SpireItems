@@ -10,11 +10,11 @@ using System.ComponentModel;
 
 namespace SylmarDev.SpireItems
 {
-    public class MealTicket
+    public class MealTicket : Relic
     {
         public static ItemDef item;
         public int activeTickets = 0;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

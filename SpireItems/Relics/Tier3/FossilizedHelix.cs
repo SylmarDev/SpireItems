@@ -7,10 +7,10 @@ using System;
 
 namespace SylmarDev.SpireItems
 {
-    public class FossilizedHelix
+    public class FossilizedHelix : Relic
     {
         public static ItemDef item;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

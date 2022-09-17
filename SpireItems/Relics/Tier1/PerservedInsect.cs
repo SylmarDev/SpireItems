@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class PerservedInsect
+    public class PerservedInsect : Relic
     {
         public static ItemDef item;
         public static int insects;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

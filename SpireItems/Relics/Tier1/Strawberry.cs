@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class Strawberry
+    public class Strawberry : Relic
     {
         public static ItemDef item;
         public int strawberries = 0;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

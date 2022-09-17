@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class GremlinHorn
+    public class GremlinHorn : Relic
     {
         public static ItemDef item;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

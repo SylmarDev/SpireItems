@@ -7,11 +7,11 @@ using System;
 
 namespace SylmarDev.SpireItems
 {
-    public class PenNib
+    public class PenNib : Relic
     {
         public static ItemDef item;
         public int hits = 0;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

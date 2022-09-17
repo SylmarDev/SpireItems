@@ -7,10 +7,10 @@ using System;
 
 namespace SylmarDev.SpireItems
 {
-    public class CeramicFish
+    public class CeramicFish : Relic
     {
         public static ItemDef item;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

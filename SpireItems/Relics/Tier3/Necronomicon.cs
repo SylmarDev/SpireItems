@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class Necronomicon
+    public class Necronomicon : Relic
     {
         public static ItemDef item;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

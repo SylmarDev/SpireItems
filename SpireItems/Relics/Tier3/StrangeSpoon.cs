@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class StrangeSpoon
+    public class StrangeSpoon : Relic
     {
         public static ItemDef item;
         public float procChance = 0f;
         public float[] procChances = new float[] { 50f, 55f, 57.5f, 58f, 58.5f, 59f, 59.5f, 60f, 60.5f, 61f };
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

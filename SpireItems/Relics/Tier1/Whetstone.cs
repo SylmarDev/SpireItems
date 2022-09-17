@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace SylmarDev.SpireItems
 {
-    public class Whetstone
+    public class Whetstone : Relic
     {
         public static ItemDef item;
         public bool inPickupAlready = false;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

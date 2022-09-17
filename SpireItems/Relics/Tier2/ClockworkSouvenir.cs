@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class ClockworkSouvenir
+    public class ClockworkSouvenir : Relic
     {
         public static ItemDef item;
         public float procChance = 10f;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

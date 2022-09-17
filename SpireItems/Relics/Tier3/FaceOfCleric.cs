@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class FaceOfCleric
+    public class FaceOfCleric : Relic
     {
         public static ItemDef item;
         public int maxHealthGained = 0;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

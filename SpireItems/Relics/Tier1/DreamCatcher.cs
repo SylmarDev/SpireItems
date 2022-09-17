@@ -10,14 +10,14 @@ using System.Collections.Generic;
 
 namespace SylmarDev.SpireItems
 {
-    public class DreamCatcher
+    public class DreamCatcher : Relic
     {
         public static ItemDef item;
         public static Xoroshiro128Plus rng = null;
         public static PickupDropTable dropTable = null;
         public static GameObject voidPotentialPrefab = null;
 
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();

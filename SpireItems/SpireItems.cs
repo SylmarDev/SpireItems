@@ -8,6 +8,7 @@ using System;
 using System.Reflection;
 
 using Path = System.IO.Path;
+using System.Collections.Generic;
 
 namespace SylmarDev.SpireItems
 {
@@ -65,11 +66,10 @@ namespace SylmarDev.SpireItems
         // fossilized helix
         // fossilized helix buff
         // coffee dripper
-        // todo : config
+        // todo: test config
         // todo: visual effects for divinity and maybe other buffs
         // todo: next batch of items
         // implement:
-        // fossilized helix
         // tiny chest
         // fix:
         // anchor
@@ -77,59 +77,7 @@ namespace SylmarDev.SpireItems
         // bag of prep
 
         // declare items
-        // the java native has logged on
-        private static Akabeko akabeko = new Akabeko();
-        //private static Anchor anchor = new Anchor();
-        private static BagOfMarbles marbles = new BagOfMarbles();
-        private static BloodVial vial = new BloodVial();
-        private static Boot boot = new Boot();
-        private static BronzeScales scales = new BronzeScales();
-        private static CeramicFish fish = new CeramicFish();
-        private static JuzuBracelet juzu = new JuzuBracelet();
-        private static MawBank maw = new MawBank();
-        private static MealTicket mealTicket = new MealTicket();
-        private static OddlySmoothStone smoothStone = new OddlySmoothStone();
-        private static Orichalcum ori = new Orichalcum();
-        private static PenNib nib = new PenNib();
-        private static RedMask rm = new RedMask();
-        private static Strawberry strawberry = new Strawberry();
-        private static ToyOrnithopter toy = new ToyOrnithopter();
-        private static Vajra vajra = new Vajra();
-        private static Damaru damaru = new Damaru();
-        private static DreamCatcher dc = new DreamCatcher();
-        private static HappyFlower hf = new HappyFlower();
-        private static PerservedInsect pi = new PerservedInsect();
-        private static RedSkull rs = new RedSkull();
-        private static SmilingMask sm = new SmilingMask();
-        private static WarPaint wp = new WarPaint();
-        private static Whetstone wt = new Whetstone();
-        //private static BagOfPreparation bop = new BagOfPreparation();
-
-        // green
-        private static GoldenIdol gi = new GoldenIdol(); 
-        private static BloodIdol bloodidol = new BloodIdol();
-        private static Pear pear = new Pear();
-        private static ClockworkSouvenir cs = new ClockworkSouvenir();
-        private static OrangePellets op = new OrangePellets();
-        //private static SingingBowl sb = new SingingBowl();
-        private static SlingOfCourage sling = new SlingOfCourage();
-        private static NeowsLament neow = new NeowsLament();
-        private static DarkstonePeriapt darkstone = new DarkstonePeriapt();
-        private static GremlinHorn gh = new GremlinHorn();
-        private static PaperPhrog pp = new PaperPhrog(); // I fly like paper get high like planes
-        private static MutagenicStrength ms = new MutagenicStrength();
-
-        // red
-        private static StrangeSpoon strangeSpoon = new StrangeSpoon();
-        private static Necronomicon necronomicon = new Necronomicon();
-        private static FaceOfCleric cleric = new FaceOfCleric();
-        private static DuVuDoll duvu = new DuVuDoll();
-        private static TungstenRod tung = new TungstenRod();
-        private static Calipers calipers = new Calipers();
-        private static FossilizedHelix fh = new FossilizedHelix();
-
-        // lunar
-        private static CoffeeDripper cd = new CoffeeDripper();
+        public List<RelicConfigPair> relicConfigPairs; // thank goodness
         
         public static DamageInfo thornDi = new DamageInfo();
 
@@ -165,68 +113,66 @@ namespace SylmarDev.SpireItems
             scaleTo = new Vector3(2f, 2f, 2f);
 
             Log.LogInfo("Loading Items. . .");
-            foreach(var configBool in SpireConfig.GetToggles())
-            {
+            // white
+            relicConfigPairs.Add(new RelicConfigPair(new Akabeko(), SpireConfig.enableAkabeko.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new BagOfMarbles(), SpireConfig.enableBagOfMarbles.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new BloodVial(), SpireConfig.enableBloodVial.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Boot(), SpireConfig.enableBoot.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new BronzeScales(), SpireConfig.enableBronzeScales.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new CeramicFish(), SpireConfig.enableCeramicFish.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new JuzuBracelet(), SpireConfig.enableJuzuBracelet.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new MawBank(), SpireConfig.enableMawBank.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new MealTicket(), SpireConfig.enableMealTicket.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new OddlySmoothStone(), SpireConfig.enableOddlySmoothStone.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Orichalcum(), SpireConfig.enableOrichalcum.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new PenNib(), SpireConfig.enablePenNib.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new RedMask(), SpireConfig.enableRedMask.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Strawberry(), SpireConfig.enableStrawberry.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new ToyOrnithopter(), SpireConfig.enableToyOrnithopter.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Vajra(), SpireConfig.enableVajra.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Damaru(), SpireConfig.enableDamaru.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new DreamCatcher(), SpireConfig.enableDreamCatcher.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new HappyFlower(), SpireConfig.enableHappyFlower.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new PerservedInsect(), SpireConfig.enablePerservedInsect.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new RedSkull(), SpireConfig.enableRedSkull.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new SmilingMask(), SpireConfig.enableSmilingMask.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new WarPaint(), SpireConfig.enableWarPaint.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Whetstone(), SpireConfig.enableWhetstone.Value));
 
-            }
-
-            if (SpireConfig.enableAkabeko.Value) 
-            {
-                var akabeko = new Akabeko();
-                akabeko.Init();
-            }
-                
-            //anchor.Init();
-            marbles.Init();
-            vial.Init();
-            boot.Init();
-            scales.Init();
-            fish.Init();
-            juzu.Init();
-            maw.Init();
-            mealTicket.Init();
-            smoothStone.Init();
-            ori.Init();
-            nib.Init();
-            rm.Init();
-            strawberry.Init();
-            toy.Init();
-            vajra.Init();
-            damaru.Init();
-            dc.Init();
-            hf.Init();
-            pi.Init();
-            rs.Init();
-            sm.Init();
-            wp.Init();
-            wt.Init();
-            //bop.Init();
 
             // green
-            gi.Init();
-            bloodidol.Init();
-            pear.Init();
-            cs.Init();
-            op.Init();
-            //sb.Init();
-            sling.Init();
-            neow.Init();
-            darkstone.Init();
-            gh.Init();
-            pp.Init(); // if you catch me at the border I got visas in my name
-            ms.Init();
+            relicConfigPairs.Add(new RelicConfigPair(new GoldenIdol(), SpireConfig.enableGoldenIdol.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new BloodIdol(), SpireConfig.enableBloodIdol.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Pear(), SpireConfig.enablePear.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new ClockworkSouvenir(), SpireConfig.enableClockworkSouvenir.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new OrangePellets(), SpireConfig.enableOrangePellets.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new SlingOfCourage(), SpireConfig.enableSlingOfCourage.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new NeowsLament(), SpireConfig.enableNeowsLament.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new DarkstonePeriapt(), SpireConfig.enableDarkstonePeriapt.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new GremlinHorn(), SpireConfig.enableGremlinHorn.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new MutagenicStrength(), SpireConfig.enableMutagenicStrength.Value));
+
 
             // red
-            strangeSpoon.Init();
-            necronomicon.Init();
-            cleric.Init();
-            duvu.Init();
-            tung.Init();
-            calipers.Init();
-            fh.Init();
+            relicConfigPairs.Add(new RelicConfigPair(new StrangeSpoon(), SpireConfig.enableStrangeSpoon.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Necronomicon(), SpireConfig.enableNecronomicon.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new FaceOfCleric(), SpireConfig.enableFaceOfCleric.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new DuVuDoll(), SpireConfig.enableDuVuDoll.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new TungstenRod(), SpireConfig.enableTungstenRod.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new Calipers(), SpireConfig.enableCalipers.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new FossilizedHelix(), SpireConfig.enableFossilizedHelix.Value));
+
 
             // lunar
-            cd.Init();
+            relicConfigPairs.Add(new RelicConfigPair(new CoffeeDripper(), SpireConfig.enableCoffeeDripper.Value));
+
+            foreach (var item in relicConfigPairs)
+            {
+                if (item.configSwitch)
+                {
+                    item.relic.Init();
+                }
+            }
 
             // no idea why this has to go after, but it just works
             var transform = cardPrefab.transform;
@@ -251,7 +197,6 @@ namespace SylmarDev.SpireItems
             mutaBuff.Init();
             buffer.Init();
 
-            // This line of log will appear in the bepinex console when the Awake method is done.
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
@@ -302,5 +247,18 @@ namespace SylmarDev.SpireItems
 
     public abstract class Relic
     {
+        public abstract void Init();
+    }
+
+    public class RelicConfigPair
+    {
+        public Relic relic;
+        public bool configSwitch;
+
+        public RelicConfigPair(Relic r, bool b)
+        {
+            relic = r;
+            configSwitch = b;
+        }
     }
 }

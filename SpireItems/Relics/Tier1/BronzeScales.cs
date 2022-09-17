@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace SylmarDev.SpireItems
 {
-    public class BronzeScales
+    public class BronzeScales : Relic
     {
         public static ItemDef item;
         public bool isThorning = true;
-        public void Init()
+        public override void Init()
         {
             // init
             item = ScriptableObject.CreateInstance<ItemDef>();
