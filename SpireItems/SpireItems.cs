@@ -52,25 +52,13 @@ namespace SylmarDev.SpireItems
         // config file
         private static ConfigFile cfgFile;
 
-        // check that fossilized helix works. everything else seems to work its just a bit rough around the edges
         // calipers needs a buff or rework
 
-        // todo : add to assets:
-        // War Paint
-        // Whetstone
-        // Mutagenic Strength
-        // mutagenic buff
-        // calipers
-        // duvu doll
-        // tungsten rod
-        // fossilized helix
-        // fossilized helix buff
-        // coffee dripper
-        // todo: test config
         // todo: visual effects for divinity and maybe other buffs
         // todo: next batch of items
         // implement:
         // tiny chest
+        // calipers
         // fix:
         // anchor
         // singing bowl
@@ -113,6 +101,9 @@ namespace SylmarDev.SpireItems
             scaleTo = new Vector3(2f, 2f, 2f);
 
             Log.LogInfo("Loading Items. . .");
+
+            relicConfigPairs = new List<RelicConfigPair>();
+
             // white
             relicConfigPairs.Add(new RelicConfigPair(new Akabeko(), SpireConfig.enableAkabeko.Value));
             relicConfigPairs.Add(new RelicConfigPair(new BagOfMarbles(), SpireConfig.enableBagOfMarbles.Value));
@@ -159,19 +150,15 @@ namespace SylmarDev.SpireItems
             relicConfigPairs.Add(new RelicConfigPair(new FaceOfCleric(), SpireConfig.enableFaceOfCleric.Value));
             relicConfigPairs.Add(new RelicConfigPair(new DuVuDoll(), SpireConfig.enableDuVuDoll.Value));
             relicConfigPairs.Add(new RelicConfigPair(new TungstenRod(), SpireConfig.enableTungstenRod.Value));
-            relicConfigPairs.Add(new RelicConfigPair(new Calipers(), SpireConfig.enableCalipers.Value));
+            //relicConfigPairs.Add(new RelicConfigPair(new Calipers(), SpireConfig.enableCalipers.Value));
             relicConfigPairs.Add(new RelicConfigPair(new FossilizedHelix(), SpireConfig.enableFossilizedHelix.Value));
-
 
             // lunar
             relicConfigPairs.Add(new RelicConfigPair(new CoffeeDripper(), SpireConfig.enableCoffeeDripper.Value));
 
             foreach (var item in relicConfigPairs)
             {
-                if (item.configSwitch)
-                {
-                    item.relic.Init();
-                }
+                if (item.configSwitch) item.relic.Init();
             }
 
             // no idea why this has to go after, but it just works
@@ -214,7 +201,7 @@ namespace SylmarDev.SpireItems
             //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
             //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
             //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(DuVuDoll.item.itemIndex), transform.position, transform.forward * 20f);
-            //} 
+            //}
 
             //if (Input.GetKeyDown(KeyCode.F3))
             //{
@@ -224,12 +211,12 @@ namespace SylmarDev.SpireItems
             //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
             //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(MutagenicStrength.item.itemIndex), transform.position, transform.forward * 20f);
             //}
-            //if (Input.GetKeyDown(KeyCode.F4))
-            //{
-            //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
-            //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Calipers.item.itemIndex), transform.position, transform.forward * 20f);
-            //}
+            ////if (Input.GetKeyDown(KeyCode.F4))
+            ////{
+            ////    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
+            ////    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
+            ////    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Calipers.item.itemIndex), transform.position, transform.forward * 20f);
+            ////}
             //if (Input.GetKeyDown(KeyCode.F5))
             //{
             //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;

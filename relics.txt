@@ -1,0 +1,52 @@
+private static Akabeko akabeko = new Akabeko();
+//private static Anchor anchor = new Anchor();
+private static BagOfMarbles marbles = new BagOfMarbles();
+private static BloodVial vial = new BloodVial();
+private static Boot boot = new Boot();
+private static BronzeScales scales = new BronzeScales();
+private static CeramicFish fish = new CeramicFish();
+private static JuzuBracelet juzu = new JuzuBracelet();
+private static MawBank maw = new MawBank();
+private static MealTicket mealTicket = new MealTicket();
+private static OddlySmoothStone smoothStone = new OddlySmoothStone();
+private static Orichalcum ori = new Orichalcum();
+private static PenNib nib = new PenNib();
+private static RedMask rm = new RedMask();
+private static Strawberry strawberry = new Strawberry();
+private static ToyOrnithopter toy = new ToyOrnithopter();
+private static Vajra vajra = new Vajra();
+private static Damaru damaru = new Damaru();
+private static DreamCatcher dc = new DreamCatcher();
+private static HappyFlower hf = new HappyFlower();
+private static PerservedInsect pi = new PerservedInsect();
+private static RedSkull rs = new RedSkull();
+private static SmilingMask sm = new SmilingMask();
+private static WarPaint wp = new WarPaint();
+private static Whetstone wt = new Whetstone();
+//private static BagOfPreparation bop = new BagOfPreparation();
+
+// green
+private static GoldenIdol gi = new GoldenIdol(); 
+private static BloodIdol bloodidol = new BloodIdol();
+private static Pear pear = new Pear();
+private static ClockworkSouvenir cs = new ClockworkSouvenir();
+private static OrangePellets op = new OrangePellets();
+//private static SingingBowl sb = new SingingBowl();
+private static SlingOfCourage sling = new SlingOfCourage();
+private static NeowsLament neow = new NeowsLament();
+private static DarkstonePeriapt darkstone = new DarkstonePeriapt();
+private static GremlinHorn gh = new GremlinHorn();
+private static PaperPhrog pp = new PaperPhrog(); // I fly like paper get high like planes
+private static MutagenicStrength ms = new MutagenicStrength();
+
+// red
+private static StrangeSpoon strangeSpoon = new StrangeSpoon();
+private static Necronomicon necronomicon = new Necronomicon();
+private static FaceOfCleric cleric = new FaceOfCleric();
+private static DuVuDoll duvu = new DuVuDoll();
+private static TungstenRod tung = new TungstenRod();
+private static Calipers calipers = new Calipers();
+private static FossilizedHelix fh = new FossilizedHelix();
+
+// lunar
+private static CoffeeDripper cd = new CoffeeDripper();

@@ -31,7 +31,7 @@ namespace SylmarDev.SpireItems
             item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/Whetstone.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/whetstone.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
@@ -122,8 +122,8 @@ namespace SylmarDev.SpireItems
         private void AddTokens()
         {
 			LanguageAPI.Add("STSWHETSTONE_NAME", "Whetstone");
-			LanguageAPI.Add("STSWHETSTONE_PICKUP", "upgrade 2 stacks of damage items into their next rarity");
-			LanguageAPI.Add("STSWHETSTONE_DESC", "");
+			LanguageAPI.Add("STSWHETSTONE_PICKUP", "Upgrade 2 random damage items into their next rarity");
+			LanguageAPI.Add("STSWHETSTONE_DESC", "<style=cIsUtility>On pickup, upgrade 2</style> random items to items of the next <style=cIsUtility>higher rarity</style>.");
 			LanguageAPI.Add("STSWHETSTONE_LORE", "\"Flesh never beats steel.\" - Kublai the Great");
         }
     }

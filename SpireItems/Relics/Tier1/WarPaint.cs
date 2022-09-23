@@ -32,7 +32,7 @@ namespace SylmarDev.SpireItems
             item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/WarPaint.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/warPaint.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
@@ -124,7 +124,7 @@ namespace SylmarDev.SpireItems
         {
 			LanguageAPI.Add("STSPAINTOFWAR_NAME", "War Paint");
 			LanguageAPI.Add("STSPAINTOFWAR_PICKUP", "Upgrade 2 random healing items into their next rarity");
-			LanguageAPI.Add("STSPAINTOFWAR_DESC", "<style=cUtility>On pickup, upgrade 2</style> random items to items of the next <style=cUtility>higher rarity</style>.");
+			LanguageAPI.Add("STSPAINTOFWAR_DESC", "<style=cIsUtility>On pickup, upgrade 2</style> random items to items of the next <style=cIsUtility>higher rarity</style>.");
 			LanguageAPI.Add("STSPAINTOFWAR_LORE", "In the past, Ironclads would create wards using enchanted war paint before charging into battle.");
         }
     }

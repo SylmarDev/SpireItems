@@ -4,8 +4,6 @@
 
 Do your runs need variety? Maybe want to try some novel item ideas? A fan of Slay the Spire? You've come to the right place! This mod adds several items from the deckbuilder rouge-like, Slay The Spire into Risk of Rain 2.
 
-This mod is still early on in development, so please note that it hasn't been tested for multiplayer yet!!
-
 ## Currently Added
 #### White
 * Akabeko - Deal additional damage to high health enemies
@@ -31,6 +29,8 @@ This mod is still early on in development, so please note that it hasn't been te
 * Strawberry - Gain Max HP
 * Toy Ornithopter - Heal every time you use equipment
 * Vajra - Deal more damage
+* War Paint - On pickup, upgrade two random healing items to their next rarity
+* Whetstone - On pickup, upgrade two random damage items to their next rarity
 
 #### Green
 * Bloody Idol - A mysterious idol of blood. I wonder how you obtain it...
@@ -38,6 +38,7 @@ This mod is still early on in development, so please note that it hasn't been te
 * Darkstone Periapt - Gain 60 Max HP for every Lunar item you have
 * Golden Idol - Gain additional gold
 * Gremlin Horn - Chance to lower all cooldowns on kill
+* Mutagenic Strength -  Deal additional damage at the start of the stage
 * Neow's Lament - Small chance to instantly kill enemy on hit
 * Orange Pellets - Chance to remove all debuffs on kill
 * Paper Phrog - Vulnerable enemies take more damage
@@ -45,9 +46,15 @@ This mod is still early on in development, so please note that it hasn't been te
 * Singing Bowl - Gain Max HP every time you pick up an item
 
 #### Red
+* Du-Vu Doll - Deal additional damage for every void item you have
 * Face of Cleric - Gain 1 Max HP every kill
+* Fossilized Helix - Chance to gain Buffer on kill, Buffer nullfies the next enemy attack.
 * Necronomicon - High damage hits hit again
 * Strange Spoon - 50% chance to avoid cooldowns on skills
+* Tungsten Rod - Receive a large flat damage reduction from all attacks
+
+#### Lunar
+* Coffee Dripper - Increase damage dealt by 50%, BUT decrease healing by 25%
 
 ### .. with more to come!
 
@@ -58,17 +65,23 @@ This mod is still early on in development, so please note that it hasn't been te
 
 ## Important Notes
 * I didn't make Slay the Spire, or any of the item art, this is a fan project. Don't sue me.
-* This mod has ***NOT BEEN TESTED ONLINE***. Not a bit. So please don't come to me asking why it's not working for you.
-* Speaking of, please feel free to leave any comments, suggestions, or stack traces with me at by either
+* This mod has only sparsely been tested online. Expect bugs.
 
-	* pinging me on the RoR2 Modding Discord
-	* Coalescence#2518 on discord 
-	* @PrincessCoales on twitter
+#### Contact Me
+* Make an issue on my [github repo](https://github.com/SylmarDev/SpireItems) (especially for bugs please!!)
+* Coalescence#2518 on discord
+* pinging me on the RoR2 Modding Discord
+* @PrincessCoales on twitter
+
+(sorted by most likely to least likely to respond)
+* please feel free to leave any comments, suggestions, or stack traces
+	
 
 #### This mod made possible by
 * Ape - Design and Suggestions
 * Phreel - Updated mod to the SOTV patch when I was too lazy to do so
 * Kanna - Helping debug multiplayer
+* Clara
 * The RoR2 Modding Discord
 * Anyone who sends suggestions, constructive criticism or error logs
 * My Mom
@@ -78,14 +91,16 @@ This mod is still early on in development, so please note that it hasn't been te
 
 **0.5.0**
 * New Items:
-	* War Paint - 
-	* Whetstone - 
-	* Mutagenic Strength - 
-	* Calipers - 
-	* Du-Vu Doll - 
-	* Fossilized Helix - 
-	* Tungsten Rod - 
-	* Coffee Dripper - 
+	* Coffee Dripper - Increase damage dealt by 50%, BUT decrease healing by 25%
+	* Du-Vu Doll - Deal additional damage for every void item you have
+	* Fossilized Helix - Chance to gain Buffer on kill, Buffer nullfies the next enemy attack.
+	* Mutagenic Strength -  Deal additional damage at the start of the stage
+	* Tungsten Rod - Receive a large flat damage reduction from all attacks
+	* War Paint - On pickup, upgrade two random healing items to their next rarity
+	* Whetstone - On pickup, upgrade two random damage items to their next rarity
+* Configuration
+	* Now all items should be able to be turned on or off, hooray!
+	* If you find yourself turning off an item because you don't like its effect, feel free to message me ideas
 * Other:
 	* Fixed Artifact buff acting up
 	* Potentially fixed Dream Catcher breaking when a player in multiplayer dies / leaves (can't test it but we hope)

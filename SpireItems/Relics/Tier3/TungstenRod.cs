@@ -27,12 +27,15 @@ namespace SylmarDev.SpireItems
             item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/TungstenRod.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/tungsten.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
             item.canRemove = true;
             item.hidden = false;
+
+            ItemTag[] tags = new ItemTag[] { ItemTag.Utility };
+            item.tags = tags;
 
             // Turn Tokens into strings
             AddTokens();

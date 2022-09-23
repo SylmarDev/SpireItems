@@ -28,7 +28,7 @@ namespace SylmarDev.SpireItems
             item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/MutagenicStrength.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/muta.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard

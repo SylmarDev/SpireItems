@@ -12,7 +12,7 @@ namespace SylmarDev.SpireItems
     public class Buffer : BuffBase<Buffer>
     {
         public override string BuffName => "Buffer";
-        public override Color Color => Color.green;
+        public override Color Color => Color.white;
         public override bool CanStack => true;
         public override bool IsDebuff => false;
         public override Sprite BuffIcon => SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/buffer.png");

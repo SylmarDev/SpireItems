@@ -28,7 +28,7 @@ namespace SylmarDev.SpireItems
             item._itemTierDef = itd;
 
             // display info (need assetbundle to create unique texture)
-            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/FossilizedHelix.png");
+            item.pickupIconSprite = SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/item/fossilizedHelix.png");
             item.pickupModelPrefab = SpireItems.cardPrefab;
 
             // standard
@@ -82,7 +82,7 @@ namespace SylmarDev.SpireItems
         {
 			LanguageAPI.Add("STS_PRAISEHELIX_NAME", "Fossilized Helix");
 			LanguageAPI.Add("STS_PRAISEHELIX_PICKUP", "Chance to gain Buffer on kill");
-			LanguageAPI.Add("STS_PRAISEHELIX_DESC", "15% chance <style=cStack>(+15% per stack)</style> to gain Buffer on kill. Buffer nullfies next source of damage.");
+			LanguageAPI.Add("STS_PRAISEHELIX_DESC", "15% chance <style=cStack>(+15% per stack)</style> to gain Buffer on kill. Buffer nullfies next source of damage from an enemy.");
 			LanguageAPI.Add("STS_PRAISEHELIX_LORE", "Seemingly indestructible, you wonder what kind of creature this belonged to.");
         }
     }

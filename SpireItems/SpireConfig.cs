@@ -58,51 +58,51 @@ namespace SylmarDev.SpireItems
         {
             var config = new ConfigFile(Path.Combine(configPath, SpireItems.PluginGUID + ".cfg"), true);
 
-            enableAkabeko = config.Bind("General.Toggles", "Enable Akabeko", true, "Set to true to enable Akabeko.");
-            enableBagOfMarbles = config.Bind("General.Toggles", "Enable Bag Of Marbles", true, "Set to true to enable Bag Of Marbles.");
-            enableBloodVial = config.Bind("General.Toggles", "Enable Blood Vial", true, "Set to true to enable Blood Vial.");
-            enableBoot = config.Bind("General.Toggles", "Enable Boot", true, "Set to true to enable Boot.");
-            enableBronzeScales = config.Bind("General.Toggles", "Enable Bronze Scales", true, "Set to true to enable Bronze Scales.");
-            enableCeramicFish = config.Bind("General.Toggles", "Enable Ceramic Fish", true, "Set to true to enable Ceramic Fish.");
-            enableJuzuBracelet = config.Bind("General.Toggles", "Enable Juzu Bracelet", true, "Set to true to enable Juzu Bracelet.");
-            enableMawBank = config.Bind("General.Toggles", "Enable Maw Bank", true, "Set to true to enable Maw Bank.");
-            enableMealTicket = config.Bind("General.Toggles", "Enable Meal Ticket", true, "Set to true to enable Meal Ticket.");
-            enableOddlySmoothStone = config.Bind("General.Toggles", "Enable Oddly Smooth Stone", true, "Set to true to enable Oddly Smooth Stone.");
-            enableOrichalcum = config.Bind("General.Toggles", "Enable Orichalcum", true, "Set to true to enable Orichalcum.");
-            enablePenNib = config.Bind("General.Toggles", "Enable Pen Nib", true, "Set to true to enable Pen Nib.");
-            enableRedMask = config.Bind("General.Toggles", "Enable Red Mask", true, "Set to true to enable Red Mask.");
-            enableStrawberry = config.Bind("General.Toggles", "Enable Strawberry", true, "Set to true to enable Strawberry.");
-            enableToyOrnithopter = config.Bind("General.Toggles", "Enable Toy Ornithopter", true, "Set to true to enable Toy Ornithopter.");
-            enableVajra = config.Bind("General.Toggles", "Enable Vajra", true, "Set to true to enable Vajra.");
-            enableDamaru = config.Bind("General.Toggles", "Enable Damaru", true, "Set to true to enable Damaru.");
-            enableDreamCatcher = config.Bind("General.Toggles", "Enable Dream Catcher", true, "Set to true to enable Dream Catcher.");
-            enableHappyFlower = config.Bind("General.Toggles", "Enable Happy Flower", true, "Set to true to enable Happy Flower.");
-            enablePerservedInsect = config.Bind("General.Toggles", "Enable Perserved Insect", true, "Set to true to enable Perserved Insect.");
-            enableRedSkull = config.Bind("General.Toggles", "Enable Red Skull", true, "Set to true to enable Red Skull.");
-            enableSmilingMask = config.Bind("General.Toggles", "Enable Smiling Mask", true, "Set to true to enable Smiling Mask.");
-            enableWarPaint = config.Bind("General.Toggles", "Enable War Paint", true, "Set to true to enable War Paint.");
-            enableWhetstone = config.Bind("General.Toggles", "Enable Whetstone", true, "Set to true to enable Whetstone.");
+            enableAkabeko = config.Bind("Toggles", "enableAkabeko", true, "Set to true to enable Akabeko.");
+            enableBagOfMarbles = config.Bind("Toggles", "enableBagOfMarbles", true, "Set to true to enable BagOfMarbles.");
+            enableBloodVial = config.Bind("Toggles", "enableBloodVial", true, "Set to true to enable BloodVial.");
+            enableBoot = config.Bind("Toggles", "enableBoot", true, "Set to true to enable Boot.");
+            enableBronzeScales = config.Bind("Toggles", "enableBronzeScales", true, "Set to true to enable BronzeScales.");
+            enableCeramicFish = config.Bind("Toggles", "enableCeramicFish", true, "Set to true to enable CeramicFish.");
+            enableJuzuBracelet = config.Bind("Toggles", "enableJuzuBracelet", true, "Set to true to enable JuzuBracelet.");
+            enableMawBank = config.Bind("Toggles", "enableMawBank", true, "Set to true to enable MawBank.");
+            enableMealTicket = config.Bind("Toggles", "enableMealTicket", true, "Set to true to enable MealTicket.");
+            enableOddlySmoothStone = config.Bind("Toggles", "enableOddlySmoothStone", true, "Set to true to enable OddlySmoothStone.");
+            enableOrichalcum = config.Bind("Toggles", "enableOrichalcum", true, "Set to true to enable Orichalcum.");
+            enablePenNib = config.Bind("Toggles", "enablePenNib", true, "Set to true to enable PenNib.");
+            enableRedMask = config.Bind("Toggles", "enableRedMask", true, "Set to true to enable RedMask.");
+            enableStrawberry = config.Bind("Toggles", "enableStrawberry", true, "Set to true to enable Strawberry.");
+            enableToyOrnithopter = config.Bind("Toggles", "enableToyOrnithopter", true, "Set to true to enable ToyOrnithopter.");
+            enableVajra = config.Bind("Toggles", "enableVajra", true, "Set to true to enable Vajra.");
+            enableDamaru = config.Bind("Toggles", "enableDamaru", true, "Set to true to enable Damaru.");
+            enableDreamCatcher = config.Bind("Toggles", "enableDreamCatcher", true, "Set to true to enable DreamCatcher.");
+            enableHappyFlower = config.Bind("Toggles", "enableHappyFlower", true, "Set to true to enable HappyFlower.");
+            enablePerservedInsect = config.Bind("Toggles", "enablePerservedInsect", true, "Set to true to enable PerservedInsect.");
+            enableRedSkull = config.Bind("Toggles", "enableRedSkull", true, "Set to true to enable RedSkull.");
+            enableSmilingMask = config.Bind("Toggles", "enableSmilingMask", true, "Set to true to enable SmilingMask.");
+            enableWarPaint = config.Bind("Toggles", "enableWarPaint", true, "Set to true to enable WarPaint.");
+            enableWhetstone = config.Bind("Toggles", "enableWhetstone", true, "Set to true to enable Whetstone.");
 
-            enableGoldenIdol = config.Bind("General.Toggles", "Enable Golden Idol", true, "Set to true to enable Golden Idol.");
-            enableBloodIdol = config.Bind("General.Toggles", "Enable Blood Idol", true, "Set to true to enable Blood Idol.");
-            enablePear = config.Bind("General.Toggles", "Enable Pear", true, "Set to true to enable Pear.");
-            enableClockworkSouvenir = config.Bind("General.Toggles", "Enable Clockwork Souvenir", true, "Set to true to enable Clockwork Souvenir.");
-            enableOrangePellets = config.Bind("General.Toggles", "Enable Orange Pellets", true, "Set to true to enable Orange Pellets.");
-            enableSlingOfCourage = config.Bind("General.Toggles", "Enable Sling Of Courage", true, "Set to true to enable Sling Of Courage.");
-            enableNeowsLament = config.Bind("General.Toggles", "Enable Neows Lament", true, "Set to true to enable Neows Lament.");
-            enableDarkstonePeriapt = config.Bind("General.Toggles", "Enable Darkstone Periapt", true, "Set to true to enable Darkstone Periapt.");
-            enableGremlinHorn = config.Bind("General.Toggles", "Enable Gremlin Horn", true, "Set to true to enable Gremlin Horn.");
-            enableMutagenicStrength = config.Bind("General.Toggles", "Enable Mutagenic Strength", true, "Set to true to enable Mutagenic Strength.");
+            enableGoldenIdol = config.Bind("Toggles", "enableGoldenIdol", true, "Set to true to enable GoldenIdol.");
+            enableBloodIdol = config.Bind("Toggles", "enableBloodIdol", true, "Set to true to enable BloodIdol.");
+            enablePear = config.Bind("Toggles", "enablePear", true, "Set to true to enable Pear.");
+            enableClockworkSouvenir = config.Bind("Toggles", "enableClockworkSouvenir", true, "Set to true to enable ClockworkSouvenir.");
+            enableOrangePellets = config.Bind("Toggles", "enableOrangePellets", true, "Set to true to enable OrangePellets.");
+            enableSlingOfCourage = config.Bind("Toggles", "enableSlingOfCourage", true, "Set to true to enable SlingOfCourage.");
+            enableNeowsLament = config.Bind("Toggles", "enableNeowsLament", true, "Set to true to enable NeowsLament.");
+            enableDarkstonePeriapt = config.Bind("Toggles", "enableDarkstonePeriapt", true, "Set to true to enable DarkstonePeriapt.");
+            enableGremlinHorn = config.Bind("Toggles", "enableGremlinHorn", true, "Set to true to enable GremlinHorn.");
+            enableMutagenicStrength = config.Bind("Toggles", "enableMutagenicStrength", true, "Set to true to enable MutagenicStrength.");
 
-            enableStrangeSpoon = config.Bind("General.Toggles", "Enable Strange Spoon", true, "Set to true to enable Strange Spoon.");
-            enableNecronomicon = config.Bind("General.Toggles", "Enable Necronomicon", true, "Set to true to enable Necronomicon.");
-            enableFaceOfCleric = config.Bind("General.Toggles", "Enable Face Of Cleric", true, "Set to true to enable Face Of Cleric.");
-            enableDuVuDoll = config.Bind("General.Toggles", "Enable Du-Vu Doll", true, "Set to true to enable Du-Vu Doll.");
-            enableTungstenRod = config.Bind("General.Toggles", "Enable Tungsten Rod", true, "Set to true to enable Tungsten Rod.");
-            enableCalipers = config.Bind("General.Toggles", "Enable Calipers", true, "Set to true to enable Calipers.");
-            enableFossilizedHelix = config.Bind("General.Toggles", "Enable Fossilized Helix", true, "Set to true to enable Fossilized Helix.");
+            enableStrangeSpoon = config.Bind("Toggles", "enableStrangeSpoon", true, "Set to true to enable StrangeSpoon.");
+            enableNecronomicon = config.Bind("Toggles", "enableNecronomicon", true, "Set to true to enable Necronomicon.");
+            enableFaceOfCleric = config.Bind("Toggles", "enableFaceOfCleric", true, "Set to true to enable FaceOfCleric.");
+            enableDuVuDoll = config.Bind("Toggles", "enableDuVuDoll", true, "Set to true to enable DuVuDoll.");
+            enableTungstenRod = config.Bind("Toggles", "enableTungstenRod", true, "Set to true to enable TungstenRod.");
+            //enableCalipers = config.Bind("Toggles", "enableCalipers", true, "Set to true to enable Calipers.");
+            enableFossilizedHelix = config.Bind("Toggles", "enableFossilizedHelix", true, "Set to true to enable FossilizedHelix.");
 
-            enableCoffeeDripper = config.Bind("General.Toggles", "Enable Coffee Dripper", true, "Set to true to enable Coffee Dripper.");
+            enableCoffeeDripper = config.Bind("Toggles", "enableCoffeeDripper", true, "Set to true to enable CoffeeDripper.");
         }
     }
 }

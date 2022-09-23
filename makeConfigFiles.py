@@ -17,13 +17,9 @@ for string in li:
 
     configName = "enable" + stringElements[2]
     #newInitializers.append("public static ConfigEntry<bool> " + configName + ";")
-    #newConfigBindings.append(configName + " = config.Bind(\"General.Toggles\", \"Enable " +
-                         #   stringElements[2] + "\", true, \"Set to true to enable " +
-                         #    stringElements[2] + ".\");")
+    newConfigBindings.append(configName + " = config.Bind(\"Toggles\", \"" + configName + "\", true, \"Set to true to enable " +
+                             stringElements[2] + ".\");")
 
-
-for string in newInitializers:
-    print(string)
 
 for string in newConfigBindings:
     print(string)

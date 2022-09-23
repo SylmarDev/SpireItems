@@ -12,10 +12,10 @@ namespace SylmarDev.SpireItems
     public class MutagenicBuff : BuffBase<MutagenicBuff>
     {
         public override string BuffName => "Mutagenic Strength Buff";
-        public override Color Color => Color.red;
+        public override Color Color => Color.white;
         public override bool CanStack => false;
         public override bool IsDebuff => false;
-        public override Sprite BuffIcon => SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/mutagenicBuff.png");
+        public override Sprite BuffIcon => SpireItems.resources.LoadAsset<Sprite>("assets/SpireRelics/textures/icons/buff/mutaBuff.png");
         public override void Init()
         {
             CreateBuff();

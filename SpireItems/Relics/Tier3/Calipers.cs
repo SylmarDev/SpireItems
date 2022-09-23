@@ -64,7 +64,7 @@ namespace SylmarDev.SpireItems
                 {
                     for (var i = 0; i < calipCount; i++)
                     {
-                        self.barrierDecayRate *= 0.6f;
+                        self.barrierDecayRate *= 0.1f;
                     }
                 }
             }
@@ -74,7 +74,7 @@ namespace SylmarDev.SpireItems
         {
 			LanguageAPI.Add("STS_CALIPERS_NAME", "Calipers");
 			LanguageAPI.Add("STS_CALIPERS_PICKUP", "Barrier drains slower");
-			LanguageAPI.Add("STS_CALIPERS_DESC", "Barrier drains 60% <style=cStack>(+60% per stack, multiplicitave)</style> slower.");
+			LanguageAPI.Add("STS_CALIPERS_DESC", "Barrier drains 10% <style=cStack>(+10% per stack, multiplicitave)</style> slower.");
 			LanguageAPI.Add("STS_CALIPERS_LORE", "\"Mechanical precision leads to greatness\" - The Architect");
         }
     }
