@@ -43,6 +43,7 @@ namespace SylmarDev.SpireItems
         public static ConfigEntry<bool> enableDarkstonePeriapt;
         public static ConfigEntry<bool> enableGremlinHorn;
         public static ConfigEntry<bool> enableMutagenicStrength;
+        public static ConfigEntry<bool> enablePaperPhrog;
 
         public static ConfigEntry<bool> enableStrangeSpoon;
         public static ConfigEntry<bool> enableNecronomicon;
@@ -93,6 +94,7 @@ namespace SylmarDev.SpireItems
             enableDarkstonePeriapt = config.Bind("Toggles", "enableDarkstonePeriapt", true, "Set to true to enable DarkstonePeriapt.");
             enableGremlinHorn = config.Bind("Toggles", "enableGremlinHorn", true, "Set to true to enable GremlinHorn.");
             enableMutagenicStrength = config.Bind("Toggles", "enableMutagenicStrength", true, "Set to true to enable MutagenicStrength.");
+            enablePaperPhrog = config.Bind("Toggles", "enablePaperPhrog", true, "Set to true to enable PaperPhrog.");
 
             enableStrangeSpoon = config.Bind("Toggles", "enableStrangeSpoon", true, "Set to true to enable StrangeSpoon.");
             enableNecronomicon = config.Bind("Toggles", "enableNecronomicon", true, "Set to true to enable Necronomicon.");

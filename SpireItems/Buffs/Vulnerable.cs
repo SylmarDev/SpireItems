@@ -20,6 +20,7 @@ namespace SylmarDev.SpireItems
         {
             CreateBuff();
             Hooks();
+            Log.LogInfo("Vulnerable Buff Initialized");
         }
 
         public override void Hooks()
@@ -37,12 +38,12 @@ namespace SylmarDev.SpireItems
 
             var isVulnerable = self.body.HasBuff(BuffDef);
             var cb = di.attacker.GetComponent<CharacterBody>();
-            var inv = cb ? cb.inventory : null;
+            var inv = cb?.inventory;
 
             if (isVulnerable)
             {
-                if (inv) {
-                    var phrogCount = inv.GetItemCount(PaperPhrog.item.itemIndex);
+                if (inv != null && SpireConfig.enablePaperPhrog.Value) {
+                    var phrogCount = inv.GetItemCount(PaperPhrog.item);
                     di.damage = phrogCount >= 1 ? di.damage * (1.5f + (phrogCount * 0.25f)) : di.damage * 1.5f;
                 } else
                 {

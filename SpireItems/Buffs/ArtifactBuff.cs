@@ -19,6 +19,7 @@ namespace SylmarDev.SpireItems
         {
             CreateBuff();
             Hooks();
+            Log.LogInfo("Artifact Buff Initialized");
         }
         public override void Hooks()
         {

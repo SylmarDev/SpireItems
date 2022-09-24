@@ -20,6 +20,7 @@ namespace SylmarDev.SpireItems
         {
             CreateBuff();
             Hooks();
+            Log.LogInfo("Mantra Buff Initialized");
         }
         public override void Hooks()
         {

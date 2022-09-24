@@ -39,7 +39,7 @@ namespace SylmarDev.SpireItems
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "SpireItems";
         public const string PluginGUID = PluginAuthor + "." + PluginName;
-        public const string PluginVersion = "0.5.0";
+        public const string PluginVersion = "0.5.1";
 
         // assets
         public static AssetBundle resources;
@@ -142,6 +142,7 @@ namespace SylmarDev.SpireItems
             relicConfigPairs.Add(new RelicConfigPair(new DarkstonePeriapt(), SpireConfig.enableDarkstonePeriapt.Value));
             relicConfigPairs.Add(new RelicConfigPair(new GremlinHorn(), SpireConfig.enableGremlinHorn.Value));
             relicConfigPairs.Add(new RelicConfigPair(new MutagenicStrength(), SpireConfig.enableMutagenicStrength.Value));
+            relicConfigPairs.Add(new RelicConfigPair(new PaperPhrog(), SpireConfig.enablePaperPhrog.Value));
 
 
             // red
@@ -165,16 +166,7 @@ namespace SylmarDev.SpireItems
             var transform = cardPrefab.transform;
             transform.localScale = scaleTo;
 
-            Log.LogInfo("Loading Thorn di. . .");
-            thornDi.inflictor = null;
-            thornDi.damageType = (DamageType.BypassArmor | DamageType.Silent);
-            thornDi.damageColorIndex = DamageColorIndex.Default;
-            thornDi.procCoefficient = 0f; // no crazy procs sadge
-            thornDi.rejected = false;
-            thornDi.crit = false;
-
-
-            Logger.LogDebug("Registering shared buffs. . .");
+            Logger.LogInfo("Registering shared buffs. . .");
             vulnerableBuff.Init();
             nibBuff.Init();
             weak.Init();
@@ -184,6 +176,15 @@ namespace SylmarDev.SpireItems
             mutaBuff.Init();
             buffer.Init();
 
+            Log.LogInfo("Loading Thorn di. . .");
+            thornDi.inflictor = null;
+            thornDi.damageType = (DamageType.BypassArmor | DamageType.Silent);
+            thornDi.damageColorIndex = DamageColorIndex.Default;
+            thornDi.procCoefficient = 0f; // no crazy procs sadge
+            thornDi.rejected = false;
+            thornDi.crit = false;
+
+            
             Log.LogInfo(nameof(Awake) + " done.");
         }
 
@@ -193,7 +194,7 @@ namespace SylmarDev.SpireItems
             //{
             //    var transform = PlayerCharacterMasterController.instances[0].master.GetBodyObject().transform;
             //    Log.LogInfo($"Player pressed F2. Spawning our custom item at coordinates {transform.position}");
-            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(Whetstone.item.itemIndex), transform.position, transform.forward * 20f);
+            //    PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(BagOfMarbles.item.itemIndex), transform.position, transform.forward * 20f);
             //}
 
             //if (Input.GetKeyDown(KeyCode.F2))

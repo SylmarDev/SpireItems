@@ -20,6 +20,7 @@ namespace SylmarDev.SpireItems
         {
             CreateBuff();
             Hooks();
+            Log.LogInfo("Mutagenic Buff Initialized");
         }
         public override void Hooks()
         {
@@ -28,13 +29,15 @@ namespace SylmarDev.SpireItems
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
         {
-            if (di == null || self.body == null || di.rejected || !di.attacker || di.attacker == self.gameObject)
+            if (di == null || self.body == null || di.rejected || !di.attacker || di.attacker == self.gameObject || !di.inflictor)
             {
                 orig(self, di);
                 return;
             } // no inflictor check so this is probably doomed to a blood shrine bug
 
+
             var cb = di.attacker.GetComponent<CharacterBody>();
+
             if (cb)
             {
                 var isMuta = cb.HasBuff(BuffDef);

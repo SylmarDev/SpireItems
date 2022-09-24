@@ -89,6 +89,9 @@ Do your runs need variety? Maybe want to try some novel item ideas? A fan of Sla
 
 ## Changelog
 
+**0.5.1**
+* Added Paper Phrog to config - I forgot it which caused problems with vulnerable
+
 **0.5.0**
 * New Items:
 	* Coffee Dripper - Increase damage dealt by 50%, BUT decrease healing by 25%
@@ -100,7 +103,7 @@ Do your runs need variety? Maybe want to try some novel item ideas? A fan of Sla
 	* Whetstone - On pickup, upgrade two random damage items to their next rarity
 * Configuration
 	* Now all items should be able to be turned on or off, hooray!
-	* If you find yourself turning off an item because you don't like its effect, feel free to message me ideas
+	* If you find yourself turning off an item because you don't like its effect, feel free to suggest item ideas (see above)
 * Other:
 	* Fixed Artifact buff acting up
 	* Potentially fixed Dream Catcher breaking when a player in multiplayer dies / leaves (can't test it but we hope)

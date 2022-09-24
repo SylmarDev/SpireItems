@@ -19,6 +19,7 @@ namespace SylmarDev.SpireItems
         {
             CreateBuff();
             Hooks();
+            Log.LogInfo("Weakness buff Initialized");
         }
         public override void Hooks()
         {
