@@ -39,7 +39,7 @@ namespace SylmarDev.SpireItems
         public const string PluginAuthor = "SylmarDev";
         public const string PluginName = "SpireItems";
         public const string PluginGUID = PluginAuthor + "." + PluginName;
-        public const string PluginVersion = "0.5.1";
+        public const string PluginVersion = "0.5.2";
 
         // assets
         public static AssetBundle resources;
@@ -106,6 +106,7 @@ namespace SylmarDev.SpireItems
 
             // white
             relicConfigPairs.Add(new RelicConfigPair(new Akabeko(), SpireConfig.enableAkabeko.Value));
+            //relicConfigPairs.Add(new RelicConfigPair(new Anchor(), SpireConfig.enableAnchor.Value));
             relicConfigPairs.Add(new RelicConfigPair(new BagOfMarbles(), SpireConfig.enableBagOfMarbles.Value));
             relicConfigPairs.Add(new RelicConfigPair(new BloodVial(), SpireConfig.enableBloodVial.Value));
             relicConfigPairs.Add(new RelicConfigPair(new Boot(), SpireConfig.enableBoot.Value));

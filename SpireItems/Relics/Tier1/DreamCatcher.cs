@@ -7,6 +7,7 @@ using System;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using System.Collections.Generic;
+using IL.RoR2.UI;
 
 namespace SylmarDev.SpireItems
 {
@@ -16,6 +17,7 @@ namespace SylmarDev.SpireItems
         public static Xoroshiro128Plus rng = null;
         public static PickupDropTable dropTable = null;
         public static GameObject voidPotentialPrefab = null;
+        public static int catchers;
 
         public override void Init()
         {
@@ -54,9 +56,44 @@ namespace SylmarDev.SpireItems
 
             // define what item does below
             // 10% for each item to be a void potential
+            On.RoR2.Run.Start += Run_Start;
+            On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
             On.RoR2.ChestBehavior.ItemDrop += ChestBehavior_ItemDrop;
 
             Log.LogInfo("DreamCatcher done.");
+        }
+
+        private void Run_Start(On.RoR2.Run.orig_Start orig, Run self)
+        {
+            catchers = 0;
+            orig(self);
+        }
+
+        private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
+        {
+            orig(self);
+            var num = 0;
+
+            if (PlayerCharacterMasterController.instances.Count == 0)
+            {
+                return;
+            }
+
+            for (var i = 0; i < PlayerCharacterMasterController.instances.Count; i++)
+            {
+                var cb = CharacterMaster.readOnlyInstancesList[i].GetBody();
+                if (cb == null)
+                {
+                    return;
+                }
+                var inv = cb.inventory;
+                if (inv == null)
+                {
+                    return;
+                }
+                num += inv.GetItemCount(item.itemIndex);
+            }
+            catchers = num;
         }
 
         private void ChestBehavior_ItemDrop(On.RoR2.ChestBehavior.orig_ItemDrop orig, ChestBehavior self)
@@ -72,54 +109,28 @@ namespace SylmarDev.SpireItems
 
         private void CreatePickupDroplet_BasicPickupDropTable(On.RoR2.PickupDropletController.orig_CreatePickupDroplet_PickupIndex_Vector3_Vector3 orig, PickupIndex pickupIndex, Vector3 position, Vector3 velocity)
         {
-            if (dropTable == null)
+            // dream catcher will now stack with everyone in the lobby
+            var playerCount = PlayerCharacterMasterController.instances.Count;
+
+            if (dropTable == null || playerCount == 0)
             {
-                Log.LogError("Droptable is null, this is the wrong hook!");
+                if (playerCount == 0)
+                {
+                    Log.LogError("No valid players? Idk man");
+                }
+                else
+                {
+                    Log.LogError("Droptable is null, this is the wrong hook!");
+                }
+
                 rng = null;
                 On.RoR2.PickupDropletController.CreatePickupDroplet_PickupIndex_Vector3_Vector3 -= CreatePickupDroplet_BasicPickupDropTable;
                 orig(pickupIndex, position, velocity);
             }
 
-            // find closest character
-            var playerCount = PlayerCharacterMasterController.instances.Count;
-            CharacterBody cc = null;
-            var ii = 0;
-
-            while (cc == null)
-            {
-                if (ii == 5)
-                {
-                    Log.LogError("No valid characterbodies in game!");
-                    orig(pickupIndex, position, velocity);
-                }
-                cc = CharacterMaster.readOnlyInstancesList[ii].GetBody(); // closest character
-                ii++;
-            }
-
-            if (playerCount >= 1) // more than 1 player
-            {
-                cc = CharacterMaster.readOnlyInstancesList[0].GetBody();
-                var shortestDist = Vector3.Distance(position, CharacterMaster.readOnlyInstancesList[0].GetBody().corePosition);
-                for (var i = 0; i < playerCount; i++)
-                {
-                    var inst = CharacterMaster.readOnlyInstancesList[i];
-                    if (inst == null) continue;
-                    var cb = inst.GetBody();
-                    if (cb == null) continue;
-
-                    var dist = Vector3.Distance(position,
-                        CharacterMaster.readOnlyInstancesList[i].GetBody().corePosition);
-                    if (dist < shortestDist)
-                    {
-                        shortestDist = dist;
-                        cc = CharacterMaster.readOnlyInstancesList[i].GetBody();
-                    }
-                }
-            }
-
             // check chance
-            var chance = cc.inventory.GetItemCount(item.itemIndex) * 10f;
-            var proc = cc.master ? Util.CheckRoll(chance, cc.master) : Util.CheckRoll(chance);
+            var chance = catchers * 10f;
+            var proc = Util.CheckRoll(chance);
 
             if (proc)
             {

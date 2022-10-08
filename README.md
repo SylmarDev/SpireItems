@@ -89,6 +89,10 @@ Do your runs need variety? Maybe want to try some novel item ideas? A fan of Sla
 
 ## Changelog
 
+**0.5.2**
+* Changed Dream Catcher implementation to fix a bug with chests not dropping items
+* Fixed description of Meal Ticket
+
 **0.5.1**
 * Added Paper Phrog to config - I forgot it which caused problems with vulnerable
 

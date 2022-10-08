@@ -51,20 +51,20 @@ namespace SylmarDev.SpireItems
         private void CharacterBody_HandleOnKillEffectsServer(On.RoR2.CharacterBody.orig_HandleOnKillEffectsServer orig, CharacterBody self, DamageReport damageReport)
         {
             orig(self, damageReport);
-            var hfs = self.inventory.GetItemCount(item.itemIndex);
-            if (hfs < 1)
+            var hfs = self.inventory?.GetItemCount(item.itemIndex);
+            if (hfs == null || hfs < 1)
             {
                 return;
             }
 
             var chance = hfs * 10f;
-            var proc = self.master ? Util.CheckRoll(chance, self.master) : Util.CheckRoll(chance);
+            var proc = self.master ? Util.CheckRoll((int) chance, self.master) : Util.CheckRoll((int) chance);
 
             if (proc)
             {
                 var vb = damageReport.victimBody;
                 vb.baseDamage *= 0.1f; // weaken, otherwise this is just better Happiest Mask lol
-                Util.TryToCreateGhost(vb, self, 15 * hfs);
+                Util.TryToCreateGhost(vb, self, 15 * (int) hfs);
             }
         }
 

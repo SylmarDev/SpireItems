@@ -9,6 +9,7 @@ namespace SylmarDev.SpireItems
     public class SpireConfig
     {
         public static ConfigEntry<bool> enableAkabeko;
+        //public static ConfigEntry<bool> enableAnchor;
         public static ConfigEntry<bool> enableBagOfMarbles;
         public static ConfigEntry<bool> enableBloodVial;
         public static ConfigEntry<bool> enableBoot;
@@ -60,6 +61,7 @@ namespace SylmarDev.SpireItems
             var config = new ConfigFile(Path.Combine(configPath, SpireItems.PluginGUID + ".cfg"), true);
 
             enableAkabeko = config.Bind("Toggles", "enableAkabeko", true, "Set to true to enable Akabeko.");
+            //enableAnchor = config.Bind("Toggles", "enableAnchor", true, "Set to true to enable Anchor.");
             enableBagOfMarbles = config.Bind("Toggles", "enableBagOfMarbles", true, "Set to true to enable BagOfMarbles.");
             enableBloodVial = config.Bind("Toggles", "enableBloodVial", true, "Set to true to enable BloodVial.");
             enableBoot = config.Bind("Toggles", "enableBoot", true, "Set to true to enable Boot.");
